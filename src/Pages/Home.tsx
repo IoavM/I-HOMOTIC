@@ -2,6 +2,7 @@ import '../Styles/Home.css'
 import { automatizacion, iluminacion, seguridad, casa } from '../assets/imagenes'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import Swal from "sweetalert2"
 
 export default function Home() {
     const navigate = useNavigate()
@@ -11,12 +12,18 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
+
        <section className='hero'>
             <div className='hero-content'>
                 <h1>Tecnología inteligente</h1>
                 <h2>para hogares sostenibles</h2>
                 <p>Transformamos espacios con automatización avanzada, eficiencia energética y soluciones IoT de última generación para un estilo de vida más cómodo y sostenible.</p>
-                <button className='hero-button'>Contáctanos</button>
+                <button className='hero-button' onClick={() => Swal.fire({
+                    icon: "success",
+                    title: "Tu mensaje ha sido enviado",
+                    showConfirmButton: false,
+                    timer: 1500
+                    })}>Contáctanos</button>
             </div>
             <div className='hero-image'>
               <h1>I-HOMOTIC</h1>
