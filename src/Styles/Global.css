@@ -9,36 +9,35 @@
   --colorletraverdeclaro:#4c7b45;
   font-family: 'Sora', sans-serif;
   width: 100%;
-
- h1{
-    font-size: 5rem;
-    font-weight: bold;
-    color: var(--colorletraverde);
- }
-
- h2{
-    font-size: 3rem;
-    font-weight: bold;
-    color: var(--colorletraverde);
- }
-
- h3{
-    font-size: 2rem;
-    font-weight: 500;
-    color: var(--blancoprincipal2);
- }
-
-h4{
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--blancoprincipal2);
 }
 
- p{
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--colorletraverde);
- }
+h1{
+  font-size: clamp(2.2rem, 4.5vw, 5rem);
+  font-weight: 800;
+  color: var(--colorletraverde);
+}
 
+h2{
+  font-size: clamp(1.6rem, 3vw, 3rem);
+  font-weight: 800;
+  color: var(--colorletraverde);
+}
+
+h3{
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  font-weight: 600;
+  color: var(--blancoprincipal2);
+}
+
+h4{
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  font-weight: 600;
+  color: var(--blancoprincipal2);
+}
+
+p{
+  font-size: clamp(0.95rem, 1.2vw, 1.2rem);
+  font-weight: 600;
+  color: var(--colorletraverde);
 }
 
