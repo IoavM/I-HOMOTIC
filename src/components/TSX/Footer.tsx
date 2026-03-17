@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import '../CSS/Footer.css'
+import { SiInstagram, SiFacebook, SiX } from 'react-icons/si'
 
 export default function Footer() {
   return (
@@ -10,10 +11,9 @@ export default function Footer() {
           <h2 className='footer-logo'><span>|</span>Homotic</h2>
           <p>Soluciones de domótica sostenibles y eficientes para hogares y empresas. Transformamos espacios con tecnología inteligente.</p>
           <div className='footer-redes'>
-            <a href='#' className='footer-red'>in</a>
-            <a href='#' className='footer-red'>ig</a>
-            <a href='#' className='footer-red'>f</a>
-            <a href='#' className='footer-red'>tw</a>
+            <a href='#' className='footer-red'><SiInstagram size={24} /></a>
+            <a href='#' className='footer-red'><SiFacebook size={24}/></a>
+            <a href='#' className='footer-red'><SiX size={24}/></a>
           </div>
         </div>
 
