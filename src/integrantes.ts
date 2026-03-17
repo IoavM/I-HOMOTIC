@@ -1,9 +1,9 @@
-import ioav   from './assets/ioav.png'
+import ioav   from './assets/Ioav.png'
 import jb     from './assets/JCB.png'
 import lauraO from './assets/LauraO.png'
 import lauraR from './assets/laura.png'
-import andrea from './assets/andrea.png'
-import sofia  from './assets/sofia.png'
+import andrea from './assets/Andrea.png'
+import sofia  from './assets/Sofia.png'
 
 export const integrantes = [
   { iniciales: 'IM', nombre: 'Ioav Mizrachi',      cargo: 'CEO & Desarrollador Principal (una MÁQUINA)', foto: ioav   },
