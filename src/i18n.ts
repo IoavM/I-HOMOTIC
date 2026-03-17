@@ -6,7 +6,7 @@ const resources = {
     translation: {
       navbar: {
         home: 'Inicio',
-        services: 'Servicios',
+        nosotros: 'Nosotros',
         projects: 'Proyectos',
       },
       hero: {

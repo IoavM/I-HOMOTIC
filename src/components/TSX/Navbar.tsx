@@ -26,7 +26,7 @@ const NARANJA_HOVER = '#F07F2A'
 
 const links = [
   { to: '/',          key: 'navbar.home'     },
-  { to: '/servicios', key: 'navbar.services' },
+  { to: '/nosotros', key: 'navbar.nosotros' },
   { to: '/proyectos', key: 'navbar.projects' },
 ]
 
