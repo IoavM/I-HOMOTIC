@@ -18,7 +18,7 @@ export default function Proyectos() {
        <section className='inicio-proyectos' style={{backgroundImage: `url(${CasaModerna})`}}>
             <div className='inicio-content'>
                 <h2>{t('projects.pageTitle')}</h2>
-                <h2>{t('projects.pageSubtitle')}</h2>
+                <h3>{t('projects.pageSubtitle')}</h3>
                 <p>{t('projects.pageDescription')}</p>
             </div>
        </section>
