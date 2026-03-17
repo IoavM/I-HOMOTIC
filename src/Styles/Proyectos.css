@@ -183,6 +183,17 @@
 }
 
 @media (max-width: 800px) {
+    .inicio-content {
+        margin-left: 2rem;
+        margin-bottom: 2rem;
+        width: 80%;
+    }
+    .inicio-content h2 {
+        font-size: 1.8rem;
+    }
+    .inicio-content p {
+        font-size: 1rem;
+    }
     .proyecto-muestra {
         grid-template-columns: 1fr;
         padding: 2rem;
