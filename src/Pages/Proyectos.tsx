@@ -1,10 +1,8 @@
 import '../Styles/Home.css'
 import { automatizacion, iluminacion, seguridad, casa } from '../assets/imagenes'
-import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-export default function Home() {
-    const navigate = useNavigate()
+export default function Proyectos() {
     return (
         <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -67,7 +65,7 @@ export default function Home() {
                         <div className='proyectos-tarjetas-info'>
                             <h3>Corporate HQ Automation</h3>
                             <p>Sistema integral de gestión de edificio inteligente con eficiencia energética y control de acceso avanzado.</p>
-                            <button className='proyectos-button' onClick={() => navigate('/proyectos')}>Ver Proyecto</button>
+                            <button className='proyectos-button'>Ver Proyecto</button>
                             
                         </div>
                     </div>

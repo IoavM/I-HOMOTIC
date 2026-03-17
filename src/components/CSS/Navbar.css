@@ -61,3 +61,33 @@
     background-color: var(--verdeclaro);
     
 }
+
+@media (max-width: 800px) {
+
+  /* ---------------------------------------------------NAVBAR---------------------------------------------- */
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .navbar-links {
+    position: static;      
+    transform: none;        
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .navbar-links a {
+    font-size: 1rem;
+  }
+
+  .navbar-logo a {
+    font-size: 1.3rem;
+  }
+
+}

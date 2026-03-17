@@ -1,44 +1,44 @@
 :root {
-  --blancoprincipal1:#FFFFFF;
-  --blancoprincipal2:#f9fbf8;
-  --naranja:#E8721A;
+  --blancoprincipal1: #FFFFFF;
+  --blancoprincipal2: #f9fbf8;
+  --naranja: #E8721A;
   --naranjahover: #F07F2A;
-  --verde:#2D6A2E;
-  --verdeclaro:#4c7b45;
-  --colorletraverde:#2d3a2d;
-  --colorletraverdeclaro:#4c7b45;
+  --verde: #2D6A2E;
+  --verdeclaro: #4c7b45;
+  --colorletraverde: #2d3a2d;
+  --colorletraverdeclaro: #4c7b45;
+}
+
+body {
   font-family: 'Sora', sans-serif;
-  width: 100%;
-
- h1{
-    font-size: 5rem;
-    font-weight: bold;
-    color: var(--colorletraverde);
- }
-
- h2{
-    font-size: 3rem;
-    font-weight: bold;
-    color: var(--colorletraverde);
- }
-
- h3{
-    font-size: 2rem;
-    font-weight: 500;
-    color: var(--blancoprincipal2);
- }
-
-h4{
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--blancoprincipal2);
 }
 
- p{
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--colorletraverde);
- }
-
+h1 {
+  font-size: 5rem;
+  font-weight: bold;
+  color: var(--colorletraverde);
 }
 
+h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--colorletraverde);
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--blancoprincipal2);
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--blancoprincipal2);
+}
+
+p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--colorletraverde);
+}

@@ -2,7 +2,7 @@ import '../Styles/Home.css'
 import { automatizacion, iluminacion, seguridad, casa } from '../assets/imagenes'
 import { motion } from 'framer-motion'
 
-export default function Home() {
+export default function Servicios() {
     return (
         <motion.div
             initial={{ opacity: 0, y: 40 }}
