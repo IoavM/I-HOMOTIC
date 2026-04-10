@@ -2,6 +2,8 @@ import '../Styles/Nosotros.css'
 import { motion } from 'framer-motion'
 import { integrantes } from '../integrantes'
 import { useTranslation } from 'react-i18next'
+import datos from '../components/grid-datos/grid-datos-info.json'
+import TarjetaDato from '../components/grid-datos/grid-datos'
 
 export default function Nosotros() {
     const { t } = useTranslation()
@@ -29,23 +31,15 @@ export default function Nosotros() {
                     </ul>
                 </div>
                 <div className='datos'>
-                    <div className='dato'>
-                        <h3>350+</h3>
-                        <p>{t('nosotros.projects')}</p>
-                    </div>
-                    <div className='dato'>
-                        <h3>500+</h3>
-                        <p>{t('nosotros.clients')}</p>
-                    </div>
-                    <div className='dato'>
-                        <h3>12+</h3>
-                        <p>{t('nosotros.experience')}</p>
-                    </div>
-                    <div className='dato'>
-                        <h3>25+</h3>
-                        <p>{t('nosotros.cities')}</p>
-                    </div>
+                    {datos.map((dato) => (
+                        <TarjetaDato
+                            key={dato.etiquetaKey}
+                            valor={dato.valor}
+                            etiquetaKey={dato.etiquetaKey}
+                        />
+                    ))}
                 </div>
+                
             </div>
        </section>
 

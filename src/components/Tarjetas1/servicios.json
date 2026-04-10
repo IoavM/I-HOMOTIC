@@ -1,0 +1,17 @@
+[
+  {
+    "imagen": "automatizacion",
+    "titulo": "Automatización del Hogar",
+    "descripcion": "Controla todos los sistemas de tu hogar desde una sola plataforma. Iluminación, climatización, persianas y electrodomésticos integrados de forma inteligente."
+  },
+  {
+    "imagen": "iluminacion",
+    "titulo": "Iluminación Inteligente",
+    "descripcion": "Sistemas de iluminación adaptativos que ajustan intensidad y color según la hora del día, presencia y preferencias personales para máximo confort."
+  },
+  {
+    "imagen": "seguridad",
+    "titulo": "Seguridad y CCTV",
+    "descripcion": "Vigilancia 24/7 con cámaras HD, sensores de movimiento, alarmas inteligentes y control de acceso remoto para la tranquilidad de tu familia."
+  }
+]

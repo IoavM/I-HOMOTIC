@@ -1,0 +1,26 @@
+[
+  {
+    "imagen": "casa2",
+    "tituloKey": "projects.project1Title",
+    "descripcionKey": "projects.project1Description",
+    "altKey": "projects.project1Alt"
+  },
+  {
+    "imagen": "casa2",
+    "tituloKey": "projects.project2Title",
+    "descripcionKey": "projects.project2Description",
+    "altKey": "projects.project2Alt"
+  },
+  {
+    "imagen": "casa2",
+    "tituloKey": "projects.project3Title",
+    "descripcionKey": "projects.project3Description",
+    "altKey": "projects.project3Alt"
+  },
+  {
+    "imagen": "casa2",
+    "tituloKey": "projects.project4Title",
+    "descripcionKey": "projects.project4Description",
+    "altKey": "projects.project4Alt"
+  }
+]

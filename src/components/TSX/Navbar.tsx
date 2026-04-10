@@ -7,15 +7,17 @@ import Container from '@mui/material/Container'
 import Divider from '@mui/material/Divider'
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
+import InputBase from '@mui/material/InputBase'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { useTheme } from '@mui/material/styles'
+import { styled, alpha, useTheme } from '@mui/material/styles'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
+import SearchIcon from '@mui/icons-material/Search'
 import { useTranslation } from 'react-i18next'
 
 const BLANCO        = '#f9fbf8'
@@ -28,7 +30,55 @@ const links = [
   { to: '/',          key: 'navbar.home'     },
   { to: '/nosotros', key: 'navbar.nosotros' },
   { to: '/proyectos', key: 'navbar.projects' },
+  { to: '/contacto', key: 'navbar.contacto' },
+  { to: '/mapa', key: 'navbar.mapa' },
 ]
+
+// ─── Search Bar (estilos propios, no toca nada del navbar) ───────────────────
+
+const SearchWrapper = styled('div')(({ theme }) => ({
+  position:        'relative',
+  borderRadius:    999,
+  backgroundColor: alpha(VERDE_CLARO, 0.08),
+  border:          `1.5px solid ${alpha(VERDE_CLARO, 0.25)}`,
+  display:         'flex',
+  alignItems:      'center',
+  transition:      'border-color 0.2s, background-color 0.2s',
+  '&:hover': {
+    backgroundColor: alpha(VERDE_CLARO, 0.13),
+    borderColor:     alpha(VERDE_CLARO, 0.5),
+  },
+  '&:focus-within': {
+    borderColor:     VERDE_CLARO,
+    backgroundColor: alpha(VERDE_CLARO, 0.06),
+  },
+}))
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding:       theme.spacing(0, 1.2, 0, 1.5),
+  pointerEvents: 'none',
+  display:       'flex',
+  alignItems:    'center',
+  color:         alpha(VERDE_CLARO, 0.7),
+}))
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color:    VERDE,
+  fontSize: '0.875rem',
+  '& .MuiInputBase-input': {
+    padding:    theme.spacing(0.7, 1.5, 0.7, 0),
+    width:      '14ch',
+    fontFamily: 'Sora, sans-serif',
+    fontWeight: 500,
+    transition: theme.transitions.create('width'),
+    '&::placeholder': { color: alpha(VERDE, 0.45), opacity: 1 },
+    [theme.breakpoints.up('md')]: {
+      '&:focus': { width: '20ch' },
+    },
+  },
+}))
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 export default function Navbar() {
   const location = useLocation()
@@ -215,6 +265,18 @@ export default function Navbar() {
                     </Button>
                   )
                 })}
+
+                {/* ── Buscador ── */}
+                <SearchWrapper>
+                  <SearchIconWrapper>
+                    <SearchIcon fontSize="small" />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="Buscar…"
+                    inputProps={{ 'aria-label': 'search' }}
+                  />
+                </SearchWrapper>
+
                 <Button
                   variant="outlined"
                   size="small"

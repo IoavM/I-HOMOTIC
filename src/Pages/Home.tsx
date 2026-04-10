@@ -3,11 +3,22 @@ import { automatizacion, iluminacion, seguridad, casa } from '../assets/imagenes
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Swal from "sweetalert2"
-import { useTranslation } from 'react-i18next'   
+import { useTranslation } from 'react-i18next'
+import servicios from '../components/Tarjetas1/servicios.json'
+import TarjetaInfo from '../components/Tarjetas1/TarjetaInfo'
+import proyectosHome from '../components/proyectos-imagen/proyectos-imagen-info.json'
+import TarjetaProyectoHome from '../components/proyectos-imagen/proyectos-imagen'
+import CalculadoraPrecios from '../components/calculadora-precios/calculadora-precios'
+
+const imagenesMap: Record<string, string> = {
+    automatizacion,
+    iluminacion,
+    seguridad,
+}
 
 export default function Home() {
     const navigate = useNavigate()
-    const { t } = useTranslation()               
+    const { t } = useTranslation()
 
     return (
         <motion.div
@@ -17,7 +28,7 @@ export default function Home() {
         >
         <section className='hero'>
             <div className='hero-content'>
-                <h1>{t('hero.title')}</h1>         
+                <h1>{t('hero.title')}</h1>
                 <h2>{t('hero.subtitle')}</h2>
                 <p>{t('hero.description')}</p>
                 <button
@@ -50,21 +61,14 @@ export default function Home() {
                 <p>{t('services.description')}</p>
             </div>
             <div className='servicios-tarjetas'>
-                <div className='tarjetas-info'>
-                    <img src={automatizacion} alt={t('services.automationTitle')} />
-                    <h2>{t('services.automationTitle')}</h2>
-                    <p>{t('services.automationDescription')}</p>
-                </div>
-                <div className='tarjetas-info'>
-                    <img src={iluminacion} alt={t('services.lightingTitle')} />
-                    <h2>{t('services.lightingTitle')}</h2>
-                    <p>{t('services.lightingDescription')}</p>
-                </div>
-                <div className='tarjetas-info'>
-                    <img src={seguridad} alt={t('services.securityTitle')} />
-                    <h2>{t('services.securityTitle')}</h2>
-                    <p>{t('services.securityDescription')}</p>
-                </div>
+                {servicios.map((servicio) => (
+                    <TarjetaInfo
+                        key={servicio.titulo}
+                        imagen={imagenesMap[servicio.imagen]}
+                        titulo={servicio.titulo}
+                        descripcion={servicio.descripcion}
+                    />
+                ))}
             </div>
         </section>
 
@@ -73,30 +77,22 @@ export default function Home() {
                 <div className='proyectos-info'>
                     <h2>{t('projects.title')}</h2>
                     <h4>{t('projects.subtitle')}</h4>
-                    <div className='proyectos-tarjetas'>
-                        <div className='proyectos-tarjetas-info'>
-                            <h3>{t('projects.villaTitle')}</h3>
-                            <p>{t('projects.villaDescription')}</p>
-                            <button className='proyectos-button' onClick={() => navigate('/proyectos')}>
-                                {t('projects.viewProject')}
-                            </button>
-                        </div>
-                    </div>
-                    <div className='proyectos-tarjetas'>
-                        <div className='proyectos-tarjetas-info'>
-                            <h3>{t('projects.hqTitle')}</h3>
-                            <p>{t('projects.hqDescription')}</p>
-                            <button className='proyectos-button' onClick={() => navigate('/proyectos')}>
-                                {t('projects.viewProject')}
-                            </button>
-                        </div>
-                    </div>
+                    {proyectosHome.map((proyecto) => (
+                        <TarjetaProyectoHome
+                            key={proyecto.tituloKey}
+                            tituloKey={proyecto.tituloKey}
+                            descripcionKey={proyecto.descripcionKey}
+                        />
+                    ))}
                 </div>
                 <div className='proyectos-img'>
                     <img src={casa} alt={t('projects.title')} />
                 </div>
             </div>
         </section>
+
+        <CalculadoraPrecios />
+
         </motion.div>
     )
 }

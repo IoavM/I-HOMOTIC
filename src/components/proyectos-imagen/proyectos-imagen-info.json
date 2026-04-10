@@ -1,0 +1,10 @@
+[
+  {
+    "tituloKey": "projects.villaTitle",
+    "descripcionKey": "projects.villaDescription"
+  },
+  {
+    "tituloKey": "projects.hqTitle",
+    "descripcionKey": "projects.hqDescription"
+  }
+]
