@@ -14,7 +14,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { styled, alpha, useTheme } from '@mui/material/styles'
+import { styled, alpha } from '@mui/material/styles' // ✅ quitado useTheme
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 import SearchIcon from '@mui/icons-material/Search'
@@ -34,7 +34,7 @@ const links = [
   { to: '/mapa', key: 'navbar.mapa' },
 ]
 
-// ─── Search Bar (estilos propios, no toca nada del navbar) ───────────────────
+// ─── Search Bar ───────────────────────────────────────────────────────────────
 
 const SearchWrapper = styled('div')(({ theme }) => ({
   position:        'relative',
@@ -82,8 +82,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Navbar() {
   const location = useLocation()
-  const theme    = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
+  // ✅ FIX (sin cambiar comportamiento)
+  const isMobile = useMediaQuery('(max-width:900px)')
+
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const { t, i18n } = useTranslation()
 
@@ -266,7 +268,6 @@ export default function Navbar() {
                   )
                 })}
 
-                {/* ── Buscador ── */}
                 <SearchWrapper>
                   <SearchIconWrapper>
                     <SearchIcon fontSize="small" />

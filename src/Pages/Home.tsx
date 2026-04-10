@@ -17,7 +17,6 @@ const imagenesMap: Record<string, string> = {
 }
 
 export default function Home() {
-    const navigate = useNavigate()
     const { t } = useTranslation()
 
     return (
