@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Grid, Html } from '@react-three/drei'
-import { Suspense } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import '../Styles/Mapa.css'
 
 // ─── Hotspots data ────────────────────────────────────────────────────────────
@@ -25,7 +25,7 @@ function Hotspot({ label, position }: { label: string; position: [number, number
   )
 }
 
-// ─── Simple room walls ────────────────────────────────────────────────────────
+// ─── Simple room ──────────────────────────────────────────────────────────────
 
 function Habitacion() {
   return (
@@ -60,19 +60,19 @@ function Habitacion() {
         <meshStandardMaterial color="#3a5c3a" />
       </mesh>
 
-      {/* Mesa de centro / sala */}
+      {/* Mesa */}
       <mesh position={[-2, 0.2, 0.5]} castShadow>
         <boxGeometry args={[2.5, 0.3, 2]} />
         <meshStandardMaterial color="#4a3a2a" />
       </mesh>
 
-      {/* Objeto cocina */}
+      {/* Cocina */}
       <mesh position={[2.5, 0.4, 0.5]} castShadow>
         <boxGeometry args={[1.5, 0.8, 1.5]} />
         <meshStandardMaterial color="#333" />
       </mesh>
 
-      {/* Planta jardín */}
+      {/* Planta */}
       <mesh position={[-1, 0.3, 2.5]} castShadow>
         <sphereGeometry args={[0.4, 16, 16]} />
         <meshStandardMaterial color="#2d6a2e" />
@@ -112,15 +112,25 @@ function Escena() {
   )
 }
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
+// ─── Page (FIX SSR) ───────────────────────────────────────────────────────────
 
 export default function TourVirtual() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // 🔥 CLAVE: evita render en servidor (Vercel)
+  if (!mounted) return null
+
   return (
     <div className='tour-container'>
       <div className='tour-header'>
         <h2>Tour Virtual</h2>
-        <p>Navega por el espacio con el mouse. Arrastra para rotar, scroll para zoom.</p>
+        <p>Navega con el mouse. Arrastra para rotar, scroll para zoom.</p>
       </div>
+
       <Canvas
         shadows
         camera={{ position: [6, 5, 8], fov: 50 }}
