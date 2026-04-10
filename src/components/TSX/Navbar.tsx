@@ -14,7 +14,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { styled, alpha } from '@mui/material/styles' // ✅ quitado useTheme
+import { styled, alpha } from '@mui/material/styles' 
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 import SearchIcon from '@mui/icons-material/Search'
@@ -36,7 +36,8 @@ const links = [
 
 // ─── Search Bar ───────────────────────────────────────────────────────────────
 
-const SearchWrapper = styled('div')(({ theme }) => ({
+// CORREGIDO: eliminado el parámetro 'theme' que no se usaba
+const SearchWrapper = styled('div')({
   position:        'relative',
   borderRadius:    999,
   backgroundColor: alpha(VERDE_CLARO, 0.08),
@@ -52,8 +53,9 @@ const SearchWrapper = styled('div')(({ theme }) => ({
     borderColor:     VERDE_CLARO,
     backgroundColor: alpha(VERDE_CLARO, 0.06),
   },
-}))
+})
 
+// Este SÍ usa 'theme', así que se mantiene
 const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding:       theme.spacing(0, 1.2, 0, 1.5),
   pointerEvents: 'none',
@@ -62,6 +64,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   color:         alpha(VERDE_CLARO, 0.7),
 }))
 
+// Este SÍ usa 'theme', así que se mantiene
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color:    VERDE,
   fontSize: '0.875rem',
@@ -82,10 +85,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Navbar() {
   const location = useLocation()
-
-  // ✅ FIX (sin cambiar comportamiento)
   const isMobile = useMediaQuery('(max-width:900px)')
-
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const { t, i18n } = useTranslation()
 
