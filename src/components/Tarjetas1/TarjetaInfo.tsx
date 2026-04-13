@@ -1,5 +1,4 @@
 import './TarjetaInfo.css'
-import { useTranslation } from 'react-i18next'
 
 interface Props {
     imagen: string
