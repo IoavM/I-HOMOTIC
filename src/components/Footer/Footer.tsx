@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import '../CSS/Footer.css'
+import './Footer.css'
 import { SiInstagram, SiFacebook, SiX } from 'react-icons/si'
 
 export default function Footer() {

@@ -2,11 +2,13 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './calculadora-precios.css'
 import data from './productos.json'
+import { useTRM } from '../../hooks/useTRM'
 
 type Modo = 'productos' | 'paquetes' | 'ahorro'
 
 export default function CalculadoraPrecios() {
     const { t } = useTranslation()
+    const { trm, fecha, loading: trmLoading, error: trmError } = useTRM()
     const [modo, setModo] = useState<Modo>('productos')
     const [agregados, setAgregados] = useState<string[]>([])
     const [paqueteSeleccionado, setPaqueteSeleccionado] = useState<string | null>(null)
@@ -251,6 +253,11 @@ export default function CalculadoraPrecios() {
                                     <p className='ahorro-resultado-valor'>
                                         {formatPrecio(ahorroMensual)}<span>{t('calculator.perMonth')}</span>
                                     </p>
+                                    {trm && ahorroMensual > 0 && (
+                                        <p className='ahorro-resultado-usd'>
+                                            ≈ USD {new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(ahorroMensual / trm)}{t('calculator.perMonth')}
+                                        </p>
+                                    )}
                                     <p className='ahorro-resultado-vs'>
                                         {t('calculator.vsCostWithoutDomotics')} {formatPrecio(costoSinDomotica)}{t('calculator.perMonth')}
                                     </p>
@@ -261,6 +268,11 @@ export default function CalculadoraPrecios() {
                                     <p className='ahorro-resultado-valor'>
                                         {formatPrecio(inversionEstimada)}
                                     </p>
+                                    {trm && (
+                                        <p className='ahorro-resultado-usd'>
+                                            ≈ USD {new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(inversionEstimada / trm)}
+                                        </p>
+                                    )}
                                 </div>
 
                                 <div className='ahorro-meses-box'>
@@ -307,9 +319,16 @@ export default function CalculadoraPrecios() {
 
                                 <div className='resumen-total'>
                                     <span>{t('calculator.total')}</span>
-                                    <span className='resumen-total-precio'>
-                                        {formatPrecio(totalFinal)}
-                                    </span>
+                                    <div className='resumen-total-precios'>
+                                        <span className='resumen-total-precio'>
+                                            {formatPrecio(totalFinal)}
+                                        </span>
+                                        {trm && totalFinal > 0 && (
+                                            <span className='resumen-total-usd'>
+                                                ≈ USD {new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(totalFinal / trm)} hoy
+                                            </span>
+                                        )}
+                                    </div>
                                 </div>
 
                                 <p className='resumen-nota'>{t('calculator.disclaimer')}</p>
@@ -318,6 +337,31 @@ export default function CalculadoraPrecios() {
                     </div>
                 </div>
             </div>
+
+            {/* ── Widget TRM ── */}
+            {!trmError && (
+                <div className='trm-widget'>
+                    <div className='trm-widget-inner'>
+                        <span className='trm-widget-label'>💱 TRM hoy</span>
+                        {trmLoading ? (
+                            <span className='trm-widget-loading'>Cargando…</span>
+                        ) : trm ? (
+                            <>
+                                <div className='trm-widget-rates'>
+                                    <span className='trm-widget-rate'>
+                                        1 USD = <strong>{new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(trm)}</strong>
+                                    </span>
+                                    <span className='trm-widget-sep'>·</span>
+                                    <span className='trm-widget-rate'>
+                                        1.000 COP ≈ <strong>USD {(1000 / trm).toFixed(4)}</strong>
+                                    </span>
+                                </div>
+                                {fecha && <span className='trm-widget-fecha'>Vigente desde {fecha} · Fuente: Banco de la República</span>}
+                            </>
+                        ) : null}
+                    </div>
+                </div>
+            )}
         </section>
     )
 }

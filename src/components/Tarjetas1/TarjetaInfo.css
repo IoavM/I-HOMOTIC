@@ -1,0 +1,76 @@
+/* ---------------------------------------------------SERVICIOS---------------------------------------------- */
+
+.tarjetas-info{
+    background-color: #e8f1e5;
+    max-width: 25rem;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.tarjetas-info img{
+    height: 15rem;
+    border-radius: 15px;
+}
+
+
+.tarjetas-info h2{
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--colorletraverde);
+}
+
+.tarjetas-info p{
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--colorletraverde);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1400px) {
+    .servicios-tarjetas {
+        gap: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .tarjetas-info {
+        max-width: 100%;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .servicios {
+        padding: 3rem 1.5rem;
+    }
+
+    .servicios-content {
+        gap: 1rem;
+    }
+
+    .servicios-tarjetas {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .tarjetas-info {
+        padding: 1.5rem;
+    }
+
+    .tarjetas-info img {
+        height: 12rem;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .tarjetas-info h2 {
+        font-size: 1.4rem;
+    }
+
+    .tarjetas-info p {
+        font-size: 0.95rem;
+    }
+}

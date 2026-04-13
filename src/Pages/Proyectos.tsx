@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import proyectos from '../components/Tarjetas2/otros-proyectos.json'
 import TarjetaProyecto from '../components/Tarjetas2/Tarjeta2Info'
+import CalculadoraPrecios from '../components/calculadora-precios/calculadora-precios'
+
 
 const imagenesMap: Record<string, string> = {
     casa2,
@@ -30,7 +32,7 @@ export default function Proyectos() {
 
             <section className='proyecto-muestra'>
                 <div className='muestra-imagen'>
-                    <img src={casa2} alt={t('projects.featuredAlt')} />
+                    <img src={casa2} alt="Imagen de muestra de un proyecto de casa inteligente" />
                 </div>
                 <div className='muestra-info'>
                     <h2>{t('projects.featuredTitle')}</h2>
@@ -58,6 +60,7 @@ export default function Proyectos() {
                     ))}
                 </div>
             </section>
+            <CalculadoraPrecios />
         </motion.div>
     )
 }

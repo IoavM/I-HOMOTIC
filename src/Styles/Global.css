@@ -1,19 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Montserrat:wght@300;600&display=swap');
+
 :root {
-  --blancoprincipal1: #FFFFFF;
-  --blancoprincipal2: #f9fbf8;
-  --naranja: #E8721A;
-  --naranjahover: #F07F2A;
-  --verde: #2D6A2E;
-  --verdeclaro: #4c7b45;
-  --colorletraverde: #2d3a2d;
-  --colorletraverdeclaro: #4c7b45;
-  --colorfondoverde: #eef3dd;
-  --colorfondoverdeclaro: #f4faf5;
+  --blancoprincipal1:       #FFFFFF;
+  --blancoprincipal2:       #f4f8f4;
+  --naranja:                #90AE2F;
+  --naranjahover:           #7a9428;
+  --verde:                  #07573B;
+  --verdeclaro:             #0B5B46;
+  --colorletraverde:        #051F19;
+  --colorletraverdeclaro:   #0B5B46;
+  --colorfondoverde:        #e8f0e0;
+  --colorfondoverdeclaro:   #f4f8f4;
 }
 
 body {
-  font-family: 'Sora', sans-serif;
-}
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  background-color: var(--blancoprincipal2);
+  color: var(--colorletraverde);}
 
 h1 {
   font-size: 5rem;

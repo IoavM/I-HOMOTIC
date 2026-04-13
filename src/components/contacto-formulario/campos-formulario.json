@@ -1,43 +1,50 @@
 [
-    {
-        "id": "nombre",
-        "type": "text",
-        "labelKey": "contacto.nombre",
-        "placeholderKey": "contacto.nombrePlaceholder",
-        "required": true,
-        "fullWidth": false
-    },
-    {
-        "id": "email",
-        "type": "email",
-        "labelKey": "contacto.email",
-        "placeholderKey": "contacto.emailPlaceholder",
-        "required": true,
-        "fullWidth": false
-    },
-    {
-        "id": "telefono",
-        "type": "text",
-        "labelKey": "contacto.telefono",
-        "placeholderKey": "contacto.telefonoPlaceholder",
-        "required": false,
-        "fullWidth": false
-    },
-    {
-        "id": "direccion",
-        "type": "text",
-        "labelKey": "contacto.direccion",
-        "placeholderKey": "contacto.direccionPlaceholder",
-        "required": false,
-        "fullWidth": false
-    },
-    {
-        "id": "mensaje",
-        "type": "textarea",
-        "labelKey": "contacto.mensaje",
-        "placeholderKey": "contacto.mensajePlaceholder",
-        "required": true,
-        "fullWidth": true,
-        "rows": 5
-    }
+  {
+    "id": "nombre",
+    "type": "text",
+    "labelKey": "contacto.nombre",
+    "placeholderKey": "contacto.nombrePlaceholder",
+    "required": true,
+    "fullWidth": false
+  },
+  {
+    "id": "email",
+    "type": "email",
+    "labelKey": "contacto.email",
+    "placeholderKey": "contacto.emailPlaceholder",
+    "required": true,
+    "fullWidth": false
+  },
+  {
+    "id": "telefono",
+    "type": "phone",
+    "labelKey": "contacto.telefono",
+    "placeholderKey": "contacto.telefonoPlaceholder",
+    "required": false,
+    "fullWidth": true
+  },
+  {
+    "id": "interes",
+    "type": "service-select",
+    "labelKey": "contacto.interes",
+    "required": false,
+    "fullWidth": true
+  },
+  {
+    "id": "direccion",
+    "type": "address-select",
+    "labelKey": "contacto.direccion",
+    "placeholderKey": "contacto.direccionPlaceholder",
+    "required": false,
+    "fullWidth": true
+  },
+  {
+    "id": "mensaje",
+    "type": "textarea",
+    "labelKey": "contacto.mensaje",
+    "placeholderKey": "contacto.mensajePlaceholder",
+    "required": true,
+    "fullWidth": true,
+    "rows": 5
+  }
 ]

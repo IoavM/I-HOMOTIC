@@ -1,0 +1,153 @@
+/* ─────────────── INTRODUCCIÓN DE SERVICIOS ─────────────── */
+
+.servicios-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 5rem 2rem;
+    background: var(--colorletraverde);
+    text-align: center;
+}
+
+.servicios-intro-texto {
+    width: 100%;
+    max-width: 650px;
+}
+
+.servicios-intro-texto h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1.5rem;
+    font-family: 'Sora', sans-serif;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.servicios-intro-texto p {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: white;
+    opacity: 0.9;
+}
+
+.propuesta-valor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 5rem 2rem;
+    background: var(--colorletraverde);
+    text-align: center;
+}
+
+.propuesta-valor-content h1{
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.tarjetas-pv{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 0 3rem;
+}
+
+.servicios-final{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 5rem 2rem;
+    background: #F4F8F4;
+    text-align: center;
+}
+
+.servicios-final-content h1{
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--colorletraverde);
+    margin-bottom: 1.5rem;
+}
+
+.servicios-final-content p{
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--colorletraverde);
+    opacity: 0.9;
+    max-width: 36rem;
+}
+
+.servicio-buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.servicio-button{
+    background-color: var(--verde);
+    color: var(--blancoprincipal1);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 4rem;
+}
+
+.servicio-button:hover{
+    background: var(--colorletraverdeclaro);
+    transform: translateY(-5px);
+    box-shadow: var(--colorletraverdeclaro) 0 0 10px;
+}
+
+/* ─────────────── RESPONSIVE ─────────────── */
+
+@media (max-width: 1400px) {
+    .servicios-intro, .servicios-lista {
+        padding: 5rem 2rem 4rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .servicios-intro, .servicios-lista {
+        padding: 4rem 3rem;
+    }
+
+    .servicios-intro-texto h2 {
+        font-size: 3rem;
+    }
+
+    .servicios-lista-header h3 {
+        font-size: 2.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .servicios-intro {
+        padding: 3rem 1.5rem;
+        gap: 2rem;
+    }
+
+    .servicios-intro-texto h2 {
+        font-size: 2.4rem;
+    }
+
+    .servicios-lista {
+        padding: 3rem 1.5rem;
+        gap: 2.5rem;
+    }
+
+    .servicios-lista-header h3 {
+        font-size: 2rem;
+    }
+}

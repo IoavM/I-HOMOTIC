@@ -6,9 +6,11 @@ const resources = {
     translation: {
       navbar: {
         home: 'Inicio',
+        servicios: 'Servicios',
         nosotros: 'Nosotros',
         projects: 'Proyectos',
         contacto: 'Contacto',
+        searchPlaceholder: 'Buscar…',
         mapa: 'Mapa',
       },
       hero: {
@@ -17,6 +19,7 @@ const resources = {
         description:
           'Transformamos espacios con automatización avanzada, eficiencia energética y soluciones IoT de última generación para un estilo de vida más cómodo y sostenible.',
         contact: 'Contáctanos',
+        Explore: 'Explorar tu hogar',
         messageSent: 'Tu mensaje ha sido enviado',
       },
       services: {
@@ -33,6 +36,21 @@ const resources = {
         securityDescription:
           'Vigilancia 24/7 con cámaras HD, sensores de movimiento, alarmas inteligentes y control de acceso remoto para la tranquilidad de tu familia.',
       },
+      servicios: {
+        title: 'Nuestros Servicios',
+        subtitle: 'Soluciones integrales de domótica diseñadas para tu hogar: desde la asesoría hasta la instalación y el soporte.',
+        description: 'Transformamos por completo tu hogar o negocio brindando seguridad integral, optimización de energía y lujo inigualable en un solo ecosistema conectado. Realizamos propuestas a medida garantizando diseño y funcionamiento.',
+        valuesTitle: '¿Por qué trabajar con nosotros?',
+        value1: 'Integración avanzada en una sola app',
+        value2: 'Instalación pulcra, discreta y profesional',
+        value3: 'Soporte y acompañamiento continuo',
+        value4: 'Sistemas escalables y tecnologías del futuro',
+        servicesTitle: 'Nuestros Servicios',
+        servicesSubtitle: 'Descubre los servicios y adaptaciones disponibles para tus espacios',
+        PVTitle: '¿Por qué Ihomotic?',
+        callToAction: '¿Listo para transformar tu hogar?',
+        callToActionDescription: 'Agenda una asesoría sin costo y descubre qué solución se adapta mejor a tu espacio y presupuesto.',
+      },
       projects: {
         title: 'Nuestros Proyectos',
         subtitle:
@@ -44,7 +62,6 @@ const resources = {
         hqDescription:
           'Sistema integral de gestión de edificio inteligente con eficiencia energética y control de acceso avanzado.',
         viewProject: 'Ver Proyecto',
-        // NUEVAS TRADUCCIONES PARA PROYECTOS
         pageTitle: 'Nuestros Proyectos',
         pageSubtitle: 'Tecnología Inteligente y Eficiencia Energética',
         pageDescription: 'Descubre cómo hemos transformado espacios con soluciones de domótica inteligente.',
@@ -66,7 +83,6 @@ const resources = {
         project3Alt: 'Proyecto Apartamento Conectado',
         project4Alt: 'Proyecto Apartamento Conectado Premium',
       },
-      // NUEVA SECCIÓN PARA NOSOTROS
       nosotros: {
         aboutTitle: 'Sobre Nosotros',
         aboutSubtitle: 'Liderando la transformación digital del hogar con soluciones sostenibles e innovadoras.',
@@ -101,12 +117,27 @@ const resources = {
         email: 'Email',
         emailPlaceholder: 'correo@ejemplo.com',
         telefono: 'Teléfono',
-        telefonoPlaceholder: '+57 300 000 0000',
+        telefonoPlaceholder: '300 000 0000',
         direccion: 'Dirección',
         direccionPlaceholder: 'Tu dirección',
         mensaje: 'Mensaje',
         mensajePlaceholder: 'Cuéntanos en qué podemos ayudarte...',
         whatsappButton: 'Contactar por WhatsApp',
+        emailButton: 'Enviar por correo',
+        interes: 'Servicio de interés',
+        interesPlaceholder: 'Selecciona un servicio',
+        emailSentTitle: '¡Mensaje enviado!',
+        emailSentText: 'Te responderemos a la brevedad.',
+        emailErrorTitle: 'Error al enviar',
+        emailErrorText: 'No se pudo enviar el mensaje. Inténtalo de nuevo.',
+        codigoPais: 'Código de país',
+        pais: 'País',
+        estado: 'Departamento / Estado',
+        ciudad: 'Ciudad',
+        seleccionaPais: 'Selecciona un país',
+        seleccionaEstado: 'Selecciona un departamento',
+        seleccionaCiudad: 'Selecciona una ciudad',
+        cargando: 'Cargando...',
       },
       calculator: {
         title: 'Calculadora de Precios',
@@ -154,7 +185,7 @@ const resources = {
         vsCostWithoutDomotics: 'vs. costo sin domótica: ',
         estimatedInvestment: 'INVERSIÓN ESTIMADA',
         monthsToRecover: 'meses',
-        toRecoverInvestment: 'para recuperar la inversión'
+        toRecoverInvestment: 'para recuperar la inversión',
       },
     },
   },
@@ -162,9 +193,12 @@ const resources = {
     translation: {
       navbar: {
         home: 'Home',
-        services: 'Services',
+        servicios: 'Services',
+        nosotros: 'About Us',
         projects: 'Projects',
         contacto: 'Contact',
+        searchPlaceholder: 'Search…',
+        mapa: 'Map',
       },
       hero: {
         title: 'Smart technology',
@@ -188,6 +222,20 @@ const resources = {
         securityDescription:
           '24/7 monitoring with HD cameras, motion sensors, smart alarms, and remote access control for complete peace of mind.',
       },
+      servicios: {
+        title: 'Services',
+        subtitle: 'Comprehensive home automation solutions designed for your home: from advice to installation and support.',
+        description: 'We completely transform your home or business providing comprehensive security, energy optimization, and unparalleled luxury in a single connected ecosystem. We deliver custom proposals ensuring design and seamless operation.',
+        valuesTitle: 'Why work with us?',
+        value1: 'Advanced integration in a single app',
+        value2: 'Clean, discreet, and professional installation',
+        value3: 'Continuous support and accompaniment',
+        value4: 'Scalable systems and technologies of the future',
+        servicesTitle: 'Our Specialized Offerings',
+        servicesSubtitle: 'Discover the services and adaptations available for your spaces',
+        callToAction: 'Ready to transform your home?',
+        callToActionDescription: 'Schedule a free consultation and discover the perfect solution for your space and budget.',
+      },
       projects: {
         title: 'Our Projects',
         subtitle:
@@ -199,7 +247,6 @@ const resources = {
         hqDescription:
           'Comprehensive smart building management system with energy efficiency and advanced access control.',
         viewProject: 'View Project',
-        // NUEVAS TRADUCCIONES PARA PROYECTOS (INGLÉS)
         pageTitle: 'Our Projects',
         pageSubtitle: 'Smart Technology and Energy Efficiency',
         pageDescription: 'Discover how we have transformed spaces with intelligent home automation solutions.',
@@ -221,7 +268,6 @@ const resources = {
         project3Alt: 'Connected Apartment project',
         project4Alt: 'Premium Connected Apartment project',
       },
-      // NUEVA SECCIÓN PARA NOSOTROS (INGLÉS)
       nosotros: {
         aboutTitle: 'About Us',
         aboutSubtitle: 'Leading the digital transformation of homes with sustainable and innovative solutions.',
@@ -256,12 +302,27 @@ const resources = {
         email: 'Email',
         emailPlaceholder: 'email@example.com',
         telefono: 'Phone',
-        telefonoPlaceholder: '+57 300 000 0000',
+        telefonoPlaceholder: '300 000 0000',
         direccion: 'Address',
         direccionPlaceholder: 'Your address',
         mensaje: 'Message',
         mensajePlaceholder: 'Tell us how we can help you...',
         whatsappButton: 'Contact via WhatsApp',
+        emailButton: 'Send by email',
+        interes: 'Service of interest',
+        interesPlaceholder: 'Select a service',
+        emailSentTitle: 'Message sent!',
+        emailSentText: 'We will get back to you shortly.',
+        emailErrorTitle: 'Error sending',
+        emailErrorText: 'Could not send the message. Please try again.',
+        codigoPais: 'Country code',
+        pais: 'Country',
+        estado: 'State / Department',
+        ciudad: 'City',
+        seleccionaPais: 'Select a country',
+        seleccionaEstado: 'Select a state',
+        seleccionaCiudad: 'Select a city',
+        cargando: 'Loading...',
       },
       calculator: {
         title: 'Price Calculator',
@@ -309,7 +370,7 @@ const resources = {
         vsCostWithoutDomotics: 'vs. cost without domotics: ',
         estimatedInvestment: 'ESTIMATED INVESTMENT',
         monthsToRecover: 'months',
-        toRecoverInvestment: 'to recover the investment'
+        toRecoverInvestment: 'to recover the investment',
       },
     },
   },

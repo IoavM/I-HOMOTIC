@@ -1,0 +1,84 @@
+.otros-proyectos {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 4rem 6rem;
+    align-items: center;
+    background-color: var(--colorfondoverde);
+    margin-bottom: 4rem;
+}
+
+.otros-proyectos-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    max-width: 50rem;
+}
+
+.otros-proyectos-content h2 {
+    color: var(--colorletraverde);
+}
+
+.otros-proyectos-content p {
+    font-size: 1rem;
+    color: var(--colorletraverde);
+}
+
+.otros-proyectos-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    width: 100%;
+    max-width: 95rem;
+}
+
+.proyecto-tarjeta {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.proyecto-tarjeta img {
+    width: 100%;
+    height: 13rem;
+    object-fit: cover;
+}
+
+.proyecto-tarjeta h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--colorletraverde);
+    padding: 0 1.5rem;
+}
+
+.proyecto-tarjeta p {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--colorletraverde);
+    line-height: 1.5;
+    padding: 0 1.5rem;
+}
+
+.proyecto-tarjeta-button {
+    background-color: var(--verdeclaro);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    width: fit-content;
+    font-family: 'Sora', sans-serif;
+    margin: auto 1.5rem 1.5rem 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.proyecto-tarjeta-button:hover {
+    background-color: var(--naranjahover);
+}
