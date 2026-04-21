@@ -26,7 +26,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
-            <section className='hero'>
+            <section className='hero' id='hero'>
                 <div className='hero-content'>
                     <h1>{t('hero.title')}</h1>
                     <h2>{t('hero.subtitle')}</h2>
@@ -53,11 +53,11 @@ export default function Home() {
                     </div>
                 </div>
                 <div className='hero-image'>
-                    <img src={casa} alt="Casa inteligente y moderna, representación de domótica" />
+                    <img src={casa} alt="Casa inteligente y moderna, representación de domótica" fetchPriority="high" />
                 </div>
             </section>
 
-            <section className='servicios'>
+            <section className='servicios' id='home-servicios'>
                 <div className='servicios-content'>
                     <h1>{t('services.title')}</h1>
                     <p>{t('services.description')}</p>
@@ -75,7 +75,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className='proyectos'>
+            <section className='proyectos' id='home-proyectos'>
                 <div className='proyectos-content'>
                     <div className='proyectos-info'>
                         <h2>{t('projects.title')}</h2>
@@ -89,7 +89,7 @@ export default function Home() {
                         ))}
                     </div>
                     <div className='proyectos-img'>
-                        <img src={casa} alt="Ejemplo de proyectos de casas inteligentes realizados" />
+                        <img src={casa} alt="Ejemplo de proyectos de casas inteligentes realizados" loading="lazy" />
                     </div>
                 </div>
             </section>

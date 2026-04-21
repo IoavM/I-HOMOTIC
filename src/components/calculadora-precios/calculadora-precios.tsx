@@ -59,7 +59,7 @@ export default function CalculadoraPrecios() {
         new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(valor)
 
     return (
-        <section className='calculadora'>
+        <section className='calculadora' id='calculadora-precios'>
             <div className='calculadora-header'>
                 <h2>{t('calculator.title')}</h2>
                 <p>{t('calculator.subtitle')}</p>

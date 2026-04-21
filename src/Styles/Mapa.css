@@ -1,12 +1,12 @@
 /* =============================================
-   MAPA — Visualizador 3D
+   MAPA — Visualizador 3D (Casa Moderna Nocturna)
    ============================================= */
 
 .mapa-main {
   position: relative;
   height: calc(100vh - 72px);
   overflow: hidden;
-  background-color: #0d1a0d;
+  background-color: #151a2a;
 }
 
 .mapa-canvas-container {
@@ -27,13 +27,16 @@
   top: 20px;
   right: 20px;
   width: 280px;
-  background-color: #2d3a2d;
+  background-color: rgba(18, 22, 36, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 20px;
   color: #f9fbf8;
   transition: transform 0.3s ease, opacity 0.3s ease;
   z-index: 10;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .mapa-info-panel--hidden {
@@ -48,7 +51,7 @@
   gap: 10px;
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mapa-info-icono {
@@ -92,7 +95,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #4c7b45;
+  color: #E8721A;
   margin-bottom: 8px;
   font-family: 'Sora', sans-serif;
 }
@@ -140,8 +143,8 @@
 }
 
 .mapa-info-badge {
-  background-color: rgba(76, 123, 69, 0.35);
-  color: #a8d8a8;
+  background-color: rgba(232, 114, 26, 0.25);
+  color: #f4a44a;
   font-weight: 700;
   font-size: 0.75rem;
   padding: 2px 10px;
@@ -190,7 +193,7 @@
 }
 
 .mapa-hotspot__bubble {
-  background-color: #E8721A;
+  background-color: rgba(232, 114, 26, 0.92);
   color: #f9fbf8;
   font-family: 'Sora', sans-serif;
   font-size: 0.72rem;
@@ -198,20 +201,52 @@
   padding: 5px 12px;
   border-radius: 999px;
   white-space: nowrap;
-  box-shadow: 0 2px 12px rgba(232, 114, 26, 0.45);
+  box-shadow: 0 2px 16px rgba(232, 114, 26, 0.5);
   animation: mapa-hotspot-float 2.2s ease-in-out infinite;
   user-select: none;
   transition: transform 0.15s, box-shadow 0.15s;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .mapa-hotspot:hover .mapa-hotspot__bubble {
   transform: scale(1.08);
-  box-shadow: 0 4px 18px rgba(232, 114, 26, 0.6);
+  box-shadow: 0 4px 22px rgba(232, 114, 26, 0.65);
 }
 
 @keyframes mapa-hotspot-float {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-7px); }
+}
+
+/* ─── Toggle Día / Noche ─────────────────────────────────────────────────────── */
+
+.mapa-mode-toggle {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.40);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #f9fbf8;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s, border-color 0.2s;
+  user-select: none;
+}
+
+.mapa-mode-toggle:hover {
+  background: rgba(232, 114, 26, 0.5);
+  border-color: rgba(232, 114, 26, 0.4);
 }
 
 /* ─── Hint controles ─────────────────────────────────────────────────────────── */
@@ -221,18 +256,19 @@
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(45, 58, 45, 0.88);
-  color: #4c7b45;
+  background-color: rgba(18, 22, 36, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.55);
   font-family: 'Sora', sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   padding: 8px 20px;
   border-radius: 999px;
-  backdrop-filter: blur(6px);
   white-space: nowrap;
   pointer-events: none;
   z-index: 5;
-  border: 1px solid rgba(76, 123, 69, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ─── Overlay rotación mobile ────────────────────────────────────────────────── */
@@ -240,7 +276,7 @@
 .mapa-rotate-overlay {
   position: fixed;
   inset: 0;
-  background-color: #2d3a2d;
+  background-color: #151a2a;
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -282,7 +318,7 @@
 }
 
 .mapa-rotate-overlay p {
-  color: #4c7b45;
+  color: rgba(255, 255, 255, 0.5);
   font-size: 0.95rem;
   margin: 0 0 20px;
   font-family: 'Sora', sans-serif;
@@ -290,17 +326,17 @@
 
 .mapa-rotate-divider {
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin: 20px 0;
 }
 
 .mapa-rotate-note {
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: rgba(255, 255, 255, 0.35) !important;
   font-size: 0.85rem !important;
 }
 
 .mapa-btn-continuar {
-  background-color: #4c7b45;
+  background-color: #E8721A;
   color: #f9fbf8;
   border: none;
   border-radius: 12px;
@@ -314,7 +350,7 @@
 }
 
 .mapa-btn-continuar:hover {
-  background-color: #2d3a2d;
+  background-color: #d66518;
 }
 
 /* ─── Responsive ─────────────────────────────────────────────────────────────── */

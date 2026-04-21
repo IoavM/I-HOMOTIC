@@ -10,7 +10,7 @@ interface Props {
 export default function TarjetaInfo({ imagen, alt, titulo, descripcion }: Props) {
     return (
         <div className='tarjetas-info'>
-            <img src={imagen} alt={alt || titulo} />
+            <img src={imagen} alt={alt || titulo} loading="lazy" />
             <h2>{titulo}</h2>
             <p>{descripcion}</p>
         </div>

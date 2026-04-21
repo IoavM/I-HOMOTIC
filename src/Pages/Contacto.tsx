@@ -13,14 +13,14 @@ export default function Contacto() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
-            <section className='contacto-hero'>
+            <section className='contacto-hero' id='contacto-hero'>
                 <div className='contacto-hero-content'>
                     <h2>{t('contacto.pageTitle')}</h2>
                     <p>{t('contacto.pageSubtitle')}</p>
                 </div>
             </section>
 
-            <section className='contacto-info'>
+            <section className='contacto-info' id='contacto-info'>
                 <div className='contacto-info-grid'>
                     <div className='contacto-info-card'>
                         <div className='contacto-info-icon'>

@@ -22,7 +22,7 @@ export default function Proyectos() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
-            <section className='inicio-proyectos' style={{ backgroundImage: `url(${CasaModerna})` }}>
+            <section className='inicio-proyectos' id='proyectos-hero' style={{ backgroundImage: `url(${CasaModerna})` }}>
                 <div className='inicio-content'>
                     <h2>{t('projects.pageTitle')}</h2>
                     <h2>{t('projects.pageSubtitle')}</h2>
@@ -30,9 +30,9 @@ export default function Proyectos() {
                 </div>
             </section>
 
-            <section className='proyecto-muestra'>
+            <section className='proyecto-muestra' id='proyecto-destacado'>
                 <div className='muestra-imagen'>
-                    <img src={casa2} alt="Imagen de muestra de un proyecto de casa inteligente" />
+                    <img src={casa2} alt="Imagen de muestra de un proyecto de casa inteligente" loading="lazy" />
                 </div>
                 <div className='muestra-info'>
                     <h2>{t('projects.featuredTitle')}</h2>
@@ -43,7 +43,7 @@ export default function Proyectos() {
                 </div>
             </section>
 
-            <section className='otros-proyectos'>
+            <section className='otros-proyectos' id='otros-proyectos'>
                 <div className='otros-proyectos-content'>
                     <h2>{t('projects.otherProjects')}</h2>
                     <p>{t('projects.otherProjectsDescription')}</p>

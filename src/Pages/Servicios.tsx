@@ -25,14 +25,14 @@ export default function Servicios() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
-            <section className='servicios-intro'>
+            <section className='servicios-intro' id='servicios-intro'>
                 <div className='servicios-intro-texto'>
                     <h2>{t('servicios.title')}</h2>
                     <p>{t('servicios.subtitle')}</p>
                 </div>
             </section>
 
-            <section className='servicios'>
+            <section className='servicios' id='servicios-lista'>
                 <div className='servicios-content'>
                     <h1>{t('services.title')}</h1>
                     <p>{t('services.description')}</p>
@@ -50,7 +50,7 @@ export default function Servicios() {
                 </div>
             </section>
 
-            <section className='propuesta-valor'>
+            <section className='propuesta-valor' id='propuesta-valor'>
                 <div className='propuesta-valor-content'>
                     <h1>{t('servicios.PVTitle')}</h1>
                 </div>
@@ -66,7 +66,7 @@ export default function Servicios() {
                 </div>
             </section>
 
-            <section className='servicios-final'>
+            <section className='servicios-final' id='servicios-cta'>
                 <div className='servicios-final-content'>
                     <h1>{t('servicios.callToAction')}</h1>
                     <p>{t('servicios.callToActionDescription')}</p>

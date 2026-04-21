@@ -14,7 +14,7 @@ export default function Nosotros() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
-       <section className='introduccion'>
+       <section className='introduccion' id='sobre-nosotros'>
             <div className='introduccion-texto'>
                 <h2>{t('nosotros.aboutTitle')}</h2>
                 <p>{t('nosotros.aboutSubtitle')}</p>
@@ -43,7 +43,7 @@ export default function Nosotros() {
             </div>
        </section>
 
-       <section className='equipo'>
+       <section className='equipo' id='equipo'>
             <div className='equipo-texto'>
                 <h3>{t('nosotros.teamTitle')}</h3>
                 <p>{t('nosotros.teamSubtitle')}</p>
@@ -52,7 +52,7 @@ export default function Nosotros() {
                 {integrantes.map((persona) => (
                     <div className='miembro' key={persona.nombre}>
                         {persona.foto
-                            ? <img src={persona.foto} alt={persona.nombre} className='miembro-foto' />
+                            ? <img src={persona.foto} alt={persona.nombre} className='miembro-foto' loading="lazy" />
                             : <div className='miembro-foto'>{persona.iniciales}</div>
                         }
                         <h3>{persona.nombre}</h3>

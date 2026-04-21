@@ -15,7 +15,7 @@ export default function TarjetaProyecto({ imagen, tituloKey, descripcionKey, alt
 
     return (
         <div className='proyecto-tarjeta'>
-            <img src={imagen} alt={t(altKey)} />
+            <img src={imagen} alt={t(altKey)} loading="lazy" />
             <h3>{t(tituloKey)}</h3>
             <p>{t(descripcionKey)}</p>
             <button

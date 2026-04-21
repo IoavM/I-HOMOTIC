@@ -118,7 +118,7 @@ export default function ContactoFormulario() {
   }
 
   return (
-    <section className='seccion-formulario'>
+    <section className='seccion-formulario' id='formulario-contacto'>
       <div className='div-formulario'>
         <div className='formulario-header'>
           <h2>{t('contacto.formTitle')}</h2>
