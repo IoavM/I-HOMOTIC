@@ -255,10 +255,6 @@ export default function Navbar() {
     }
   }
 
-  const categoryLabel = (c: SearchItem['category']) =>
-    c === 'page' ? 'Página' : c === 'section' ? 'Sección' : 'Elemento'
-  const categoryColor = (c: SearchItem['category']) =>
-    c === 'page' ? VERDE_CLARO : c === 'section' ? NARANJA : alpha(VERDE, 0.5)
   // ─────────────────────────────────────────────────────────────────────────────
 
   const drawer = (
