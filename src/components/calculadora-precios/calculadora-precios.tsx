@@ -6,28 +6,62 @@ import { useTRM } from '../../hooks/useTRM'
 
 type Modo = 'productos' | 'paquetes' | 'ahorro'
 
+// Producto en el carrito: id + cantidad
+interface ProductoAgregado {
+    id: string
+    cantidad: number
+}
+
+// Estado del flujo de selección
+type FlujoEstado =
+    | { paso: 'cerrado' }
+    | { paso: 'elegir_producto' }
+
 export default function CalculadoraPrecios() {
     const { t } = useTranslation()
     const { trm, fecha, loading: trmLoading, error: trmError } = useTRM()
     const [modo, setModo] = useState<Modo>('productos')
-    const [agregados, setAgregados] = useState<string[]>([])
+    const [carrito, setCarrito] = useState<ProductoAgregado[]>([])
     const [paqueteSeleccionado, setPaqueteSeleccionado] = useState<string | null>(null)
-    const [dropdownAbierto, setDropdownAbierto] = useState(false)
+    const [flujo, setFlujo] = useState<FlujoEstado>({ paso: 'cerrado' })
 
     // Ahorro state
     const [habitaciones, setHabitaciones] = useState(3)
     const [consumo, setConsumo] = useState(280)
     const [horas, setHoras] = useState(6)
 
-    const agregarProducto = (id: string) => {
-        if (!agregados.includes(id)) {
-            setAgregados([...agregados, id])
-        }
-        setDropdownAbierto(false)
+    // ── Flujo de selección ──
+
+    const abrirSeleccionProducto = () => {
+        setFlujo({ paso: 'elegir_producto' })
+    }
+
+    const elegirProducto = (id: string) => {
+        setCarrito((prev) => {
+            if (prev.some((p) => p.id === id)) return prev
+            return [...prev, { id, cantidad: 1 }]
+        })
+        setFlujo({ paso: 'cerrado' })
+    }
+
+    const cancelarFlujo = () => {
+        setFlujo({ paso: 'cerrado' })
+    }
+
+    const aumentarCantidad = (id: string) => {
+        setCarrito((prev) =>
+            prev.map((p) => (p.id === id ? { ...p, cantidad: Math.min(99, p.cantidad + 1) } : p))
+        )
+    }
+
+    const disminuirCantidad = (id: string) => {
+        setCarrito((prev) =>
+            prev.map((p) => (p.id === id ? { ...p, cantidad: Math.max(1, p.cantidad - 1) } : p))
+        )
     }
 
     const quitarProducto = (id: string) => {
-        setAgregados(agregados.filter((p) => p !== id))
+        setCarrito((prev) => prev.filter((p) => p.id !== id))
     }
 
     const seleccionarPaquete = (id: string) => {
@@ -36,15 +70,24 @@ export default function CalculadoraPrecios() {
 
     const cambiarModo = (nuevoModo: Modo) => {
         setModo(nuevoModo)
-        setAgregados([])
+        setCarrito([])
         setPaqueteSeleccionado(null)
-        setDropdownAbierto(false)
+        setFlujo({ paso: 'cerrado' })
     }
 
-    const productosDisponibles = data.productos.filter((p) => !agregados.includes(p.id))
-    const productosAgregados = data.productos.filter((p) => agregados.includes(p.id))
+    // Productos que ya están en el carrito (para mostrar badge)
+    const productosEnCarrito = new Set(carrito.map((p) => p.id))
 
-    const totalProductos = productosAgregados.reduce((sum, p) => sum + p.precio, 0)
+    // Todos los productos disponibles para elegir (incluyendo los ya agregados para editar cantidad)
+    const todosLosProductos = data.productos
+
+    const productosAgregados = data.productos.filter((p) => productosEnCarrito.has(p.id))
+
+    const totalProductos = productosAgregados.reduce((sum, p) => {
+        const item = carrito.find((c) => c.id === p.id)
+        return sum + p.precio * (item?.cantidad ?? 1)
+    }, 0)
+
     const paqueteActivo = data.paquetes.find((p) => p.id === paqueteSeleccionado)
     const totalFinal = modo === 'productos' ? totalProductos : (paqueteActivo?.precio ?? 0)
 
@@ -58,6 +101,8 @@ export default function CalculadoraPrecios() {
     const formatPrecio = (valor: number) =>
         new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(valor)
 
+
+
     return (
         <section className='calculadora' id='calculadora-precios'>
             <div className='calculadora-header'>
@@ -66,7 +111,7 @@ export default function CalculadoraPrecios() {
             </div>
 
             <div className='calculadora-contenedor'>
-                
+
                 <div className='calculadora-toggle'>
                     <button
                         className={`toggle-btn ${modo === 'productos' ? 'toggle-activo' : ''}`}
@@ -92,60 +137,105 @@ export default function CalculadoraPrecios() {
                     <div className='calculadora-selector'>
                         {modo === 'productos' ? (
                             <>
-                                {/* Dropdown */}
-                                <div className='calc-dropdown-wrapper'>
+                                {/* ── Paso 1: Botón de apertura (flujo cerrado) ── */}
+                                {flujo.paso === 'cerrado' && (
                                     <button
                                         className='calc-dropdown-trigger'
-                                        onClick={() => setDropdownAbierto(!dropdownAbierto)}
+                                        onClick={abrirSeleccionProducto}
                                     >
                                         <span>{t('calculator.addProduct')}</span>
-                                        <span className={`calc-dropdown-arrow ${dropdownAbierto ? 'calc-arrow-up' : ''}`}>▾</span>
+                                        <span className='calc-dropdown-arrow'>▾</span>
                                     </button>
-                                    {dropdownAbierto && (
-                                        <div className='calc-dropdown-menu'>
-                                            {productosDisponibles.length > 0 ? (
-                                                productosDisponibles.map((prod) => (
-                                                    <button
-                                                        key={prod.id}
-                                                        className='calc-dropdown-item'
-                                                        onClick={() => agregarProducto(prod.id)}
-                                                    >
-                                                        <span className='calc-dropdown-item-icon'>{prod.icon}</span>
-                                                        <span className='calc-dropdown-item-info'>
-                                                            <span className='calc-dropdown-item-name'>{t(prod.nombreKey)}</span>
-                                                            <span className='calc-dropdown-item-desc'>{t(prod.descKey)}</span>
-                                                        </span>
-                                                        <span className='calc-dropdown-item-precio'>{formatPrecio(prod.precio)}</span>
-                                                    </button>
-                                                ))
+                                )}
+
+                                {/* ── Paso 1: Lista de productos para elegir ── */}
+                                {flujo.paso === 'elegir_producto' && (
+                                    <div className='calc-flujo-panel'>
+                                        <div className='calc-flujo-header'>
+                                            <span className='calc-flujo-step-badge'>1 de 2</span>
+                                            <span className='calc-flujo-title'>{t('calculator.selectProduct')}</span>
+                                            <button className='calc-flujo-cerrar' onClick={cancelarFlujo} aria-label='Cerrar'>✕</button>
+                                        </div>
+                                        <div className='calc-dropdown-menu calc-dropdown-menu--open'>
+                                            {todosLosProductos.length > 0 ? (
+                                                todosLosProductos.map((prod) => {
+                                                    const yaAgregado = productosEnCarrito.has(prod.id)
+                                                    return (
+                                                        <button
+                                                            key={prod.id}
+                                                            className={`calc-dropdown-item ${yaAgregado ? 'calc-dropdown-item--en-carrito' : ''}`}
+                                                            onClick={() => elegirProducto(prod.id)}
+                                                        >
+                                                            <span className='calc-dropdown-item-icon'>{prod.icon}</span>
+                                                            <span className='calc-dropdown-item-info'>
+                                                                <span className='calc-dropdown-item-name'>{t(prod.nombreKey)}</span>
+                                                                <span className='calc-dropdown-item-desc'>{t(prod.descKey)}</span>
+                                                            </span>
+                                                            <div className='calc-dropdown-item-right'>
+                                                                <span className='calc-dropdown-item-precio'>{formatPrecio(prod.precio)}</span>
+                                                                {yaAgregado && (
+                                                                    <span className='calc-item-badge-carrito'>
+                                                                        ✓ ×{carrito.find((c) => c.id === prod.id)?.cantidad}
+                                                                    </span>
+                                                                )}
+                                                            </div>
+                                                        </button>
+                                                    )
+                                                })
                                             ) : (
                                                 <div className='calc-dropdown-empty'>{t('calculator.allAdded')}</div>
                                             )}
                                         </div>
-                                    )}
-                                </div>
-
-                                {/* Lista de agregados */}
-                                {productosAgregados.length > 0 && (
-                                    <div className='calc-agregados'>
-                                        {productosAgregados.map((prod) => (
-                                            <div key={prod.id} className='calc-agregado-item'>
-                                                <span className='calc-agregado-icon'>{prod.icon}</span>
-                                                <span className='calc-agregado-nombre'>{t(prod.nombreKey)}</span>
-                                                <span className='calc-agregado-precio'>{formatPrecio(prod.precio)}</span>
-                                                <button
-                                                    className='calc-agregado-quitar'
-                                                    onClick={() => quitarProducto(prod.id)}
-                                                    aria-label={`Quitar ${t(prod.nombreKey)}`}
-                                                >
-                                                    ✕
-                                                </button>
-                                            </div>
-                                        ))}
                                     </div>
                                 )}
 
-                                {productosAgregados.length === 0 && (
+
+                                {/* Lista de productos agregados al carrito */}
+                                {carrito.length > 0 && (
+                                    <div className='calc-agregados'>
+                                        {productosAgregados.map((prod) => {
+                                            const item = carrito.find((c) => c.id === prod.id)!
+                                            return (
+                                                <div key={prod.id} className='calc-agregado-item'>
+                                                    <span className='calc-agregado-icon'>{prod.icon}</span>
+                                                    <span className='calc-agregado-nombre'>{t(prod.nombreKey)}</span>
+                                                    {/* Controles de cantidad */}
+                                                    <div className='calc-agregado-cantidad-controls'>
+                                                        <button
+                                                            className='calc-agregado-cantidad-btn'
+                                                            onClick={() => disminuirCantidad(prod.id)}
+                                                            disabled={item.cantidad <= 1}
+                                                            aria-label='Disminuir'
+                                                        >
+                                                            −
+                                                        </button>
+                                                        <span className='calc-agregado-cantidad-valor'>{item.cantidad}</span>
+                                                        <button
+                                                            className='calc-agregado-cantidad-btn'
+                                                            onClick={() => aumentarCantidad(prod.id)}
+                                                            disabled={item.cantidad >= 99}
+                                                            aria-label='Aumentar'
+                                                        >
+                                                            +
+                                                        </button>
+                                                    </div>
+                                                    <span className='calc-agregado-precio'>
+                                                        {formatPrecio(prod.precio * item.cantidad)}
+                                                    </span>
+                                                    <button
+                                                        className='calc-agregado-quitar'
+                                                        onClick={() => quitarProducto(prod.id)}
+                                                        aria-label={`Quitar ${t(prod.nombreKey)}`}
+                                                    >
+                                                        ✕
+                                                    </button>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                )}
+
+                                {carrito.length === 0 && flujo.paso === 'cerrado' && (
                                     <div className='calc-placeholder'>
                                         <span className='calc-placeholder-icon'>🛒</span>
                                         <p>{t('calculator.emptyMessage')}</p>
@@ -153,7 +243,6 @@ export default function CalculadoraPrecios() {
                                 )}
                             </>
                         ) : modo === 'paquetes' ? (
-                            /* ── Paquetes con info ── */
                             <div className='calc-paquetes'>
                                 {data.paquetes.map((pkg) => {
                                     const activo = paqueteSeleccionado === pkg.id
@@ -186,21 +275,20 @@ export default function CalculadoraPrecios() {
                                 })}
                             </div>
                         ) : (
-                            /* ── Ahorro Energético (Sliders) ── */
                             <div className='calc-ahorro-config'>
                                 <h3>{t('calculator.savingsConfigTitle')}</h3>
-                                
+
                                 <div className='ahorro-slider-group'>
                                     <div className='ahorro-slider-header'>
                                         <label>{t('calculator.rooms')}</label>
                                         <span className='ahorro-slider-value'>{habitaciones}</span>
                                     </div>
-                                    <input 
-                                        type='range' 
-                                        min='1' 
-                                        max='10' 
-                                        value={habitaciones} 
-                                        onChange={(e) => setHabitaciones(Number(e.target.value))} 
+                                    <input
+                                        type='range'
+                                        min='1'
+                                        max='10'
+                                        value={habitaciones}
+                                        onChange={(e) => setHabitaciones(Number(e.target.value))}
                                         className='ahorro-slider'
                                         style={{ '--progress': `${((habitaciones - 1) / 9) * 100}%` } as React.CSSProperties}
                                     />
@@ -211,13 +299,13 @@ export default function CalculadoraPrecios() {
                                         <label>{t('calculator.currentConsumption')}</label>
                                         <span className='ahorro-slider-value'>{consumo} kWh</span>
                                     </div>
-                                    <input 
-                                        type='range' 
-                                        min='50' 
-                                        max='1000' 
+                                    <input
+                                        type='range'
+                                        min='50'
+                                        max='1000'
                                         step='10'
-                                        value={consumo} 
-                                        onChange={(e) => setConsumo(Number(e.target.value))} 
+                                        value={consumo}
+                                        onChange={(e) => setConsumo(Number(e.target.value))}
                                         className='ahorro-slider'
                                         style={{ '--progress': `${((consumo - 50) / 950) * 100}%` } as React.CSSProperties}
                                     />
@@ -228,12 +316,12 @@ export default function CalculadoraPrecios() {
                                         <label>{t('calculator.lightingHours')}</label>
                                         <span className='ahorro-slider-value'>{horas} h</span>
                                     </div>
-                                    <input 
-                                        type='range' 
-                                        min='1' 
-                                        max='24' 
-                                        value={horas} 
-                                        onChange={(e) => setHoras(Number(e.target.value))} 
+                                    <input
+                                        type='range'
+                                        min='1'
+                                        max='24'
+                                        value={horas}
+                                        onChange={(e) => setHoras(Number(e.target.value))}
                                         className='ahorro-slider'
                                         style={{ '--progress': `${((horas - 1) / 23) * 100}%` } as React.CSSProperties}
                                     />
@@ -247,7 +335,7 @@ export default function CalculadoraPrecios() {
                         {modo === 'ahorro' ? (
                             <div className='resumen-ahorro-card'>
                                 <h3>{t('calculator.savingsSummaryTitle')}</h3>
-                                
+
                                 <div className='ahorro-resultado-box'>
                                     <p className='ahorro-resultado-label'>{t('calculator.monthlySavings')}</p>
                                     <p className='ahorro-resultado-valor'>
@@ -289,12 +377,20 @@ export default function CalculadoraPrecios() {
 
                                 {modo === 'productos' && productosAgregados.length > 0 && (
                                     <ul className='resumen-lista'>
-                                        {productosAgregados.map((p) => (
-                                            <li key={p.id}>
-                                                <span>{p.icon} {t(p.nombreKey)}</span>
-                                                <span>{formatPrecio(p.precio)}</span>
-                                            </li>
-                                        ))}
+                                        {productosAgregados.map((p) => {
+                                            const item = carrito.find((c) => c.id === p.id)!
+                                            return (
+                                                <li key={p.id}>
+                                                    <span>
+                                                        {p.icon} {t(p.nombreKey)}
+                                                        {item.cantidad > 1 && (
+                                                            <span className='resumen-cantidad-badge'> ×{item.cantidad}</span>
+                                                        )}
+                                                    </span>
+                                                    <span>{formatPrecio(p.precio * item.cantidad)}</span>
+                                                </li>
+                                            )
+                                        })}
                                     </ul>
                                 )}
 

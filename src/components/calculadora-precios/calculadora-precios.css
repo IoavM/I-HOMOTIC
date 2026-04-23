@@ -780,6 +780,189 @@
     font-style: italic;
 }
 
+/* ───────────────── Flujo selección: producto → cantidad ───────────────── */
+
+/* ── Panel del flujo (paso 1 y paso 2) ── */
+
+.calc-flujo-panel {
+    border: 1.5px solid rgba(76, 123, 69, 0.18);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--blancoprincipal1);
+    animation: flujo-entrada 0.18s ease-out;
+}
+
+@keyframes flujo-entrada {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.calc-flujo-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(76, 123, 69, 0.12);
+    background: var(--colorfondoverdeclaro);
+}
+
+.calc-flujo-step-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--colorletraverde);
+    background: rgba(76, 123, 69, 0.1);
+    padding: 2px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+    font-family: 'Sora', sans-serif;
+}
+
+.calc-flujo-title {
+    flex: 1;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--colorletraverde);
+    font-family: 'Sora', sans-serif;
+}
+
+.calc-flujo-back {
+    background: none;
+    border: 1px solid rgba(76, 123, 69, 0.2);
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--colorletraverdeclaro);
+    transition: background 0.15s, color 0.15s;
+}
+
+.calc-flujo-back:hover {
+    background: rgba(76, 123, 69, 0.1);
+    color: var(--colorletraverde);
+}
+
+.calc-flujo-cerrar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--colorletraverdeclaro);
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: color 0.15s;
+    margin-left: auto;
+    opacity: 0.6;
+}
+
+.calc-flujo-cerrar:hover {
+    opacity: 1;
+    color: var(--colorletraverde);
+}
+
+/* ── Dropdown estático dentro del panel (paso 1) ── */
+
+.calc-dropdown-menu--open {
+    position: static;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    max-height: 260px;
+    overflow-y: auto;
+    padding: 6px;
+    animation: none;
+}
+
+/* Item con badge "ya en carrito" */
+
+.calc-dropdown-item--en-carrito {
+    background: rgba(76, 123, 69, 0.05);
+}
+
+.calc-dropdown-item-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.calc-item-badge-carrito {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--colorletraverde);
+    background: rgba(76, 123, 69, 0.12);
+    padding: 1px 6px;
+    border-radius: 999px;
+    white-space: nowrap;
+    font-family: 'Sora', sans-serif;
+}
+
+/* ── Controles de cantidad en el carrito ── */
+
+.calc-agregado-cantidad-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 0.5rem;
+    background: rgba(76, 123, 69, 0.08);
+    border-radius: 8px;
+    padding: 0.2rem;
+}
+
+.calc-agregado-cantidad-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: var(--colorletraverde);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    line-height: 1;
+}
+
+.calc-agregado-cantidad-btn:hover:not(:disabled) {
+    background: var(--blancoprincipal1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.calc-agregado-cantidad-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.calc-agregado-cantidad-valor {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--colorletraverde);
+    min-width: 1.2rem;
+    text-align: center;
+    font-family: 'Sora', sans-serif;
+}
+
+/* ── Badge de cantidad en el resumen ── */
+
+.resumen-cantidad-badge {
+    font-size: 0.75em;
+    font-weight: 700;
+    color: var(--naranja);
+    background: rgba(232, 114, 26, 0.1);
+    border-radius: 999px;
+    padding: 1px 6px;
+}
+
+/* ───────────────── Responsive ───────────────── */
+
 @media (max-width: 800px) {
     .trm-widget {
         padding: 0.75rem 1rem;
@@ -800,8 +983,6 @@
         grid-template-columns: 1fr 260px;
     }
 }
-
-/* ───────────────── Responsive 800px ───────────────── */
 
 @media (max-width: 800px) {
     .calculadora {
@@ -833,4 +1014,5 @@
     .resumen-card {
         padding: 1.2rem;
     }
+
 }
