@@ -48,7 +48,7 @@
     margin-bottom: 4rem;
 }
 
-.hero-button:hover{
+.hero-button:hover, .hero-button:focus-visible {
     background-color: var(--naranjahover);
     transform: translateY(-5px);
     box-shadow: var(--naranjahover) 0 0 10px;
@@ -154,7 +154,7 @@
     border-radius: 50px;
 }
 
-.proyectos-button:hover{
+.proyectos-button:hover, .proyectos-button:focus-visible {
     background-color: var(--naranjahover);
     cursor: pointer;
 }

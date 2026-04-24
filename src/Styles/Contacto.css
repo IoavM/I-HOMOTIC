@@ -52,7 +52,7 @@
     transition: all 0.3s ease;
 }
 
-.contacto-info-card:hover {
+.contacto-info-card:hover, .contacto-info-card:focus-visible {
     transform: translateY(-4px);
     box-shadow: 0 12px 28px rgba(45, 58, 45, 0.08);
     border-color: rgba(76, 123, 69, 0.25);

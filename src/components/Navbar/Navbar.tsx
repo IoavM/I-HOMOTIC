@@ -34,10 +34,10 @@ const NARANJA_HOVER = '#7a9428'
 const links = [
   { to: '/',           key: 'navbar.home'      },
   { to: '/servicios',  key: 'navbar.servicios' },
-  { to: '/nosotros',   key: 'navbar.nosotros'  },
-  { to: '/proyectos',  key: 'navbar.projects'  },
+  { to: '/nosotros',   key: 'navbar.nosotros', tabIndex: 2 },
+  { to: '/proyectos',  key: 'navbar.projects', tabIndex: 1 },
   { to: '/mapa',       key: 'navbar.mapa'      },
-  { to: '/contacto',   key: 'navbar.contacto'  },
+  { to: '/contacto',   key: 'navbar.contacto', tabIndex: 3 },
 ]
 
 // ─── Search Bar ───────────────────────────────────────────────────────────────
@@ -133,12 +133,12 @@ export default function Navbar() {
 
   const searchIndex: SearchItem[] = React.useMemo(() => [
     // ── Páginas ────────────────────────────────────────────────────────────────
-    { label: t('navbar.home'),       sublabel: 'Página principal',          to: '/',          category: 'page', keywords: ['inicio', 'home', 'principal', 'bienvenida', 'landing'] },
-    { label: t('navbar.servicios'),  sublabel: 'Página de servicios',       to: '/servicios', category: 'page', keywords: ['servicios', 'services', 'domótica', 'oferta', 'soluciones'] },
-    { label: t('navbar.nosotros'),   sublabel: 'Página sobre nosotros',     to: '/nosotros',  category: 'page', keywords: ['nosotros', 'about', 'equipo', 'empresa', 'team', 'historia', 'quiénes somos'] },
-    { label: t('navbar.projects'),   sublabel: 'Página de proyectos',       to: '/proyectos', category: 'page', keywords: ['proyectos', 'projects', 'obras', 'casos', 'portfolio'] },
-    { label: t('navbar.mapa'),       sublabel: 'Visualizador 3D',           to: '/mapa',      category: 'page', keywords: ['mapa', 'map', '3d', 'visualizador', 'hogar', 'tour', 'habitaciones', 'casa'] },
-    { label: t('navbar.contacto'),   sublabel: 'Página de contacto',        to: '/contacto',  category: 'page', keywords: ['contacto', 'contact', 'whatsapp', 'email', 'formulario', 'mensaje'] },
+    { label: t('navbar.home'),       sublabel: t('navbar.sub_home'),          to: '/',          category: 'page', keywords: ['inicio', 'home', 'principal', 'bienvenida', 'landing'] },
+    { label: t('navbar.servicios'),  sublabel: t('navbar.sub_servicios'),     to: '/servicios', category: 'page', keywords: ['servicios', 'services', 'domótica', 'oferta', 'soluciones'] },
+    { label: t('navbar.nosotros'),   sublabel: t('navbar.sub_nosotros'),      to: '/nosotros',  category: 'page', keywords: ['nosotros', 'about', 'equipo', 'empresa', 'team', 'historia', 'quiénes somos'] },
+    { label: t('navbar.projects'),   sublabel: t('navbar.sub_projects'),      to: '/proyectos', category: 'page', keywords: ['proyectos', 'projects', 'obras', 'casos', 'portfolio'] },
+    { label: t('navbar.mapa'),       sublabel: t('navbar.sub_mapa'),          to: '/mapa',      category: 'page', keywords: ['mapa', 'map', '3d', 'visualizador', 'hogar', 'tour', 'habitaciones', 'casa'] },
+    { label: t('navbar.contacto'),   sublabel: t('navbar.sub_contacto'),      to: '/contacto',  category: 'page', keywords: ['contacto', 'contact', 'whatsapp', 'email', 'formulario', 'mensaje'] },
 
     // ── Inicio → Secciones ────────────────────────────────────────────────────
     { label: 'Hero — ' + t('hero.title'),                sublabel: t('navbar.home'),      to: '/',          sectionId: 'hero',            category: 'section', keywords: ['hero', 'banner', 'tecnología inteligente', 'smart technology', 'hogares sostenibles'] },
@@ -188,12 +188,12 @@ export default function Navbar() {
     { label: t('contacto.formTitle'),         sublabel: t('navbar.contacto'),   to: '/contacto',  sectionId: 'formulario-contacto', category: 'section', keywords: ['formulario', 'form', 'mensaje', 'enviar', 'escribir', 'consulta'] },
 
     // ── Mapa → Secciones ──────────────────────────────────────────────────────
-    { label: 'Sala de Estar',            sublabel: t('navbar.mapa'), to: '/mapa', category: 'element', keywords: ['sala', 'living', 'sofá', 'tv', 'sala de estar', 'iluminación led'] },
-    { label: 'Cocina',                   sublabel: t('navbar.mapa'), to: '/mapa', category: 'element', keywords: ['cocina', 'kitchen', 'sensor gas', 'electrodomésticos', 'humo'] },
-    { label: 'Habitación Principal',     sublabel: t('navbar.mapa'), to: '/mapa', category: 'element', keywords: ['habitación', 'bedroom', 'dormitorio', 'climatización', 'persianas'] },
-    { label: 'Baño',                     sublabel: t('navbar.mapa'), to: '/mapa', category: 'element', keywords: ['baño', 'bathroom', 'humedad', 'extractor', 'piso radiante'] },
-    { label: 'Entrada',                  sublabel: t('navbar.mapa'), to: '/mapa', category: 'element', keywords: ['entrada', 'puerta', 'cerradura', 'cámara', 'videoportero', 'yale'] },
-    { label: 'Patio & Jardín',           sublabel: t('navbar.mapa'), to: '/mapa', category: 'element', keywords: ['patio', 'jardín', 'garden', 'riego', 'exterior', 'perimetral'] },
+    { label: t('mapa.rooms.sala'),            sublabel: t('navbar.mapa'), to: '/mapa', category: 'element', keywords: ['sala', 'living', 'sofá', 'tv', 'sala de estar', 'iluminación led'] },
+    { label: t('mapa.rooms.cocina'),          sublabel: t('navbar.mapa'), to: '/mapa', category: 'element', keywords: ['cocina', 'kitchen', 'sensor gas', 'electrodomésticos', 'humo'] },
+    { label: t('mapa.rooms.habitacion'),      sublabel: t('navbar.mapa'), to: '/mapa', category: 'element', keywords: ['habitación', 'bedroom', 'dormitorio', 'climatización', 'persianas'] },
+    { label: t('mapa.rooms.bano'),            sublabel: t('navbar.mapa'), to: '/mapa', category: 'element', keywords: ['baño', 'bathroom', 'humedad', 'extractor', 'piso radiante'] },
+    { label: t('mapa.rooms.entrada'),         sublabel: t('navbar.mapa'), to: '/mapa', category: 'element', keywords: ['entrada', 'puerta', 'cerradura', 'cámara', 'videoportero', 'yale'] },
+    { label: t('mapa.rooms.patio'),           sublabel: t('navbar.mapa'), to: '/mapa', category: 'element', keywords: ['patio', 'jardín', 'garden', 'riego', 'exterior', 'perimetral'] },
   ], [t])
 
   const results = React.useMemo(() => {
@@ -281,13 +281,14 @@ export default function Navbar() {
       </Box>
       <Divider sx={{ borderColor: VERDE_CLARO, opacity: 0.3 }} />
       <List sx={{ py: 1.5, px: 1 }}>
-        {links.map(({ to, key }) => {
+        {links.map(({ to, key, tabIndex }) => {
           const active = location.pathname === to
           return (
             <ListItemButton
               key={to}
               component={RouterLink}
               to={to}
+              tabIndex={tabIndex}
               onClick={closeDrawer}
               sx={{
                 borderRadius: '10px',
@@ -407,13 +408,14 @@ export default function Navbar() {
                 I-HOMOTIC
               </Typography>
               <Box sx={{ display: 'flex', gap: 1.5, ml: 'auto', alignItems: 'center' }}>
-                {links.map(({ to, key }) => {
+                {links.map(({ to, key, tabIndex }) => {
                   const active = location.pathname === to
                   return (
                     <Button
                       key={to}
                       component={RouterLink}
                       to={to}
+                      tabIndex={tabIndex}
                       sx={{
                         textTransform: 'none',
                         fontWeight:    700,

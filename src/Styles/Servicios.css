@@ -104,7 +104,7 @@
     margin-bottom: 4rem;
 }
 
-.servicio-button:hover{
+.servicio-button:hover, .servicio-button:focus-visible {
     background: var(--colorletraverdeclaro);
     transform: translateY(-5px);
     box-shadow: var(--colorletraverdeclaro) 0 0 10px;

@@ -114,18 +114,21 @@ export default function CalculadoraPrecios() {
 
                 <div className='calculadora-toggle'>
                     <button
+                        tabIndex={5}
                         className={`toggle-btn ${modo === 'productos' ? 'toggle-activo' : ''}`}
                         onClick={() => cambiarModo('productos')}
                     >
                         {t('calculator.modeProducts')}
                     </button>
                     <button
+                        tabIndex={5}
                         className={`toggle-btn ${modo === 'paquetes' ? 'toggle-activo' : ''}`}
                         onClick={() => cambiarModo('paquetes')}
                     >
                         {t('calculator.modePackages')}
                     </button>
                     <button
+                        tabIndex={5}
                         className={`toggle-btn ${modo === 'ahorro' ? 'toggle-activo' : ''}`}
                         onClick={() => cambiarModo('ahorro')}
                     >
@@ -140,6 +143,7 @@ export default function CalculadoraPrecios() {
                                 {/* ── Paso 1: Botón de apertura (flujo cerrado) ── */}
                                 {flujo.paso === 'cerrado' && (
                                     <button
+                                        tabIndex={5}
                                         className='calc-dropdown-trigger'
                                         onClick={abrirSeleccionProducto}
                                     >
@@ -152,9 +156,9 @@ export default function CalculadoraPrecios() {
                                 {flujo.paso === 'elegir_producto' && (
                                     <div className='calc-flujo-panel'>
                                         <div className='calc-flujo-header'>
-                                            <span className='calc-flujo-step-badge'>1 de 2</span>
+                                            <span className='calc-flujo-step-badge'>{t('calculator.step1')}</span>
                                             <span className='calc-flujo-title'>{t('calculator.selectProduct')}</span>
-                                            <button className='calc-flujo-cerrar' onClick={cancelarFlujo} aria-label='Cerrar'>✕</button>
+                                            <button tabIndex={5} className='calc-flujo-cerrar' onClick={cancelarFlujo} aria-label='Cerrar'>✕</button>
                                         </div>
                                         <div className='calc-dropdown-menu calc-dropdown-menu--open'>
                                             {todosLosProductos.length > 0 ? (
@@ -163,6 +167,7 @@ export default function CalculadoraPrecios() {
                                                     return (
                                                         <button
                                                             key={prod.id}
+                                                            tabIndex={5}
                                                             className={`calc-dropdown-item ${yaAgregado ? 'calc-dropdown-item--en-carrito' : ''}`}
                                                             onClick={() => elegirProducto(prod.id)}
                                                         >
@@ -203,6 +208,7 @@ export default function CalculadoraPrecios() {
                                                     <div className='calc-agregado-cantidad-controls'>
                                                         <button
                                                             className='calc-agregado-cantidad-btn'
+                                                            tabIndex={5}
                                                             onClick={() => disminuirCantidad(prod.id)}
                                                             disabled={item.cantidad <= 1}
                                                             aria-label='Disminuir'
@@ -212,6 +218,7 @@ export default function CalculadoraPrecios() {
                                                         <span className='calc-agregado-cantidad-valor'>{item.cantidad}</span>
                                                         <button
                                                             className='calc-agregado-cantidad-btn'
+                                                            tabIndex={5}
                                                             onClick={() => aumentarCantidad(prod.id)}
                                                             disabled={item.cantidad >= 99}
                                                             aria-label='Aumentar'
@@ -224,6 +231,7 @@ export default function CalculadoraPrecios() {
                                                     </span>
                                                     <button
                                                         className='calc-agregado-quitar'
+                                                        tabIndex={5}
                                                         onClick={() => quitarProducto(prod.id)}
                                                         aria-label={`Quitar ${t(prod.nombreKey)}`}
                                                     >
@@ -249,6 +257,7 @@ export default function CalculadoraPrecios() {
                                     return (
                                         <button
                                             key={pkg.id}
+                                            tabIndex={5}
                                             className={`calc-paquete-compact ${activo ? 'calc-paquete-compact-activo' : ''}`}
                                             onClick={() => seleccionarPaquete(pkg.id)}
                                         >
@@ -421,7 +430,7 @@ export default function CalculadoraPrecios() {
                                         </span>
                                         {trm && totalFinal > 0 && (
                                             <span className='resumen-total-usd'>
-                                                ≈ USD {new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(totalFinal / trm)} hoy
+                                                ≈ USD {new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(totalFinal / trm)} {t('calculator.today')}
                                             </span>
                                         )}
                                     </div>
@@ -438,9 +447,9 @@ export default function CalculadoraPrecios() {
             {!trmError && (
                 <div className='trm-widget'>
                     <div className='trm-widget-inner'>
-                        <span className='trm-widget-label'>💱 TRM hoy</span>
+                        <span className='trm-widget-label'>💱 {t('calculator.trmToday')}</span>
                         {trmLoading ? (
-                            <span className='trm-widget-loading'>Cargando…</span>
+                            <span className='trm-widget-loading'>{t('calculator.loading')}</span>
                         ) : trm ? (
                             <>
                                 <div className='trm-widget-rates'>
@@ -452,7 +461,7 @@ export default function CalculadoraPrecios() {
                                         1.000 COP ≈ <strong>USD {(1000 / trm).toFixed(4)}</strong>
                                     </span>
                                 </div>
-                                {fecha && <span className='trm-widget-fecha'>Vigente desde {fecha} · Fuente: Banco de la República</span>}
+                                {fecha && <span className='trm-widget-fecha'>{t('calculator.trmDate', { date: fecha })}</span>}
                             </>
                         ) : null}
                     </div>

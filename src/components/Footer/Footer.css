@@ -55,7 +55,7 @@
     transition: background-color 0.3s ease;
 }
 
-.footer-red:hover {
+.footer-red:hover, .footer-red:focus-visible {
     background-color: var(--naranjahover);
     color: #ffffff;
 }
@@ -85,7 +85,7 @@
     transition: color 0.3s ease;
 }
 
-.footer-columna ul li a:hover {
+.footer-columna ul li a:hover, .footer-columna ul li a:focus-visible {
     color: var(--naranjahover);
 }
 

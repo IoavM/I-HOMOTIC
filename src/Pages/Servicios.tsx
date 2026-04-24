@@ -74,6 +74,7 @@ export default function Servicios() {
                 <div className='servicio-buttons'>
                     <button
                         className='servicio-button'
+                        tabIndex={4}
                         onClick={() => {
                             window.open(
                                 "https://wa.me/573014032120?text=Hola,%20quiero%20información%20sobre%20domótica",
@@ -89,7 +90,7 @@ export default function Servicios() {
                     >
                         {t('hero.contact')}
                     </button>
-                    <button className='servicio-button' onClick={() => navigate('/mapa')}>{t('hero.Explore')} </button>
+                    <button className='servicio-button' tabIndex={5} onClick={() => navigate('/mapa')}>{t('hero.Explore')} </button>
                 </div>
             </section>
 

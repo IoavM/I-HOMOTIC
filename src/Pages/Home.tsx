@@ -34,6 +34,7 @@ export default function Home() {
                     <div className='hero-buttons'>
                         <button
                             className='hero-button'
+                            tabIndex={4}
                             onClick={() => {
                                 window.open(
                                     "https://wa.me/573014032120?text=Hola,%20quiero%20información%20sobre%20domótica",
@@ -47,9 +48,9 @@ export default function Home() {
                                 })
                             }}
                         >
-                            {t('hero.contact')}
+                            {t('hero.contact')} 
                         </button>
-                        <button className='hero-button' onClick={() => navigate('/mapa')}>{t('hero.Explore')} </button>
+                        <button className='hero-button' tabIndex={5} onClick={() => navigate('/mapa')}>{t('hero.Explore')} </button>
                     </div>
                 </div>
                 <div className='hero-image'>

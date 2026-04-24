@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+import { useTranslation } from 'react-i18next'
 import '../Styles/Mapa.css'
 
 // ─── Datos ────────────────────────────────────────────────────────────────────
@@ -33,66 +34,66 @@ const WA_NUMBER = '573014032120'
 const HABITACIONES = [
   {
     id: 'sala',
-    nombre: 'Sala de Estar',
+    nombreKey: 'mapa.rooms.sala',
     icono: '🛋️',
-    dispositivos: ['Iluminación LED regulable', 'Audio multizona Sonos', 'Asistente de voz', 'Cortinas motorizadas'],
-    escena: 'Modo Cine',
-    estado: 'Encendida',
+    dispositivosKeys: ['mapa.devices.ledReg', 'mapa.devices.audio', 'mapa.devices.voice', 'mapa.devices.blinds'],
+    escenaKey: 'mapa.scenes.cine',
+    estadoKey: 'mapa.states.encendida',
     colorEncendido: 0xffd699,
     posicion: { x: 2.25, y: 0, z: -1.25 },
     dimensiones: { w: 5.5, h: 2.8, d: 3.5 },
   },
   {
     id: 'cocina',
-    nombre: 'Cocina',
+    nombreKey: 'mapa.rooms.cocina',
     icono: '🍳',
-    dispositivos: ['Iluminación LED bajo-mueble', 'Sensor de gas', 'Sensor de humo', 'Electrodomésticos WiFi'],
-    escena: 'Modo Cocina',
-    estado: 'Encendida',
+    dispositivosKeys: ['mapa.devices.ledCab', 'mapa.devices.gas', 'mapa.devices.smoke', 'mapa.devices.appliances'],
+    escenaKey: 'mapa.scenes.cocina',
+    estadoKey: 'mapa.states.encendida',
     colorEncendido: 0xfff0d0,
     posicion: { x: -2.75, y: 0, z: -1.25 },
     dimensiones: { w: 4.5, h: 2.8, d: 3.5 },
   },
   {
     id: 'habitacion',
-    nombre: 'Habitación Principal',
+    nombreKey: 'mapa.rooms.habitacion',
     icono: '🛏️',
-    dispositivos: ['Iluminación ambiental', 'Climatización inteligente', 'Persianas automáticas', 'Sensor de presencia'],
-    escena: 'Modo Descanso',
-    estado: 'Encendida',
+    dispositivosKeys: ['mapa.devices.ambient', 'mapa.devices.climate', 'mapa.devices.blindsAuto', 'mapa.devices.presence'],
+    escenaKey: 'mapa.scenes.descanso',
+    estadoKey: 'mapa.states.encendida',
     colorEncendido: 0xffe8b0,
     posicion: { x: -2.75, y: 0, z: 2.25 },
     dimensiones: { w: 4.5, h: 2.8, d: 3.5 },
   },
   {
     id: 'bano',
-    nombre: 'Baño',
+    nombreKey: 'mapa.rooms.bano',
     icono: '🚿',
-    dispositivos: ['Iluminación LED espejo', 'Extractor inteligente', 'Sensor de humedad', 'Piso radiante'],
-    escena: 'Modo Relax',
-    estado: 'Activo',
+    dispositivosKeys: ['mapa.devices.ledMirror', 'mapa.devices.extractor', 'mapa.devices.humidity', 'mapa.devices.floor'],
+    escenaKey: 'mapa.scenes.relax',
+    estadoKey: 'mapa.states.activo',
     colorEncendido: 0xe8f0ff,
     posicion: { x: 0.75, y: 0, z: 2.25 },
     dimensiones: { w: 2.5, h: 2.8, d: 3.5 },
   },
   {
     id: 'entrada',
-    nombre: 'Entrada',
+    nombreKey: 'mapa.rooms.entrada',
     icono: '🚪',
-    dispositivos: ['Cerradura inteligente Yale', 'Cámara IP 4K', 'Sensor de movimiento', 'Videoportero WiFi'],
-    escena: 'Modo Seguridad',
-    estado: 'Activa',
+    dispositivosKeys: ['mapa.devices.lock', 'mapa.devices.cam', 'mapa.devices.motion', 'mapa.devices.intercom'],
+    escenaKey: 'mapa.scenes.seguridad',
+    estadoKey: 'mapa.states.activa',
     colorEncendido: 0xd4e8c4,
     posicion: { x: 3.5, y: 0, z: 2.25 },
     dimensiones: { w: 3, h: 2.8, d: 3.5 },
   },
   {
     id: 'patio',
-    nombre: 'Patio & Jardín',
+    nombreKey: 'mapa.rooms.patio',
     icono: '🌿',
-    dispositivos: ['Iluminación paisajista', 'Riego automático', 'Sensor perimetral', 'Cámara exterior'],
-    escena: 'Modo Exterior',
-    estado: 'Encendida',
+    dispositivosKeys: ['mapa.devices.landscape', 'mapa.devices.irrigation', 'mapa.devices.perimeter', 'mapa.devices.camExt'],
+    escenaKey: 'mapa.scenes.exterior',
+    estadoKey: 'mapa.states.encendida',
     colorEncendido: 0xc8e6c9,
     posicion: { x: 0, y: 0, z: -4.5 },
     dimensiones: { w: 10, h: 0.1, d: 3 },
@@ -198,6 +199,7 @@ function addPlane(sc: THREE.Scene, x: number, y: number, z: number, w: number, d
 // ─── Componente ───────────────────────────────────────────────────────────────
 
 export default function Mapa() {
+  const { t } = useTranslation()
   const containerRef = useRef<HTMLDivElement>(null)
   const [panelHab, setPanelHab] = useState<Hab | null>(null)
   const [showRotate, setShowRotate] = useState(false)
@@ -603,7 +605,7 @@ export default function Mapa() {
     habs.forEach((hab) => {
       const el = document.createElement('div'); el.className = 'mapa-hotspot'
       const bubble = document.createElement('div'); bubble.className = 'mapa-hotspot__bubble'
-      bubble.textContent = hab.icono + ' ' + hab.nombre
+      bubble.textContent = hab.icono + ' ' + t(hab.nombreKey)
       el.appendChild(bubble)
       el.addEventListener('click', (e) => { e.stopPropagation(); setPanelHab(hab) })
       container.appendChild(el)
@@ -736,7 +738,7 @@ export default function Mapa() {
   }, [])
 
   const waMsg = panelHab
-    ? encodeURIComponent(`Hola! Vi el visualizador 3D de i-Homotic y me interesa la solución para ${panelHab.nombre}. Tiene: ${panelHab.dispositivos.join(', ')}. ¿Podemos hablar?`)
+    ? encodeURIComponent(t('mapa.whatsappMsg', { room: t(panelHab.nombreKey), devices: panelHab.dispositivosKeys.map(k => t(k)).join(', ') }))
     : ''
 
   return (
@@ -746,12 +748,12 @@ export default function Mapa() {
           <div className='mapa-rotate-content'>
             <div className='mapa-rotate-icon'>📱</div>
             <span className='mapa-rotate-arrow'>↻</span>
-            <h2>Gira tu dispositivo</h2>
-            <p>Para una mejor experiencia del visualizador 3D</p>
+            <h2>{t('mapa.rotateTitle')}</h2>
+            <p>{t('mapa.rotateDesc')}</p>
             <hr className='mapa-rotate-divider' />
-            <p className='mapa-rotate-note'>O continúa en vertical (experiencia limitada)</p>
-            <button className='mapa-btn-continuar' onClick={() => { sessionStorage.setItem('rotate-dismissed', '1'); setShowRotate(false) }}>
-              Continuar así
+            <p className='mapa-rotate-note'>{t('mapa.rotateNote')}</p>
+            <button className='mapa-btn-continuar' tabIndex={5} onClick={() => { sessionStorage.setItem('rotate-dismissed', '1'); setShowRotate(false) }}>
+              {t('mapa.rotateContinue')}
             </button>
           </div>
         </div>
@@ -762,38 +764,38 @@ export default function Mapa() {
       <aside className={`mapa-info-panel${panelHab ? '' : ' mapa-info-panel--hidden'}`}>
         <div className='mapa-info-panel__header'>
           <span className='mapa-info-icono'>{panelHab?.icono}</span>
-          <h3>{panelHab?.nombre}</h3>
-          <button className='mapa-info-close' onClick={() => setPanelHab(null)}>✕</button>
+          <h3>{panelHab ? t(panelHab.nombreKey) : ''}</h3>
+          <button className='mapa-info-close' tabIndex={5} onClick={() => setPanelHab(null)}>✕</button>
         </div>
         <div className='mapa-info-panel__body'>
-          <p className='mapa-info-categoria'>Dispositivos instalados</p>
+          <p className='mapa-info-categoria'>{t('mapa.devicesInstalled')}</p>
           <ul className='mapa-info-dispositivos'>
-            {panelHab?.dispositivos.map((d) => <li key={d}>{d}</li>)}
+            {panelHab?.dispositivosKeys.map((d) => <li key={d}>{t(d)}</li>)}
           </ul>
           <div className='mapa-info-estado'>
-            <span className='mapa-info-label'>Estado</span>
-            <span className='mapa-info-badge'>{panelHab?.estado}</span>
+            <span className='mapa-info-label'>{t('mapa.status')}</span>
+            <span className='mapa-info-badge'>{panelHab ? t(panelHab.estadoKey) : ''}</span>
           </div>
           <div className='mapa-info-escena'>
-            <span className='mapa-info-label'>Escena activa</span>
-            <span className='mapa-info-escena-val'>{panelHab?.escena}</span>
+            <span className='mapa-info-label'>{t('mapa.activeScene')}</span>
+            <span className='mapa-info-escena-val'>{panelHab ? t(panelHab.escenaKey) : ''}</span>
           </div>
         </div>
         <div className='mapa-info-panel__footer'>
-          <a href={`https://wa.me/${WA_NUMBER}?text=${waMsg}`} target='_blank' rel='noopener noreferrer' className='mapa-btn-cta-whatsapp'>
-            💬 Quiero esto en mi casa →
+          <a href={`https://wa.me/${WA_NUMBER}?text=${waMsg}`} target='_blank' rel='noopener noreferrer' className='mapa-btn-cta-whatsapp' tabIndex={4}>
+            {t('mapa.whatsappCta')}
           </a>
         </div>
       </aside>
 
       {/* Day / Night toggle */}
-      <button className='mapa-mode-toggle' onClick={() => setIsNight(n => !n)}>
-        {isNight ? '☀️ Modo día' : '🌙 Modo noche'}
+      <button className='mapa-mode-toggle' tabIndex={5} onClick={() => setIsNight(n => !n)}>
+        {isNight ? t('mapa.modeDay') : t('mapa.modeNight')}
       </button>
 
       {hintVisible && (
         <div className='mapa-controls-hint'>
-          🖱 Arrastra para orbitar &nbsp;·&nbsp; 🔍 Scroll para zoom &nbsp;·&nbsp; Click en un espacio para explorar
+          {t('mapa.hint')}
         </div>
       )}
     </main>

@@ -37,7 +37,7 @@ export default function Proyectos() {
                 <div className='muestra-info'>
                     <h2>{t('projects.featuredTitle')}</h2>
                     <p>{t('projects.featuredDescription')}</p>
-                    <button className='muestra-button' onClick={() => navigate('/proyectos')}>
+                    <button className='muestra-button' tabIndex={5} onClick={() => navigate('/proyectos')}>
                         {t('projects.viewProject')}
                     </button>
                 </div>

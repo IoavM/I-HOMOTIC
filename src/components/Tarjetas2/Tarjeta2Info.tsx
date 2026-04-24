@@ -20,6 +20,7 @@ export default function TarjetaProyecto({ imagen, tituloKey, descripcionKey, alt
             <p>{t(descripcionKey)}</p>
             <button
                 className='proyecto-tarjeta-button'
+                tabIndex={5}
                 onClick={() => navigate('/proyectos')}
             >
                 {t('projects.viewProject')}

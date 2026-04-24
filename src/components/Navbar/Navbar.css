@@ -52,11 +52,11 @@
     transition: width 0.3s ease;
 }
 
-.navbar-links a:hover {
+.navbar-links a:hover, .navbar-links a:focus-visible {
     color: var(--verdeclaro);
 }
 
-.navbar-links a:hover::after {
+.navbar-links a:hover::after, .navbar-links a:focus-visible::after {
     width: 100%;
     background-color: var(--verdeclaro);
     
