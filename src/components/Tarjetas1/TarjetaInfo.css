@@ -1,7 +1,15 @@
 /* ---------------------------------------------------SERVICIOS---------------------------------------------- */
 
+.servicios-tarjetas{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+
 .tarjetas-info{
-    background-color: #e8f1e5;
+    background-color: var(--color-texto-oscuro);
     max-width: 25rem;
     display: flex;
     flex-direction: column;
@@ -9,6 +17,7 @@
     gap: 2rem;
     padding: 2rem;
     border-radius: 15px;
+    min-height: 32rem;
 }
 
 .tarjetas-info img{
@@ -19,14 +28,14 @@
 
 .tarjetas-info h2{
     font-size: 2rem;
-    font-weight: bold;
-    color: var(--colorletraverde);
+    font-weight: 500;
+    color: white;
 }
 
 .tarjetas-info p{
     font-size: 1rem;
     font-weight: 400;
-    color: var(--colorletraverde);
+    color: white;
 }
 
 /* ─── RESPONSIVE ─── */

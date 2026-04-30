@@ -1,0 +1,17 @@
+[
+  {
+    "icono": "home",
+    "numero": "+150",
+    "texto": "Proyectos realizados"
+  },
+  {
+    "icono": "person",
+    "numero": "+50",
+    "texto": "Clientes satisfechos"
+  },
+  {
+    "icono": "briefcase",
+    "numero": "+10",
+    "texto": "Años de experiencia"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "icono": "energia",
+    "titulo": "Ahorro energético",
+    "descripcion": "Reduce el consumo y optimiza recursos."
+  },
+  {
+    "icono": "control",
+    "titulo": "Control total",
+    "descripcion": "Desde tu celular, estés donde estés."
+  },
+  {
+    "icono": "seguridad",
+    "titulo": "Seguridad 24/7",
+    "descripcion": "Monitorea y protege los que más importa."
+  },
+  {
+    "icono": "confort",
+    "titulo": "Confort",
+    "descripcion": "Ambientes ideales automáticamente."
+  }
+]

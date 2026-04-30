@@ -752,7 +752,7 @@ export default function Mapa() {
             <p>{t('mapa.rotateDesc')}</p>
             <hr className='mapa-rotate-divider' />
             <p className='mapa-rotate-note'>{t('mapa.rotateNote')}</p>
-            <button className='mapa-btn-continuar' tabIndex={5} onClick={() => { sessionStorage.setItem('rotate-dismissed', '1'); setShowRotate(false) }}>
+            <button className='mapa-btn-continuar' tabIndex={11} onClick={() => { sessionStorage.setItem('rotate-dismissed', '1'); setShowRotate(false) }}>
               {t('mapa.rotateContinue')}
             </button>
           </div>
@@ -765,7 +765,7 @@ export default function Mapa() {
         <div className='mapa-info-panel__header'>
           <span className='mapa-info-icono'>{panelHab?.icono}</span>
           <h3>{panelHab ? t(panelHab.nombreKey) : ''}</h3>
-          <button className='mapa-info-close' tabIndex={5} onClick={() => setPanelHab(null)}>✕</button>
+          <button className='mapa-info-close' tabIndex={11} onClick={() => setPanelHab(null)}>✕</button>
         </div>
         <div className='mapa-info-panel__body'>
           <p className='mapa-info-categoria'>{t('mapa.devicesInstalled')}</p>
@@ -782,14 +782,14 @@ export default function Mapa() {
           </div>
         </div>
         <div className='mapa-info-panel__footer'>
-          <a href={`https://wa.me/${WA_NUMBER}?text=${waMsg}`} target='_blank' rel='noopener noreferrer' className='mapa-btn-cta-whatsapp' tabIndex={4}>
+          <a href={`https://wa.me/${WA_NUMBER}?text=${waMsg}`} target='_blank' rel='noopener noreferrer' className='mapa-btn-cta-whatsapp' tabIndex={10}>
             {t('mapa.whatsappCta')}
           </a>
         </div>
       </aside>
 
       {/* Day / Night toggle */}
-      <button className='mapa-mode-toggle' tabIndex={5} onClick={() => setIsNight(n => !n)}>
+      <button className='mapa-mode-toggle' tabIndex={11} onClick={() => setIsNight(n => !n)}>
         {isNight ? t('mapa.modeDay') : t('mapa.modeNight')}
       </button>
 

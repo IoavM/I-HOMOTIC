@@ -4,168 +4,108 @@
     box-sizing: border-box;
 }
 
-/* ---------------------------------------------------HERO---------------------------------------------- */
+/* ---------------------------------------------------I-HOMOTIC---------------------------------------------- */
 
-.hero {
-    background-color: var(--blancoprincipal2);
+.i-homotic{
+    background-color: var(--color-texto-oscuro);
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 4.5rem 2rem 1.5rem 2rem;
-
-}
-
-.hero-content{
-   width: 95%;
-}
-
-.hero h2{
-    font-size: 5rem;
-    font-weight: bold;
-    color: var(--colorletraverdeclaro);
-}
-
-.hero p{
-   margin-right: 10rem;
-   margin-bottom: 2rem;
-}
-
-.hero-buttons{
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-}
-
-.hero-button{
-    background-color: var(--naranja);
-    color: var(--blancoprincipal1);
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-bottom: 4rem;
-}
-
-.hero-button:hover, .hero-button:focus-visible {
-    background-color: var(--naranjahover);
-    transform: translateY(-5px);
-    box-shadow: var(--naranjahover) 0 0 10px;
-}
-
-.hero-image img{
-    width: 100%;
-    height: 100%;
-    border-radius: 15px ;
-    object-fit: cover;
-}
-
-/* ---------------------------------------------------SERVICIOS---------------------------------------------- */
-
-.servicios{
-    background-color: var(--blancoprincipal1);
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 4.5rem 2rem 1.5rem 2rem;
+    grid-template-columns: 2fr 1fr;
     align-items: center;
-    margin-bottom: 4rem;
+    position: relative;
+    overflow: hidden;
 }
-.servicios-content{
+
+.i-homotic::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, rgba(100, 150, 240, 0.25) 0%, rgba(100, 150, 240, 0) 65%);
+    filter: blur(100px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.i-homotic > * {
+    position: relative;
+    z-index: 1;
+}
+
+.contenido-ihomotic{
     display: flex;
     flex-direction: column;
-    text-align: center;
-    gap: 2rem;
-    max-width: 50rem;
-}
-.servicios-tarjetas{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6rem;
-    min-width: 50rem;
-    border-radius: 15px;
+    align-items: flex-start;
+    margin: 70px 130px;
+    gap: 50px;
 }
 
-/* ---------------------------------------------------PROYECTOS---------------------------------------------- */
-
-.proyectos{
-    background-color: var(--blancoprincipal2);
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 4.5rem 2rem 1.5rem 2rem;
-    text-align: center;
-    margin-bottom: 4rem;
+.contenido-ihomotic h2{
+    color: var(--color-blanco);
+    font-size: 6.5rem;
+    letter-spacing: 3px;
 }
 
-.proyectos-content{
-    background-color: var(--colorletraverdeclaro);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    border-radius: 15px;
+.contenido-ihomotic h3{
+    color: var(--color-acento-primario);
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.proyectos-info{
-    display: flex;
-    flex-direction: column;
+.contenido-ihomotic span  {
+    color: var(--color-acento-primario);
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.contenido-ihomotic p{
+    color: var(--color-blanco);
+    max-width: 85%;
+    line-height: 1.5;
+    font-size: 2rem;
     text-align: left;
-    gap: 1rem;
-    padding: 3rem;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.proyectos-tarjetas{
-    background-color: #5e8858;
+
+/* ---------------------------------------------------VENTAJAS---------------------------------------------- */
+.ventajas{
+    background-color: var(--color-blanco);
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 0;
+    position: relative;
+    overflow: hidden;
+    gap: 50px;
 }
-
-.proyectos-tarjetas-info{
-    
+.ventajas-content{
     display: flex;
     flex-direction: column;
-    text-align: left;
-    padding: 1rem;
-    border-radius: 15px;
+    align-items: center;
+    text-align: center;
+    gap: 50px;
+}
+.ventajas-content h3{
+    color: var(--color-texto-oscuro);
+    font-size: 4rem;
+    letter-spacing: 3px;
 }
 
-.proyectos-info h2{
-    font-weight: bold;
-    color: white;
-}
-
-.proyectos-info p{
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: var(--blancoprincipal1);
-    margin-bottom: 1rem;
-}
-
-.proyectos-button{
-    font-size: 1rem;
-    background-color:#7ea079;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    width: max-content;
-    border-radius: 50px;
-}
-
-.proyectos-button:hover, .proyectos-button:focus-visible {
-    background-color: var(--naranjahover);
-    cursor: pointer;
+.ventajas-content span{
+    color: var(--color-acento-primario);
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 3px;
 }
 
 
-.proyectos-img img{
-    width: 100%;
-    height: 100%;
-    border-radius: 0 15px 15px 0;
-    object-fit: cover;
-}
+
 
 @media (max-width: 1900px) {
 /* ---------------------------------------------------HERO---------------------------------------------- */

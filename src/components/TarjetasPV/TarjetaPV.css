@@ -1,7 +1,7 @@
 .tarjeta-pv{
     text-align: center;
     background-color: #ffffff0f;
-    border: 1px solid #90ae2f33;
+    border: 1px solid rgba(155, 196, 98, 0.2);
     border-radius: 14px;
     flex-direction: column;
     align-items: center;
@@ -20,7 +20,7 @@
 .tarjeta-pv-content h2{
     font-size: 1rem;
     font-weight: 800;
-    color: var(--naranja);
+    color: var(--color-acento-primario);
 }
 
 .tarjeta-pv-content p{

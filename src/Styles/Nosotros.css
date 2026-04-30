@@ -5,7 +5,7 @@
     gap: 1rem;
     padding: 4rem 10rem;
     align-items: center;
-    background-color: var(--blancoprincipal1);
+    background-color: var(--color-blanco);
     margin-bottom: 3rem;
 }
 
@@ -18,11 +18,11 @@
 }
 
 .introduccion h2 {
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
 }
 
 .introduccion p {
-    color: var(--colorletraverdeclaro);
+    color: var(--color-acento-primario);
 }
 
 .mas-informacion {
@@ -31,7 +31,7 @@
     gap: 2.5rem;
     padding: 4rem 8rem;
     align-items: center;
-    background-color: var(--blancoprincipal1);
+    background-color: var(--color-blanco);
     margin-bottom: 3rem;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .introduccion-detalle p {
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
     font-size: 1.2rem;
     font-weight: 500;
 }
@@ -53,19 +53,19 @@
     flex-direction: column;
     gap: 1rem;
     text-align: left;
-    color: var(--colorletraverdeclaro);
+    color: var(--color-acento-primario);
     list-style: cambodian;
     list-style-position: inside;
 }
 
 .lista-valores h3 {
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
 }
 li::marker{
-    color: var(--naranja);
+    color: var(--color-acento-primario);
 }
 .valor{
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
     font-size: 1rem;
     font-weight: 500;
 }
@@ -81,16 +81,16 @@ li::marker{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: var(--colorfondoverdeclaro);
+    background-color: var(--color-fondo-claro);
     padding: 2rem;
     border-radius: 20px;
 }
 
 .dato h3{
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
 }
 .dato p{
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
     font-size: 1.2rem;
     font-weight: 400;
 }
@@ -102,7 +102,7 @@ li::marker{
     gap: 1rem;
     padding: 2rem 10rem;
     align-items: center;
-    background-color: var(--blancoprincipal2);
+    background-color: var(--color-fondo-claro);
     margin-bottom: 3rem;
 }
 
@@ -115,7 +115,7 @@ li::marker{
 }
 
 .equipo-texto h3{
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
 }
 
 .equipo-miembros {
@@ -136,7 +136,7 @@ li::marker{
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: var(--naranja);
+    background: var(--color-acento-primario);
     color: white;
     display: flex;
     align-items: center;
@@ -148,7 +148,7 @@ li::marker{
 
 
 .miembro h3 {
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
     font-size: 1rem;
     font-weight: 600;
 }

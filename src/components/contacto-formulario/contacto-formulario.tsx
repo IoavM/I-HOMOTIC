@@ -275,7 +275,7 @@ export default function ContactoFormulario() {
             <button
               className='boton-email'
               type='button'
-              tabIndex={4}
+              tabIndex={10}
               onClick={handleEmail}
               disabled={sending}
             >
@@ -284,7 +284,7 @@ export default function ContactoFormulario() {
             <button
               className='boton-whatsapp'
               type='button'
-              tabIndex={4}
+              tabIndex={10}
               onClick={handleWhatsApp}
             >
               <FaWhatsapp size={22} />

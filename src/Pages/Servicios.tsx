@@ -3,11 +3,12 @@ import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import servicios from '../components/Tarjetas1/servicios.json'
 import TarjetaInfo from '../components/Tarjetas1/TarjetaInfo'
-import { automatizacion, iluminacion, seguridad} from '../assets/imagenes'
-import pvs from '../components/Tarjetas3/PVinfo.json'
-import TarjetaPV from '../components/Tarjetas3/TarjetaPV'
+import { automatizacion, iluminacion, seguridad } from '../assets/imagenes'
+import pvs from '../components/TarjetasPV/PVinfo.json'
+import TarjetaPV from '../components/TarjetasPV/TarjetaPV'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import CalculadoraPrecios from '../components/calculadora-precios/calculadora-precios'
 
 const imagenesMap: Record<string, string> = {
     automatizacion,
@@ -66,6 +67,8 @@ export default function Servicios() {
                 </div>
             </section>
 
+            <CalculadoraPrecios />
+
             <section className='servicios-final' id='servicios-cta'>
                 <div className='servicios-final-content'>
                     <h1>{t('servicios.callToAction')}</h1>
@@ -74,7 +77,7 @@ export default function Servicios() {
                 <div className='servicio-buttons'>
                     <button
                         className='servicio-button'
-                        tabIndex={4}
+                        tabIndex={10}
                         onClick={() => {
                             window.open(
                                 "https://wa.me/573014032120?text=Hola,%20quiero%20información%20sobre%20domótica",
@@ -90,10 +93,9 @@ export default function Servicios() {
                     >
                         {t('hero.contact')}
                     </button>
-                    <button className='servicio-button' tabIndex={5} onClick={() => navigate('/mapa')}>{t('hero.Explore')} </button>
+                    <button className='servicio-button' tabIndex={11} onClick={() => navigate('/mapa')}>{t('hero.Explore')} </button>
                 </div>
             </section>
-
         </motion.div>
     )
 }

@@ -1,9 +1,11 @@
 [
   {
+    "id": "villa",
     "tituloKey": "projects.villaTitle",
     "descripcionKey": "projects.villaDescription"
   },
   {
+    "id": "hq",
     "tituloKey": "projects.hqTitle",
     "descripcionKey": "projects.hqDescription"
   }

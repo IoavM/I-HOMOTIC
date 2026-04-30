@@ -1,0 +1,18 @@
+[
+  {
+    "icono": "lightbulb",
+    "texto": "Iluminación"
+  },
+  {
+    "icono": "ac_unit",
+    "texto": "Climatización"
+  },
+  {
+    "icono": "security",
+    "texto": "Seguridad"
+  },
+  {
+    "icono": "volume_up",
+    "texto": "Audio y entretenimiento"
+  }
+]

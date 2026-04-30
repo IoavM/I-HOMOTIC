@@ -4,7 +4,7 @@
     gap: 2rem;
     padding: 4rem 6rem;
     align-items: center;
-    background-color: var(--colorfondoverde);
+    background-color: var(--color-fondo-claro);
     margin-bottom: 4rem;
 }
 
@@ -17,12 +17,12 @@
 }
 
 .otros-proyectos-content h2 {
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
 }
 
 .otros-proyectos-content p {
     font-size: 1rem;
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
 }
 
 .otros-proyectos-tarjetas {
@@ -52,20 +52,20 @@
 .proyecto-tarjeta h3 {
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
     padding: 0 1.5rem;
 }
 
 .proyecto-tarjeta p {
     font-size: 0.95rem;
     font-weight: 400;
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
     line-height: 1.5;
     padding: 0 1.5rem;
 }
 
 .proyecto-tarjeta-button {
-    background-color: var(--verdeclaro);
+    background-color: var(--color-acento-primario);
     color: white;
     border: none;
     padding: 0.6rem 1.5rem;
@@ -80,5 +80,5 @@
 }
 
 .proyecto-tarjeta-button:hover, .proyecto-tarjeta-button:focus-visible {
-    background-color: var(--naranjahover);
+    background-color: var(--color-acento-secundario);
 }

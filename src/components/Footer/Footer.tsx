@@ -1,60 +1,62 @@
 import { Link } from 'react-router-dom'
 import './Footer.css'
-import { SiInstagram, SiFacebook, SiX } from 'react-icons/si'
+import { SiInstagram, SiFacebook, SiYoutube } from 'react-icons/si'
+import { FaLinkedin } from 'react-icons/fa'
+import { FiPhone, FiMail, FiMapPin } from 'react-icons/fi'
+import { useTranslation } from 'react-i18next'
 
 export default function Footer() {
+  const { t } = useTranslation()
   return (
     <footer className='footer'>
       <div className='footer-content'>
 
-        <div className='footer-marca'>
-          <h2 className='footer-logo'><span>|</span>Homotic</h2>
-          <p>Soluciones de domótica sostenibles y eficientes para hogares y empresas. Transformamos espacios con tecnología inteligente.</p>
+        <div className='footer-col-1'>
+          <h2 className='footer-logo'>ihomotic</h2>
+          <p dangerouslySetInnerHTML={{ __html: t('footer.slogan') }}></p>
           <div className='footer-redes'>
-            <a href='#' className='footer-red'><SiInstagram size={24} /></a>
-            <a href='#' className='footer-red'><SiFacebook size={24}/></a>
-            <a href='#' className='footer-red'><SiX size={24}/></a>
+            <a href='#' className='footer-red'><SiInstagram size={30} /></a>
+            <a href='#' className='footer-red'><SiFacebook size={30}/></a>
+            <a href='#' className='footer-red'><SiYoutube size={30}/></a>
+            <a href='#' className='footer-red'><FaLinkedin size={30}/></a>
           </div>
         </div>
 
         <div className='footer-columna'>
-          <h3>Servicios</h3>
+          <h3>{t('footer.company')}</h3>
           <ul>
-            <li><Link to='/servicios'>Automatización del Hogar</Link></li>
-            <li><Link to='/servicios'>Iluminación Inteligente</Link></li>
-            <li><Link to='/servicios'>Seguridad y CCTV</Link></li>
-            <li className='/servicios'><Link to='/servicios'>Ahorro Energético</Link></li>
-            <li><Link to='/servicios'>Control por Voz</Link></li>
-            <li><Link to='/servicios'>Integración IoT</Link></li>
+            <li><Link to='/nosotros'>{t('footer.about')}</Link></li>
+            <li><Link to='/proyectos'>{t('footer.projects')}</Link></li>
+            <li><Link to='/contacto'>{t('footer.contact')}</Link></li>
           </ul>
         </div>
 
         <div className='footer-columna'>
-          <h3>Empresa</h3>
+          <h3>{t('footer.tools')}</h3>
           <ul>
-            <li><Link to='/about'>Nosotros</Link></li>
-            <li><Link to='/proyectos'>Proyectos</Link></li>
-            <li><Link to='/blog'>Blog</Link></li>
-            <li><Link to='/faq'>Preguntas frecuentes</Link></li>
-            <li><Link to='/contact'>Contacto</Link></li>
+            <li><Link to='/mapa'>{t('footer.experience3D')}</Link></li>
+            <li><Link to='/proyectos'>{t('footer.calculator')}</Link></li>
           </ul>
         </div>
 
-        <div className='footer-columna'>
-          <h3>Legal</h3>
+        <div className='footer-columna footer-contacto'>
+          <h3>{t('footer.contact')}</h3>
           <ul>
-            <li><Link to='/privacidad'>Política de Privacidad</Link></li>
-            <li><Link to='/terminos'>Términos de Servicio</Link></li>
-            <li><Link to='/cookies'>Política de Cookies</Link></li>
+            <li><FiPhone size={20} className="contacto-icon"/> <span>+21 999 123 456</span></li>
+            <li><FiMail size={20} className="contacto-icon"/> <span>ihomotic@gmail.com</span></li>
+            <li><FiMapPin size={20} className="contacto-icon"/> <span>Medellín, Colombia</span></li>
           </ul>
         </div>
 
       </div>
 
       <div className='footer-inferior'>
-        <p>© 2026 IHomotic. All rights reserved.</p>
+        <p>{t('footer.copyright')}</p>
+        <div className="footer-links">
+          <Link to='/privacidad'>{t('footer.privacy')}</Link>
+          <Link to='/terminos'>{t('footer.terms')}</Link>
+        </div>
       </div>
     </footer>
   )
 }
-

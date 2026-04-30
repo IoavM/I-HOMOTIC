@@ -1,0 +1,168 @@
+/* ---------------------------------------------------PROYECTOS---------------------------------------------- */
+
+.proyectos{
+    background-color: var(--color-fondo-claro);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 4.5rem 2rem 1.5rem 2rem;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.proyectos-content{
+    background-color: var(--color-texto-oscuro);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    border-radius: 15px;
+}
+
+.proyectos-info{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1rem;
+    padding: 3rem;
+}
+
+.proyectos-tarjetas{
+    background-color: var(--color-acento-secundario);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-radius: 15px;
+}
+
+.proyectos-tarjetas-info{
+    
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 1rem;
+    border-radius: 15px;
+}
+
+.proyectos-info h2{
+    font-weight: bold;
+    color: white;
+}
+
+.proyectos-info p{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--color-blanco);
+    margin-bottom: 1rem;
+}
+
+.proyectos-button{
+    font-size: 1rem;
+    background-color: var(--color-acento-primario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0.5rem 1rem;
+    width: max-content;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.proyectos-button:hover, .proyectos-button:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: var(--color-acento-primario) 0 0 10px;
+    cursor: pointer;
+}
+
+
+.proyectos-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 0 15px 15px 0;
+    object-fit: cover;
+}
+
+@media (max-width: 1900px) {
+/* ---------------------------------------------------PROYECTOS---------------------------------------------- */
+
+    .proyectos-tarjetas{
+        gap: 3rem;
+    }
+
+    .tarjetas-info{
+        max-width: 22rem;
+        gap: 1rem;
+    }
+
+    .proyectos-info h2{
+            font-size: 2rem;
+    }
+    .proyectos-info h3{
+            font-size: 1.5rem;
+    }
+
+    .proyectos-info h4{
+            font-size: 1.2rem;
+    }
+    .proyectos-info p{
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+    }
+
+    .proyectos-button{
+            font-size: 0.85rem;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+
+  /* ---------------------------------------------------PROYECTOS---------------------------------------------- */
+
+  .proyectos {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  .proyectos-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .proyectos-tarjetas {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .proyectos-info {
+    padding: 1.5rem;
+  }
+
+  .proyectos-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .proyectos-info h4 {
+    font-size: 0.95rem;
+  }
+
+  .proyectos-info p {
+    font-size: 0.875rem;
+  }
+
+  .proyectos-button {
+    font-size: 0.875rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .proyectos-img {
+    width: 100%;
+  }
+
+  .proyectos-img img {
+    width: 100%;
+    border-radius: 0 0 15px 15px;
+  }
+
+}

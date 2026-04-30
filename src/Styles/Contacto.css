@@ -6,7 +6,7 @@
     align-items: center;
     text-align: center;
     padding: 5rem 10rem 3rem;
-    background-color: var(--blancoprincipal2);
+    background-color: var(--color-fondo-claro);
 }
 
 .contacto-hero-content {
@@ -17,11 +17,11 @@
 }
 
 .contacto-hero h2 {
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
 }
 
 .contacto-hero p {
-    color: var(--colorletraverdeclaro);
+    color: var(--color-acento-primario);
     font-weight: 400;
     font-size: 1.15rem;
 }
@@ -30,7 +30,7 @@
 
 .contacto-info {
     padding: 3rem 10rem;
-    background-color: var(--blancoprincipal2);
+    background-color: var(--color-fondo-claro);
 }
 
 .contacto-info-grid {
@@ -46,7 +46,7 @@
     text-align: center;
     gap: 0.8rem;
     padding: 2rem 1.5rem;
-    background-color: var(--blancoprincipal1);
+    background-color: var(--color-blanco);
     border-radius: 16px;
     border: 1.5px solid rgba(76, 123, 69, 0.12);
     transition: all 0.3s ease;
@@ -65,18 +65,18 @@
     width: 56px;
     height: 56px;
     border-radius: 14px;
-    background: linear-gradient(135deg, var(--colorfondoverdeclaro), var(--colorfondoverde));
-    color: var(--verde);
+    background: linear-gradient(135deg, var(--color-fondo-claro), var(--color-fondo-claro));
+    color: var(--color-texto-oscuro);
 }
 
 .contacto-info-card h3 {
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
     font-size: 1.1rem;
     font-weight: 700;
 }
 
 .contacto-info-card p {
-    color: var(--colorletraverdeclaro);
+    color: var(--color-acento-primario);
     font-size: 0.95rem;
     font-weight: 400;
 }

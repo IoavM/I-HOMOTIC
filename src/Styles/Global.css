@@ -1,50 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Montserrat:wght@300;600&display=swap');
 
 :root {
-  --blancoprincipal1:       #FFFFFF;
-  --blancoprincipal2:       #f4f8f4;
-  --naranja:                #90AE2F;
-  --naranjahover:           #7a9428;
-  --verde:                  #07573B;
-  --verdeclaro:             #0B5B46;
-  --colorletraverde:        #051F19;
-  --colorletraverdeclaro:   #0B5B46;
-  --colorfondoverde:        #e8f0e0;
-  --colorfondoverdeclaro:   #f4f8f4;
+  /* 01. PALETA DE COLOR (Manual de Marca) */
+  --color-fondo-claro:         #E5E5E5;  /* Principal / Fondos */
+  --color-acento-primario:   #9BC462;  /* Acento principal / Botones */
+  --color-texto-oscuro:        #081C35;  /* Texto oscuro / Fondos oscuros */
+  --color-acento-secundario: #7B5AA2;  /* Acento secundario / Morado */
+  --color-blanco:            #FFFFFF;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Righteous', sans-serif;
   font-weight: 300;
-  background-color: var(--blancoprincipal2);
-  color: var(--colorletraverde);}
+  background-color: var(--color-fondo-claro);
+  color: var(--color-texto-oscuro);}
 
 h1 {
   font-size: 5rem;
   font-weight: bold;
-  color: var(--colorletraverde);
+  color: var(--color-texto-oscuro);
 }
 
 h2 {
   font-size: 3rem;
   font-weight: bold;
-  color: var(--colorletraverde);
+  color: var(--color-texto-oscuro);
 }
 
 h3 {
   font-size: 2rem;
   font-weight: 500;
-  color: var(--blancoprincipal2);
+  color: var(--color-fondo-claro);
 }
 
 h4 {
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--blancoprincipal2);
+  color: var(--color-fondo-claro);
 }
 
 p {
   font-size: 1.2rem;
   font-weight: bold;
-  color: var(--colorletraverde);
+  color: var(--color-texto-oscuro);
 }

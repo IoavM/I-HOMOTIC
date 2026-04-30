@@ -7,7 +7,7 @@
     justify-content: center;
     gap: 2rem;
     padding: 5rem 2rem;
-    background: var(--colorletraverde);
+    background: var(--color-texto-oscuro);
     text-align: center;
 }
 
@@ -40,7 +40,7 @@
     justify-content: center;
     gap: 2rem;
     padding: 5rem 2rem;
-    background: var(--colorletraverde);
+    background: var(--color-texto-oscuro);
     text-align: center;
 }
 
@@ -66,21 +66,32 @@
     justify-content: center;
     gap: 2rem;
     padding: 5rem 2rem;
-    background: #F4F8F4;
+    background: var(--color-fondo-claro);
+    text-align: center;
+}
+
+.servicios-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 5rem 2rem;
+    background: var(--color-fondo-claro);
     text-align: center;
 }
 
 .servicios-final-content h1{
     font-size: 2rem;
     font-weight: bold;
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
     margin-bottom: 1.5rem;
 }
 
 .servicios-final-content p{
     font-size: 1.15rem;
     font-weight: 300;
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
     opacity: 0.9;
     max-width: 36rem;
 }
@@ -92,22 +103,22 @@
 }
 
 .servicio-button{
-    background-color: var(--verde);
-    color: var(--blancoprincipal1);
+    background-color: var(--color-texto-oscuro);
+    color: var(--color-blanco);
     border: none;
     padding: 1rem 2rem;
     font-size: 1.2rem;
     font-weight: bold;
-    border-radius: 30px;
+    border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-bottom: 4rem;
 }
 
 .servicio-button:hover, .servicio-button:focus-visible {
-    background: var(--colorletraverdeclaro);
+    background: var(--color-acento-primario);
     transform: translateY(-5px);
-    box-shadow: var(--colorletraverdeclaro) 0 0 10px;
+    box-shadow: var(--color-acento-primario) 0 0 10px;
 }
 
 /* ─────────────── RESPONSIVE ─────────────── */

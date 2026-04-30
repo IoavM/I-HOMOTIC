@@ -1,0 +1,129 @@
+.hero {
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(8, 28, 53, 0.8);
+    background-blend-mode: multiply;
+    height: 80vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 4.5rem 2rem 1.5rem 2rem;
+}
+
+.hero-content{
+    margin-top: 140px;
+    width: 95%;
+    text-align: left;
+    margin-left: 55px;
+}
+
+.hero h1{
+    font-size: 5rem;
+    font-weight: bold;
+    color: var(--color-blanco);
+}
+
+.hero h2{
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--color-acento-primario);
+}
+
+.hero p{
+   margin-right: 10rem;
+   margin-bottom: 2rem;
+   color: white;
+   font-size: 2rem;
+   font-weight: 300;
+   font-family: 'Montserrat', sans-serif;
+}
+
+
+.hero-buttons{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  font-family: 'Righteous', sans-serif;
+}
+
+.hero-button{
+    background-color: var(--color-acento-primario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-bottom: 4rem;
+    transition: all 0.3s ease;
+    font-family: 'Righteous', sans-serif;
+}
+
+.hero-button:nth-child(2) {
+    background-color: #ffffff00;
+    border: 2px solid white;
+}
+
+.hero-button:hover, .hero-button:focus-visible {
+    background-color: var(--color-acento-secundario);
+    transform: translateY(-5px);
+    box-shadow: var(--color-acento-secundario) 0 0 10px;
+}
+
+@media (max-width: 1900px) {
+
+    .hero-content {
+        margin-top: 80px;
+        margin-left: 20px;
+    }
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .hero h2 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1.2rem;
+        margin-right: 2rem;
+    }
+    .hero-button {
+        font-size: 1.1rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .hero {
+        grid-template-columns: 1fr; 
+        height: auto;
+        padding: 6rem 1.5rem 4rem 1.5rem;
+    }
+    .hero-content {
+        margin-top: 20px;
+        margin-left: 0;
+        width: 100%;
+        text-align: center; 
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    .hero p {
+        font-size: 1rem;
+        margin-right: 0;
+        margin-bottom: 2.5rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+    }
+    .hero-button {
+        width: 100%; 
+        margin-bottom: 0;
+    }
+}

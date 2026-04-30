@@ -254,6 +254,50 @@ const resources = {
         trmDate: 'Vigente desde {{date}} · Fuente: Banco de la República',
         selectProduct: 'Seleccionar Producto',
       },
+      home: {
+        ihomoticTitle: "SOBRE I-HOMOTIC",
+        ihomoticHeading: "Tecnología que mejora",
+        ihomoticHeadingSpan: "tu vida diaria",
+        ihomoticDesc: "Somos especialistas en automatización y tecnología para hogares y edificios. Diseñamos soluciones inteligentes que brindan confort, seguridad y eficiencia, adaptadas a cada estilo de vida.",
+        ventajasHeading: "Vive mejor, vive ",
+        ventajasHeadingSpan: "inteligente"
+      },
+      footer: {
+        slogan: "Transformamos espacios en<br/>experiencias inteligentes.",
+        company: "Empresa",
+        tools: "Herramientas",
+        contact: "Contacto",
+        about: "Nosotros",
+        projects: "Proyectos",
+        experience3D: "Experiencia 3D",
+        calculator: "Calculadora",
+        copyright: "© 2026 Ihomotic. Todos los derechos reservados.",
+        privacy: "Política de privacidad",
+        terms: "Términos y condiciones"
+      },
+      gridDatos2: {
+        items: [
+          { icono: "home", numero: "+150", texto: "Proyectos realizados" },
+          { icono: "person", numero: "+50", texto: "Clientes satisfechos" },
+          { icono: "briefcase", numero: "+10", texto: "Años de experiencia" }
+        ]
+      },
+      tarjeta4: {
+        items: [
+          { icono: "lightbulb", texto: "Iluminación" },
+          { icono: "ac_unit", texto: "Climatización" },
+          { icono: "security", texto: "Seguridad" },
+          { icono: "volume_up", texto: "Audio y entretenimiento" }
+        ]
+      },
+      ventajas: {
+        items: [
+          { icono: "energia", titulo: "Ahorro energético", descripcion: "Reduce el consumo y optimiza recursos." },
+          { icono: "control", titulo: "Control total", descripcion: "Desde tu celular, estés donde estés." },
+          { icono: "seguridad", titulo: "Seguridad 24/7", descripcion: "Monitorea y protege los que más importa." },
+          { icono: "confort", titulo: "Confort", descripcion: "Ambientes ideales automáticamente." }
+        ]
+      }
     },
   },
   en: {
@@ -506,6 +550,50 @@ const resources = {
         trmDate: 'Valid since {{date}} · Source: Banco de la República',
         selectProduct: 'Select Product',
       },
+      home: {
+        ihomoticTitle: "ABOUT I-HOMOTIC",
+        ihomoticHeading: "Technology that improves",
+        ihomoticHeadingSpan: "your daily life",
+        ihomoticDesc: "We specialize in automation and technology for homes and buildings. We design intelligent solutions that provide comfort, security, and efficiency, tailored to every lifestyle.",
+        ventajasHeading: "Live better, live ",
+        ventajasHeadingSpan: "smart"
+      },
+      footer: {
+        slogan: "We transform spaces into<br/>intelligent experiences.",
+        company: "Company",
+        tools: "Tools",
+        contact: "Contact",
+        about: "About Us",
+        projects: "Projects",
+        experience3D: "3D Experience",
+        calculator: "Calculator",
+        copyright: "© 2026 Ihomotic. All rights reserved.",
+        privacy: "Privacy Policy",
+        terms: "Terms and Conditions"
+      },
+      gridDatos2: {
+        items: [
+          { icono: "home", numero: "+150", texto: "Completed Projects" },
+          { icono: "person", numero: "+50", texto: "Satisfied Clients" },
+          { icono: "briefcase", numero: "+10", texto: "Years of Experience" }
+        ]
+      },
+      tarjeta4: {
+        items: [
+          { icono: "lightbulb", texto: "Lighting" },
+          { icono: "ac_unit", texto: "Climate Control" },
+          { icono: "security", texto: "Security" },
+          { icono: "volume_up", texto: "Audio & Entertainment" }
+        ]
+      },
+      ventajas: {
+        items: [
+          { icono: "energia", titulo: "Energy Savings", descripcion: "Reduce consumption and optimize resources." },
+          { icono: "control", titulo: "Total Control", descripcion: "From your phone, wherever you are." },
+          { icono: "seguridad", titulo: "24/7 Security", descripcion: "Monitor and protect what matters most." },
+          { icono: "confort", titulo: "Comfort", descripcion: "Ideal environments automatically." }
+        ]
+      }
     },
   },
 } as const

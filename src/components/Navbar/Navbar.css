@@ -8,7 +8,7 @@
 
 .navbar {
     width: 100%;
-    background-color: var(--blancoprincipal1);
+    background-color: var(--color-blanco);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,7 +26,7 @@
 }
 
 .navbar-logo a{
-    color: var(--colorletraverdeclaro);
+    color: var(--color-acento-primario);
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
@@ -34,7 +34,7 @@
 }
 
 .navbar-links a {
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
     text-decoration: none;
     transition: all 0.3s ease;
     font-size: 1.2rem;
@@ -48,17 +48,17 @@
     bottom: -6px;
     width: 0;          
     height: 2px;
-    background-color: var(--colorletraverde); 
+    background-color: var(--color-texto-oscuro); 
     transition: width 0.3s ease;
 }
 
 .navbar-links a:hover, .navbar-links a:focus-visible {
-    color: var(--verdeclaro);
+    color: var(--color-acento-primario);
 }
 
 .navbar-links a:hover::after, .navbar-links a:focus-visible::after {
     width: 100%;
-    background-color: var(--verdeclaro);
+    background-color: var(--color-acento-primario);
     
 }
 

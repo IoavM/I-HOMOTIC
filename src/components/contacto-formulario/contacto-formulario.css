@@ -4,13 +4,13 @@
     display: flex;
     justify-content: center;
     padding: 4rem 10rem;
-    background-color: var(--blancoprincipal1);
+    background-color: var(--color-blanco);
 }
 
 .div-formulario {
     width: 100%;
     max-width: 56rem;
-    background-color: var(--colorfondoverdeclaro);
+    background-color: var(--color-fondo-claro);
     border-radius: 20px;
     padding: 3.5rem 4rem;
     box-shadow: 0 8px 32px rgba(45, 58, 45, 0.08);
@@ -22,12 +22,12 @@
 }
 
 .formulario-header h2 {
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
     margin-bottom: 0.5rem;
 }
 
 .formulario-header p {
-    color: var(--colorletraverdeclaro);
+    color: var(--color-acento-primario);
     font-weight: 400;
     font-size: 1.05rem;
 }
@@ -53,7 +53,7 @@
 .formulario-campo label {
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
     padding-left: 0.2rem;
 }
 
@@ -68,9 +68,9 @@
     font-size: 1rem;
     font-family: 'Sora', sans-serif;
     font-weight: 400;
-    color: var(--colorletraverde);
-    background-color: var(--blancoprincipal1);
-    border: 1.5px solid rgba(76, 123, 69, 0.2);
+    color: var(--color-texto-oscuro);
+    background-color: var(--color-blanco);
+    border: 1.5px solid rgba(155, 196, 98, 0.2);
     border-radius: 12px;
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -82,7 +82,7 @@
 }
 
 .formulario-input:focus {
-    border-color: var(--verde);
+    border-color: var(--color-texto-oscuro);
     box-shadow: 0 0 0 3px rgba(45, 106, 46, 0.1);
 }
 
@@ -113,7 +113,7 @@
     font-weight: 700;
     font-family: 'Sora', sans-serif;
     color: #fff;
-    background: linear-gradient(135deg, #0B5B46, #051F19);
+    background: linear-gradient(135deg, var(--color-acento-primario), var(--color-texto-oscuro));
     border: none;
     border-radius: 14px;
     cursor: pointer;
@@ -122,7 +122,8 @@
 }
 
 .boton-email:hover, .boton-email:focus-visible {
-    background: linear-gradient(135deg, #0e785b, #072a22);
+    background: linear-gradient(135deg, var(--color-acento-primario), var(--color-texto-oscuro));
+    opacity: 0.9;
     transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(11, 91, 70, 0.35);
 }

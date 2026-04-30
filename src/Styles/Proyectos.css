@@ -56,17 +56,17 @@
 
 .muestra-info h2 {
     font-size: 2rem;
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
 }
 
 .muestra-info p {
     font-size: 1rem;
-    color: var(--colorletraverde);
+    color: var(--color-texto-oscuro);
     line-height: 1.6;
 }
 
 .muestra-button {
-    background-color: var(--verdeclaro);
+    background-color: var(--color-acento-primario);
     color: white;
     border: none;
     padding: 0.8rem 2rem;
@@ -80,7 +80,7 @@
 }
 
 .muestra-button:hover, .muestra-button:focus-visible {
-    background-color: var(--naranjahover);
+    background-color: var(--color-acento-secundario);
 }
 
 /*--------------------------------------Otros Proyectos-------------------------------------*/

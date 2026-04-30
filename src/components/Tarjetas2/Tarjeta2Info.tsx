@@ -3,13 +3,14 @@ import { useTranslation } from 'react-i18next'
 import './Tarjeta2Info.css'
 
 interface Props {
+    id?: string
     imagen: string
     tituloKey: string
     descripcionKey: string
     altKey: string
 }
 
-export default function TarjetaProyecto({ imagen, tituloKey, descripcionKey, altKey }: Props) {
+export default function TarjetaProyecto({ id, imagen, tituloKey, descripcionKey, altKey }: Props) {
     const { t } = useTranslation()
     const navigate = useNavigate()
 
@@ -20,8 +21,8 @@ export default function TarjetaProyecto({ imagen, tituloKey, descripcionKey, alt
             <p>{t(descripcionKey)}</p>
             <button
                 className='proyecto-tarjeta-button'
-                tabIndex={5}
-                onClick={() => navigate('/proyectos')}
+                tabIndex={11}
+                onClick={() => navigate(id ? `/proyectos/${id}` : '/proyectos')}
             >
                 {t('projects.viewProject')}
             </button>
