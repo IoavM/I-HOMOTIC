@@ -1,9 +1,7 @@
-import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import './Tarjeta2Variante.css'
 
 interface Props {
-    id?: string
     imagen: string
     tituloKey: string
     descripcionKey: string

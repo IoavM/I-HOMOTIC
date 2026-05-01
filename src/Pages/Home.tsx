@@ -62,7 +62,6 @@ export default function Home() {
                     {proyectos.map((proyecto) => (
                         <TarjetaProyecto2
                             key={proyecto.id || proyecto.tituloKey}
-                            id={proyecto.id}
                             imagen={imagenesMap[proyecto.imagen]}
                             tituloKey={proyecto.tituloKey}
                             descripcionKey={proyecto.descripcionKey}
