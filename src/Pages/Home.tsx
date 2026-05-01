@@ -1,16 +1,23 @@
 import '../Styles/Home.css'
-import { casa } from '../assets/imagenes'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import proyectosHome from '../components/proyectos-imagen/proyectos-imagen-info.json'
-import TarjetaProyectoHome from '../components/proyectos-imagen/proyectos-imagen'
 import HeroConImagen from '../components/hero-conImagen/hero-conImagen'
 import GridDatos2 from '../components/grid-datos2/grid-datos2'
 import Tarjeta4 from '../components/tarjeta4/tarjeta4'
 import Ventajas from '../components/ventajas/ventajas'
+import proyectos from '../components/Tarjetas2-Variante/Tarjeta2Variante.json'
+import TarjetaProyecto2 from '../components/Tarjetas2-Variante/Tarjeta2Variante'
+import { casa2 } from '../assets/imagenes'
+import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom'
+const imagenesMap: Record<string, string> = {
+    casa2,
+}
+
 
 export default function Home() {
     const { t } = useTranslation()
+    const navigate = useNavigate()
 
     return (
         <motion.div
@@ -40,23 +47,50 @@ export default function Home() {
                 <Ventajas />
             </section>
 
-            <section className='proyectos' id='home-proyectos'>
-                <div className='proyectos-content'>
-                    <div className='proyectos-info'>
-                        <h2>{t('projects.title')}</h2>
-                        <h4>{t('projects.subtitle')}</h4>
-                        {proyectosHome.map((proyecto) => (
-                            <TarjetaProyectoHome
-                                key={proyecto.tituloKey}
-                                id={proyecto.id}
-                                tituloKey={proyecto.tituloKey}
-                                descripcionKey={proyecto.descripcionKey}
-                            />
-                        ))}
+
+            <section className='proyecto-home'>
+                <div className='proyecto-parte1'>
+                    <div className='proyecto-parte1-texto'>
+                        <h2>Proyectos que <span>inspiran</span></h2>
+                        <p>Conoce algunos de nuestros proyectos más recientes</p>
                     </div>
-                    <div className='proyectos-img'>
-                        <img src={casa} alt="Ejemplo de proyectos de casas inteligentes realizados" loading="lazy" />
+                    <div className='btn-ver-proyectos'>
+                        <button className='btn-ver-proyectos-button' onClick={() => navigate('/proyectos')}>Ver todos los proyectos</button>
                     </div>
+                </div>
+                <div className='proyectos-home-grid'>
+                    {proyectos.map((proyecto) => (
+                        <TarjetaProyecto2
+                            key={proyecto.id || proyecto.tituloKey}
+                            id={proyecto.id}
+                            imagen={imagenesMap[proyecto.imagen]}
+                            tituloKey={proyecto.tituloKey}
+                            descripcionKey={proyecto.descripcionKey}
+                            altKey={proyecto.altKey}
+                        />
+                    ))}
+                </div>
+
+                <div className='CTA-home'>
+                    <div className='CTA-home-texto'>
+                        <h2>¿No sabes por dónde empezar?</h2>
+                        <p>Te ayudamos a encontrar la solución perfecta para ti.</p>
+                    </div>
+                    <button className='btn-cotizar'
+                    onClick={() => {
+                        window.open(
+                            "https://wa.me/573014032120?text=Hola,%20quiero%20información%20sobre%20domótica",
+                            "_blank"
+                        )
+                        Swal.fire({
+                            title: t('hero.messageSent'),
+                            icon: "success",
+                            draggable: true,
+                            confirmButtonColor: "#2D6A2E"
+                        })
+                    }}>
+                        Cotizar mi proyecto
+                    </button>
                 </div>
             </section>
 

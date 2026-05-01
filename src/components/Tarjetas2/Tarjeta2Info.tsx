@@ -15,17 +15,19 @@ export default function TarjetaProyecto({ id, imagen, tituloKey, descripcionKey,
     const navigate = useNavigate()
 
     return (
-        <div className='proyecto-tarjeta'>
-            <img src={imagen} alt={t(altKey)} loading="lazy" />
-            <h3>{t(tituloKey)}</h3>
-            <p>{t(descripcionKey)}</p>
-            <button
-                className='proyecto-tarjeta-button'
-                tabIndex={11}
-                onClick={() => navigate(id ? `/proyectos/${id}` : '/proyectos')}
-            >
-                {t('projects.viewProject')}
-            </button>
+        <div className='otros-proyectos-tarjetas'>
+            <div className='proyecto-tarjeta'>
+                <img src={imagen} alt={t(altKey)} loading="lazy" />
+                <h3>{t(tituloKey)}</h3>
+                <p>{t(descripcionKey)}</p>
+                <button
+                    className='proyecto-tarjeta-button'
+                    tabIndex={11}
+                    onClick={() => navigate(id ? `/proyectos/${id}` : '/proyectos')}
+                >
+                    {t('projects.viewProject')}
+                </button>
+            </div>
         </div>
     )
 }

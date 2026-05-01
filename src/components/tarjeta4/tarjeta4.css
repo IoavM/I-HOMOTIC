@@ -58,6 +58,9 @@
         gap: 2.5rem;
         padding: 2rem 1.5rem;
         align-items: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
     }
     .tarjeta4-info {
         flex-direction: column;

@@ -45,8 +45,7 @@
 
 @media (max-width: 800px) {
     .grid-datos2 {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 2rem;
         justify-items: center;
         padding: 1rem;
     }

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "imagen": "casa2",
+    "tituloKey": "projects.project1Title",
+    "descripcionKey": "projects.project1Description",
+    "altKey": "projects.project1Alt"
+  },
+  {
+    "id": "2",
+    "imagen": "casa2",
+    "tituloKey": "projects.project2Title",
+    "descripcionKey": "projects.project2Description",
+    "altKey": "projects.project2Alt"
+  },
+  {
+    "id": "3",
+    "imagen": "casa2",
+    "tituloKey": "projects.project3Title",
+    "descripcionKey": "projects.project3Description",
+    "altKey": "projects.project3Alt"
+  }
+]
