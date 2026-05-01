@@ -10,10 +10,8 @@ interface Props {
     altKey: string
 }
 
-export default function TarjetaProyecto2({ id, imagen, tituloKey, descripcionKey, altKey }: Props) {
+export default function TarjetaProyecto2({ imagen, tituloKey, descripcionKey, altKey }: Props) {
     const { t } = useTranslation()
-    const navigate = useNavigate()
-
     return (
         <div className='proyectos-home-grid'>
             <div className='proyecto-tarjeta2'>
