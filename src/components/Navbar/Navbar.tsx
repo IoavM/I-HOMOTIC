@@ -68,7 +68,16 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: '#ffffff',
-  fontSize: '1.2rem',
+  fontSize: '0.9rem',
+  [theme.breakpoints.up('md')]: {
+    fontSize: '0.9rem',
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: '0.9rem',
+  },
+  [theme.breakpoints.up('xl')]: {
+    fontSize: '1rem',
+  },
   '& .MuiInputBase-input': {
     padding: theme.spacing(0.7, 1.5, 0.7, 0),
     width: '12ch',
@@ -77,6 +86,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create('width'),
     '&::placeholder': { color: 'rgba(255, 255, 255, 0.6)', opacity: 1 },
     [theme.breakpoints.up('md')]: {
+      width: '8ch', // Achicado para cualquier dispositivo menor a 1900px
+      '&:focus': { width: '18ch' },
+    },
+    ['@media (min-width: 1900px)']: {
+      width: '12ch', // En monitores muy grandes (1900px+) vuelve a su tamaño normal
       '&:focus': { width: '18ch' },
     },
   },
@@ -116,7 +130,7 @@ export default function Navbar() {
 
   const currentLang = i18n.language.startsWith('es') ? 'es' : 'en'
   const languages = [
-    { code: 'es', label: 'español' },
+    { code: 'es', label: 'Español' },
     { code: 'en', label: 'English' },
   ]
 
@@ -389,14 +403,13 @@ export default function Navbar() {
             <Box
               sx={{
                 width: '100%',
-                display: 'grid',
-                gridTemplateColumns: '1fr auto 1fr',
+                display: 'flex',
                 alignItems: 'center',
-                gap: '78px',
+                justifyContent: 'space-between',
               }}
             >
               {/* ── Columna 1: Logo — extremo izquierdo ─────────────────────── */}
-              <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+              <Box sx={{ display: 'flex', flex: 1, justifyContent: 'flex-start' }}>
                 <Typography
                   component={RouterLink}
                   to="/"
@@ -404,7 +417,7 @@ export default function Navbar() {
                     textDecoration: 'none',
                     color: '#ffffff',
                     fontWeight: 800,
-                    fontSize: '1.45rem',
+                    fontSize: '1.7rem',
                     letterSpacing: 0.5,
                     fontFamily: 'Montserrat, sans-serif',
                   }}
@@ -428,7 +441,7 @@ export default function Navbar() {
                       sx={{
                         textTransform: 'none',
                         fontWeight: 700,
-                        fontSize: '1.2rem',
+                        fontSize: { md: '0.9rem', lg: '1rem', xl: '1.16rem' },
                         borderRadius: isContacto ? '8px' : (active ? '0' : '999px'),
                         fontFamily: 'Montserrat, sans-serif',
                         color: '#ffffff',
@@ -451,7 +464,7 @@ export default function Navbar() {
 
               {/* ── Columna 3: Buscador + Idioma — extremo derecho ───────────
                   Elementos completamente independientes del menú de links.     */}
-              <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center', justifyContent: 'flex-end' }}>
+              <Box sx={{ display: 'flex', flex: 1, gap: 1.5, alignItems: 'center', justifyContent: 'flex-end' }}>
 
                 {/* Buscador — elemento independiente */}
                 <Box sx={{ position: 'relative' }} ref={searchRef}>
