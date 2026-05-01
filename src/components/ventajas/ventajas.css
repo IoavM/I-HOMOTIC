@@ -70,7 +70,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
-        align-items: center;
+        align-items: start;
         gap: 1rem;
         margin-top: 1rem;
         padding: 1rem;

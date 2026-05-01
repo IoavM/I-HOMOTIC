@@ -520,3 +520,133 @@
 
 
 }
+
+@media (max-width: 480px) {
+    /* ---------------------------------------------------HERO---------------------------------------------- */
+
+  .hero {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    margin-right: 0;
+    font-size: 0.9rem;
+  }
+
+  .hero-button {
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .hero-image {
+    order: -1;
+    width: 100%;
+  }
+
+
+/* --------------------------------------------VENTAJAS---------------------------------------------- */
+
+.ventajas-content h3{
+    font-size: 2.5rem;
+}
+.ventajas-content span{
+    font-size: 2.5rem;
+}
+
+/* ---------------------------------------------------I-HOMOTIC---------------------------------------------- */
+
+  .i-homotic {
+    grid-template-columns: 1fr;
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  .contenido-ihomotic {
+    margin: 0;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .contenido-ihomotic h2,
+  .contenido-ihomotic span {
+    font-size: 1.8rem;
+  }
+
+  .contenido-ihomotic p {
+    max-width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+/* --------------------------------------------PROJECTO HOME---------------------------------------------- */
+
+.proyecto-home{
+    padding: 15px 2rem 40px 2rem;
+}
+
+.proyecto-parte1{
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.proyecto-parte1-texto h2{
+    font-size: 2rem;
+    text-align: center;
+}
+
+.proyecto-parte1-texto p{
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.btn-ver-proyectos button{
+    font-size: 1rem;
+}
+
+.proyectos-home-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+
+/* --------------------------------------------CTA-HOME---------------------------------------------- */
+
+.CTA-home{
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem 1rem;
+}
+
+.CTA-home-texto h2{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.CTA-home-texto p{
+    font-size: 1rem;
+    text-align: center;
+}
+
+.btn-cotizar{
+    font-size: 1rem;
+}
+
+
+}
