@@ -1,8 +1,6 @@
 import '../Styles/Servicios.css'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import servicios from '../components/Tarjetas1/servicios.json'
-import TarjetaInfo from '../components/Tarjetas1/TarjetaInfo'
 import { automatizacion, iluminacion, seguridad } from '../assets/imagenes'
 import pvs from '../components/TarjetasPV/PVinfo.json'
 import TarjetaPV from '../components/TarjetasPV/TarjetaPV'
@@ -37,17 +35,6 @@ export default function Servicios() {
                 <div className='servicios-content'>
                     <h1>{t('services.title')}</h1>
                     <p>{t('services.description')}</p>
-                </div>
-                <div className='servicios-tarjetas'>
-                    {servicios.map((servicio) => (
-                        <TarjetaInfo
-                            key={servicio.titulo}
-                            imagen={imagenesMap[servicio.imagen]}
-                            alt={servicio.alt}
-                            titulo={servicio.titulo}
-                            descripcion={servicio.descripcion}
-                        />
-                    ))}
                 </div>
             </section>
 

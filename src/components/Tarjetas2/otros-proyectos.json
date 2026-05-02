@@ -2,29 +2,33 @@
   {
     "id": "1",
     "imagen": "casa2",
-    "tituloKey": "projects.project1Title",
-    "descripcionKey": "projects.project1Description",
+    "tituloKey": "Casa la Molina",
+    "Etiqueta":"Residencial",
+    "descripcionKey": "Iluminación, Climatización y Seguridad",
     "altKey": "projects.project1Alt"
   },
   {
     "id": "2",
     "imagen": "casa2",
-    "tituloKey": "projects.project2Title",
-    "descripcionKey": "projects.project2Description",
+    "Etiqueta":"Departamento",
+    "tituloKey": "Departamento Miraflores",
+    "descripcionKey": "Automatización completa y entretenimiento",
     "altKey": "projects.project2Alt"
   },
   {
     "id": "3",
     "imagen": "casa2",
-    "tituloKey": "projects.project3Title",
-    "descripcionKey": "projects.project3Description",
+    "Etiqueta":"Residencial",
+    "tituloKey": "Casa de Playa Asia",
+    "descripcionKey": "Control total desde cualquier lugar",
     "altKey": "projects.project3Alt"
   },
   {
     "id": "4",
     "imagen": "casa2",
-    "tituloKey": "projects.project4Title",
-    "descripcionKey": "projects.project4Description",
+    "Etiqueta":"Comercial",
+    "tituloKey": "Tienda de Ropa Rio Verde",
+    "descripcionKey": "Iluminación, seguridad y música ambiental",
     "altKey": "projects.project4Alt"
   }
 ]

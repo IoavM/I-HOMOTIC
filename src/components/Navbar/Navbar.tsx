@@ -30,6 +30,8 @@ const VERDE = 'var(--color-texto-oscuro)'
 const VERDE_CLARO = 'var(--color-acento-primario)'
 const NARANJA = 'var(--color-acento-secundario)'
 
+const DARK_HERO_ROUTES = ['/', '/mapa', '/servicios']
+
 const links = [
   { to: '/', key: 'navbar.home', tabIndex: -1 },
   { to: '/proyectos', key: 'navbar.projects', tabIndex: 2 },
@@ -40,63 +42,66 @@ const links = [
 ]
 
 // ─── Search Bar ───────────────────────────────────────────────────────────────
-const SearchWrapper = styled('div')({
+const SearchWrapper = styled('div')<{ navtheme: 'dark' | 'light' }>(({ navtheme }) => ({
   position: 'relative',
   borderRadius: 999,
-  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-  border: `1.5px solid rgba(255, 255, 255, 0.2)`,
+  backgroundColor: navtheme === 'dark'
+    ? 'rgba(255, 255, 255, 0.1)'
+    : 'rgba(8, 28, 53, 0.07)',
+  border: `1.5px solid ${navtheme === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(8,28,53,0.2)'}`,
   display: 'flex',
   alignItems: 'center',
   transition: 'border-color 0.2s, background-color 0.2s',
   '&:hover': {
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
-    borderColor: 'rgba(255, 255, 255, 0.5)',
+    backgroundColor: navtheme === 'dark'
+      ? 'rgba(255, 255, 255, 0.15)'
+      : 'rgba(8, 28, 53, 0.12)',
+    borderColor: navtheme === 'dark' ? 'rgba(255,255,255,0.5)' : 'rgba(8,28,53,0.4)',
   },
   '&:focus-within': {
-    borderColor: '#ffffff',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    borderColor: navtheme === 'dark' ? '#ffffff' : '#081C35',
+    backgroundColor: navtheme === 'dark'
+      ? 'rgba(255, 255, 255, 0.2)'
+      : 'rgba(8, 28, 53, 0.1)',
   },
-})
+}))
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+const SearchIconWrapper = styled('div')<{ navtheme: 'dark' | 'light' }>(({ theme, navtheme }) => ({
   padding: theme.spacing(0, 1.2, 0, 1.5),
   pointerEvents: 'none',
   display: 'flex',
   alignItems: 'center',
-  color: 'rgba(255, 255, 255, 0.8)',
+  color: navtheme === 'dark' ? 'rgba(255,255,255,0.8)' : 'rgba(8,28,53,0.6)',
 }))
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: '#ffffff',
+const StyledInputBase = styled(InputBase)<{ navtheme: 'dark' | 'light' }>(({ theme, navtheme }) => ({
+  color: navtheme === 'dark' ? '#ffffff' : '#081C35',
   fontSize: '0.9rem',
-  [theme.breakpoints.up('md')]: {
-    fontSize: '0.9rem',
-  },
-  [theme.breakpoints.up('lg')]: {
-    fontSize: '0.9rem',
-  },
-  [theme.breakpoints.up('xl')]: {
-    fontSize: '1rem',
-  },
+  [theme.breakpoints.up('md')]: { fontSize: '0.9rem' },
+  [theme.breakpoints.up('lg')]: { fontSize: '0.9rem' },
+  [theme.breakpoints.up('xl')]: { fontSize: '1rem' },
   '& .MuiInputBase-input': {
     padding: theme.spacing(0.7, 1.5, 0.7, 0),
     width: '12ch',
     fontFamily: 'Montserrat, sans-serif',
     fontWeight: 500,
     transition: theme.transitions.create('width'),
-    '&::placeholder': { color: 'rgba(255, 255, 255, 0.6)', opacity: 1 },
+    '&::placeholder': {
+      color: navtheme === 'dark' ? 'rgba(255,255,255,0.6)' : 'rgba(8,28,53,0.45)',
+      opacity: 1,
+    },
     [theme.breakpoints.up('md')]: {
-      width: '8ch', // Achicado para cualquier dispositivo menor a 1900px
+      width: '8ch',
       '&:focus': { width: '18ch' },
     },
     ['@media (min-width: 1900px)']: {
-      width: '12ch', // En monitores muy grandes (1900px+) vuelve a su tamaño normal
+      width: '12ch',
       '&:focus': { width: '18ch' },
     },
   },
 }))
 
-// ─── Hook: scroll → fondo sólido ─────────────────────────────────────────────
+// ─── Hook: scroll ─────────────────────────────────────────────────────────────
 function useScrolled(threshold = 60) {
   const [scrolled, setScrolled] = React.useState(false)
   React.useEffect(() => {
@@ -106,7 +111,6 @@ function useScrolled(threshold = 60) {
   }, [threshold])
   return scrolled
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
 export default function Navbar() {
   const location = useLocation()
@@ -114,6 +118,17 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const { t, i18n } = useTranslation()
   const scrolled = useScrolled()
+
+  // ─── Tema automático por ruta ─────────────────────────────────────────────
+  // hasDarkHero: true  → hero oscuro → navbar top usa texto blanco
+  // hasDarkHero: false → hero claro  → navbar top usa texto oscuro
+  const hasDarkHero = DARK_HERO_ROUTES.includes(location.pathname)
+
+  // Al hacer scroll, siempre fondo oscuro con texto blanco
+  // En el top: si hero oscuro → texto blanco | si hero claro → texto oscuro
+  const navTheme: 'dark' | 'light' = scrolled ? 'dark' : (hasDarkHero ? 'dark' : 'light')
+  const textColor = navTheme === 'dark' ? '#ffffff' : '#081C35'
+  const activeUnderlineColor = navTheme === 'dark' ? NARANJA : VERDE_CLARO
 
   const [langAnchor, setLangAnchor] = React.useState<null | HTMLElement>(null)
   const langOpen = Boolean(langAnchor)
@@ -134,7 +149,7 @@ export default function Navbar() {
     { code: 'en', label: 'English' },
   ]
 
-  // ─── Búsqueda ────────────────────────────────────────────────────────────────
+  // ─── Búsqueda ─────────────────────────────────────────────────────────────
   const navigate = useNavigate()
   const searchRef = React.useRef<HTMLDivElement>(null)
   const [query, setQuery] = React.useState('')
@@ -260,8 +275,7 @@ export default function Navbar() {
     }
   }
 
-  // ─────────────────────────────────────────────────────────────────────────────
-
+  // ─── Drawer mobile ────────────────────────────────────────────────────────
   const drawer = (
     <Box sx={{ width: 280, height: '100%', bgcolor: BLANCO }} role="presentation">
       <Box sx={{ px: 2.5, py: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -347,6 +361,8 @@ export default function Navbar() {
       position="fixed"
       elevation={0}
       sx={{
+        // Al hacer scroll → siempre fondo oscuro
+        // En el top → transparente (el color del texto se adapta por ruta)
         bgcolor: scrolled ? 'var(--color-texto-oscuro)' : 'transparent',
         borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : 'none',
         boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.25)' : 'none',
@@ -355,10 +371,7 @@ export default function Navbar() {
       }}
     >
       <Container maxWidth={false} sx={{ px: { xs: 2, md: 6, lg: 8 } }}>
-        <Toolbar
-          disableGutters
-          sx={{ minHeight: { xs: 64, md: 72 } }}
-        >
+        <Toolbar disableGutters sx={{ minHeight: { xs: 64, md: 72 } }}>
           {isMobile ? (
             <>
               <Typography
@@ -367,11 +380,12 @@ export default function Navbar() {
                 sx={{
                   flexGrow: 1,
                   textDecoration: 'none',
-                  color: '#ffffff',
+                  color: textColor,
                   fontWeight: 800,
                   fontSize: '1.45rem',
                   letterSpacing: 0.5,
                   fontFamily: 'Montserrat, sans-serif',
+                  transition: 'color 0.4s ease',
                 }}
               >
                 ihomotic
@@ -380,11 +394,14 @@ export default function Navbar() {
                 aria-label="abrir menú"
                 onClick={handleDrawerToggle}
                 sx={{
-                  color: '#ffffff',
-                  border: `1.5px solid rgba(255, 255, 255, 0.3)`,
+                  color: textColor,
+                  border: `1.5px solid ${navTheme === 'dark' ? 'rgba(255,255,255,0.3)' : 'rgba(8,28,53,0.3)'}`,
                   borderRadius: '10px',
                   p: '6px',
-                  '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.1)' },
+                  transition: 'color 0.4s ease, border-color 0.4s ease',
+                  '&:hover': {
+                    bgcolor: navTheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(8,28,53,0.07)',
+                  },
                 }}
               >
                 <MenuIcon />
@@ -399,35 +416,28 @@ export default function Navbar() {
               </Drawer>
             </>
           ) : (
-            // ── Desktop: grid 3 columnas ────────────────────────────────────
-            <Box
-              sx={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-              }}
-            >
-              {/* ── Columna 1: Logo — extremo izquierdo ─────────────────────── */}
+            <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+
+              {/* ── Logo ──────────────────────────────────────────────────── */}
               <Box sx={{ display: 'flex', flex: 1, justifyContent: 'flex-start' }}>
                 <Typography
                   component={RouterLink}
                   to="/"
                   sx={{
                     textDecoration: 'none',
-                    color: '#ffffff',
+                    color: textColor,
                     fontWeight: 800,
                     fontSize: '1.7rem',
                     letterSpacing: 0.5,
                     fontFamily: 'Montserrat, sans-serif',
+                    transition: 'color 0.4s ease',
                   }}
                 >
                   ihomotic
                 </Typography>
               </Box>
 
-              {/* ── Columna 2: Links de navegación — centro exacto ────────────
-                  Solo los links del menú. Buscador e idioma NO están aquí.     */}
+              {/* ── Links ─────────────────────────────────────────────────── */}
               <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center', justifyContent: 'center' }}>
                 {links.map(({ to, key, tabIndex }) => {
                   const active = location.pathname === to
@@ -444,15 +454,20 @@ export default function Navbar() {
                         fontSize: { md: '0.9rem', lg: '1rem', xl: '1.16rem' },
                         borderRadius: isContacto ? '8px' : (active ? '0' : '999px'),
                         fontFamily: 'Montserrat, sans-serif',
-                        color: '#ffffff',
+                        color: isContacto ? '#081C35' : textColor,
                         bgcolor: isContacto ? VERDE_CLARO : 'transparent',
-                        borderBottom: (!isContacto && active) ? `2px solid ${NARANJA}` : 'none',
+                        borderBottom: (!isContacto && active) ? `2px solid ${activeUnderlineColor}` : 'none',
                         paddingBottom: (!isContacto && active) ? '4px' : '6px',
                         px: 1.4,
                         whiteSpace: 'nowrap',
+                        transition: 'color 0.4s ease, background-color 0.4s ease',
                         '&:hover': {
-                          bgcolor: isContacto ? '#8ab351' : 'rgba(255,255,255,0.1)',
-                          color: '#ffffff',
+                          bgcolor: isContacto
+                            ? '#8ab351'
+                            : navTheme === 'dark'
+                              ? 'rgba(255,255,255,0.1)'
+                              : 'rgba(8,28,53,0.07)',
+                          color: isContacto ? '#081C35' : textColor,
                         },
                       }}
                     >
@@ -462,17 +477,16 @@ export default function Navbar() {
                 })}
               </Box>
 
-              {/* ── Columna 3: Buscador + Idioma — extremo derecho ───────────
-                  Elementos completamente independientes del menú de links.     */}
+              {/* ── Buscador + Idioma ─────────────────────────────────────── */}
               <Box sx={{ display: 'flex', flex: 1, gap: 1.5, alignItems: 'center', justifyContent: 'flex-end' }}>
 
-                {/* Buscador — elemento independiente */}
                 <Box sx={{ position: 'relative' }} ref={searchRef}>
-                  <SearchWrapper>
-                    <SearchIconWrapper>
+                  <SearchWrapper navtheme={navTheme}>
+                    <SearchIconWrapper navtheme={navTheme}>
                       <SearchIcon fontSize="small" />
                     </SearchIconWrapper>
                     <StyledInputBase
+                      navtheme={navTheme}
                       placeholder={t('navbar.searchPlaceholder')}
                       inputProps={{ 'aria-label': 'buscar' }}
                       value={query}
@@ -527,7 +541,6 @@ export default function Navbar() {
                   )}
                 </Box>
 
-                {/* Idioma — elemento independiente */}
                 <Button
                   variant="outlined"
                   size="small"
@@ -539,12 +552,13 @@ export default function Navbar() {
                     fontFamily: 'Montserrat, sans-serif',
                     fontWeight: 600,
                     fontSize: '0.9rem',
-                    borderColor: 'rgba(255,255,255,0.5)',
-                    color: '#ffffff',
+                    borderColor: navTheme === 'dark' ? 'rgba(255,255,255,0.5)' : 'rgba(8,28,53,0.4)',
+                    color: textColor,
                     whiteSpace: 'nowrap',
+                    transition: 'color 0.4s ease, border-color 0.4s ease',
                     '&:hover': {
-                      borderColor: '#ffffff',
-                      bgcolor: 'rgba(255,255,255,0.1)',
+                      borderColor: navTheme === 'dark' ? '#ffffff' : '#081C35',
+                      bgcolor: navTheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(8,28,53,0.07)',
                     },
                   }}
                 >
@@ -557,7 +571,7 @@ export default function Navbar() {
         </Toolbar>
       </Container>
 
-      {/* ── Menú de idioma ──────────────────────────────────────────────────── */}
+      {/* ── Menú de idioma ────────────────────────────────────────────────── */}
       <Menu
         anchorEl={langAnchor}
         open={langOpen}

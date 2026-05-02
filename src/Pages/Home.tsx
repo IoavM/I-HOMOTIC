@@ -8,8 +8,9 @@ import Ventajas from '../components/ventajas/ventajas'
 import proyectos from '../components/Tarjetas2-Variante/Tarjeta2Variante.json'
 import TarjetaProyecto2 from '../components/Tarjetas2-Variante/Tarjeta2Variante'
 import { casa2 } from '../assets/imagenes'
-import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
+import CTAHome from '../components/cta-home/cta-home'
+
 const imagenesMap: Record<string, string> = {
     casa2,
 }
@@ -70,27 +71,8 @@ export default function Home() {
                     ))}
                 </div>
 
-                <div className='CTA-home'>
-                    <div className='CTA-home-texto'>
-                        <h2>¿No sabes por dónde empezar?</h2>
-                        <p>Te ayudamos a encontrar la solución perfecta para ti.</p>
-                    </div>
-                    <button className='btn-cotizar'
-                    onClick={() => {
-                        window.open(
-                            "https://wa.me/573014032120?text=Hola,%20quiero%20información%20sobre%20domótica",
-                            "_blank"
-                        )
-                        Swal.fire({
-                            title: t('hero.messageSent'),
-                            icon: "success",
-                            draggable: true,
-                            confirmButtonColor: "#2D6A2E"
-                        })
-                    }}>
-                        Cotizar mi proyecto
-                    </button>
-                </div>
+                <CTAHome />
+                
             </section>
 
         </motion.div>

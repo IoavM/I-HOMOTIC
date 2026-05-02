@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Montserrat:wght@300;600&display=swap');
 
 :root {
-  /* 01. PALETA DE COLOR (Manual de Marca) */
-  --color-fondo-claro:         #E5E5E5;  /* Principal / Fondos */
-  --color-acento-primario:   #9BC462;  /* Acento principal / Botones */
-  --color-texto-oscuro:        #081C35;  /* Texto oscuro / Fondos oscuros */
-  --color-acento-secundario: #7B5AA2;  /* Acento secundario / Morado */
+  /*--color-fondo-claro:         #E5E5E5; */
+  --color-fondo-claro:         #F0F0F5;  
+  --color-acento-primario:   #9BC462;  
+  --color-texto-oscuro:        #081C35;  
+  --color-acento-secundario: #7B5AA2;  
   --color-blanco:            #FFFFFF;
 }
 

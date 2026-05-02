@@ -1,46 +1,23 @@
 .otros-proyectos {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 4rem 6rem;
-    align-items: center;
-    background-color: var(--color-fondo-claro);
-    margin-bottom: 4rem;
-}
-
-.otros-proyectos-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-    max-width: 50rem;
-}
-
-.otros-proyectos-content h2 {
-    color: var(--color-texto-oscuro);
-}
-
-.otros-proyectos-content p {
-    font-size: 1rem;
-    color: var(--color-texto-oscuro);
-}
-
-.otros-proyectos-tarjetas {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 380px));
+    justify-content: center;
+    gap: 2.5rem;
     width: 100%;
-    max-width: 95rem;
+    max-width: 120rem;
+    margin: 0 auto;
+    transition: all 0.5s ease-in-out;
 }
 
 .proyecto-tarjeta {
-    background-color: white;
+    background-color: var(--color-fondo-claro);
     display: flex;
     flex-direction: column;
     gap: 1rem;
     border-radius: 20px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     overflow: hidden;
+    max-width: 420px;
 }
 
 .proyecto-tarjeta img {
@@ -49,36 +26,61 @@
     object-fit: cover;
 }
 
+.proyecto-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+}
+
+.proyecto-tarjeta-etiqueta {
+    background-color: var(--color-acento-secundario);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    width: fit-content;
+    padding: 0.5rem 1.4rem;
+
+}
+
+
 .proyecto-tarjeta h3 {
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--color-texto-oscuro);
-    padding: 0 1.5rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .proyecto-tarjeta p {
-    font-size: 0.95rem;
-    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
     color: var(--color-texto-oscuro);
     line-height: 1.5;
-    padding: 0 1.5rem;
+    max-width: 70%;
 }
 
 .proyecto-tarjeta-button {
-    background-color: var(--color-acento-primario);
-    color: white;
+    background-color: transparent;
+    color: var(--color-acento-primario);
     border: none;
-    padding: 0.6rem 1.5rem;
     font-size: 0.95rem;
     font-weight: 600;
     border-radius: 50px;
     cursor: pointer;
     width: fit-content;
-    font-family: 'Sora', sans-serif;
-    margin: auto 1.5rem 1.5rem 1.5rem;
-    transition: background-color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.3s ease;
 }
 
-.proyecto-tarjeta-button:hover, .proyecto-tarjeta-button:focus-visible {
+.proyecto-tarjeta-button:hover,
+.proyecto-tarjeta-button:focus-visible {
     background-color: var(--color-acento-secundario);
+    padding: 0.6rem 1.5rem;
+    color: var(--color-blanco);
+
+
 }

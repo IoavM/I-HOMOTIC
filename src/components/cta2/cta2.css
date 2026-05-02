@@ -1,0 +1,177 @@
+.CTA-home2 {
+    background-color: color-mix(in srgb, var(--color-acento-secundario), transparent 90%);
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem; 
+    align-items: center;
+    padding: 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 6rem auto;
+    width: 100%;
+    max-width: 90%;
+}
+
+.CTA2-content-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.CTA2-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-acento-secundario);
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 10px 20px rgba(123, 90, 162, 0.2);
+}
+
+.CTA2-icon {
+    color: var(--color-blanco);
+}
+
+.CTA-home-texto2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.CTA-home-texto2 h2 {
+    color: var(--color-texto-oscuro);
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.CTA-home-texto2 p {
+    color: var(--color-texto-oscuro);
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    text-align: left;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 60%;
+}
+
+.btn-cotizar2 {
+    background-color: var(--color-acento-secundario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 1.2rem 2.2rem;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.5s ease;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(155, 196, 98, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.btn-cotizar2:hover {
+    background-color: var(--color-blanco);
+    color: var(--color-texto-oscuro);
+    cursor: pointer;
+}
+
+@media (max-width: 1900px) {
+    .CTA-home2 {
+        gap: 4rem;
+        padding: 3rem 4rem;
+    }
+
+    .CTA2-icon-box {
+        width: 70px;
+        height: 70px;
+    }
+
+    .CTA-home-texto2 h2 {
+        font-size: 1.5rem;
+    }
+
+    .CTA-home-texto2 p {
+        font-size: 1rem;
+        line-height: 1.6rem;
+        max-width: 80%;
+    }
+
+    .btn-cotizar2 {
+        font-size: 1rem;
+        padding: 1rem 1.8rem;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 800px) {
+    .CTA-home2 {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2.5rem 2rem;
+        margin: 4rem auto;
+    }
+
+    .CTA2-content-left {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .CTA-home-texto2 {
+        align-items: center;
+    }
+
+    .CTA-home-texto2 h2 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .CTA-home-texto2 p {
+        font-size: 0.95rem;
+        line-height: 1.5rem;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .btn-cotizar2 {
+        font-size: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .CTA-home2 {
+        padding: 2rem 1.25rem;
+        margin: 3rem auto;
+        border-radius: 14px;
+    }
+
+    .CTA2-icon-box {
+        width: 60px;
+        height: 60px;
+    }
+
+    .CTA-home-texto2 h2 {
+        font-size: 1.2rem;
+    }
+
+    .CTA-home-texto2 p {
+        font-size: 0.85rem;
+        line-height: 1.4rem;
+    }
+
+    .btn-cotizar2 {
+        font-size: 0.9rem;
+        padding: 0.9rem 1.5rem;
+    }
+}
