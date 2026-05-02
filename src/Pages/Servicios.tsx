@@ -1,18 +1,12 @@
 import '../Styles/Servicios.css'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import { automatizacion, iluminacion, seguridad } from '../assets/imagenes'
 import pvs from '../components/TarjetasPV/PVinfo.json'
 import TarjetaPV from '../components/TarjetasPV/TarjetaPV'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import CalculadoraPrecios from '../components/calculadora-precios/calculadora-precios'
 
-const imagenesMap: Record<string, string> = {
-    automatizacion,
-    iluminacion,
-    seguridad,
-}
 
 export default function Servicios() {
     const { t } = useTranslation()
