@@ -8,10 +8,9 @@ interface Props {
     botonTexto: string
     onClick: () => void
     colorTexto?: string
-    backgroundColor?: string
 }
 
-export default function CTA2({ titulo, subtitulo, botonTexto, onClick, colorTexto = 'var(--color-texto-oscuro)', backgroundColor = 'var(--color-acento-primario)' }: Props) {
+export default function CTA2({ titulo, subtitulo, botonTexto, onClick, colorTexto = 'var(--color-texto-oscuro)' }: Props) {
     return (
         <div className='CTA-home2'>
             <div className='CTA2-content-left'>

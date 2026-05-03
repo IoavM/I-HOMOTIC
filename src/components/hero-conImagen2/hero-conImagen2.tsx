@@ -1,12 +1,7 @@
 import './hero-conImagen2.css'
 import { casa100 } from '../../assets/imagenes'
-import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
-
 
 export default function HeroConImagen2() {
-const { t } = useTranslation()
-const navigate = useNavigate()
 
 return(
     <section className='hero2' id='hero2' style={{ backgroundImage: `url(${casa100})` }}>
