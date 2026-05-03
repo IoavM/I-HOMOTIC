@@ -1,12 +1,5 @@
 /* ─────────────── Formulario de Contacto ─────────────── */
 
-.seccion-formulario {
-    display: flex;
-    justify-content: center;
-    padding: 4rem 10rem;
-    background-color: var(--color-blanco);
-}
-
 .div-formulario {
     width: 100%;
     max-width: 56rem;
@@ -199,7 +192,7 @@
 /* ─── Responsive 1900px ─── */
 @media (max-width: 1900px) {
     .seccion-formulario {
-        padding: 3rem 6rem;
+        padding: 3rem;
     }
 
     .div-formulario {

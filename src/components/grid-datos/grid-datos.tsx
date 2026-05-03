@@ -1,3 +1,4 @@
+import './grid-datos.css'
 import { useTranslation } from 'react-i18next'
 
 interface Props {

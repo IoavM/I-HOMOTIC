@@ -30,7 +30,7 @@ const VERDE = 'var(--color-texto-oscuro)'
 const VERDE_CLARO = 'var(--color-acento-primario)'
 const NARANJA = 'var(--color-acento-secundario)'
 
-const DARK_HERO_ROUTES = ['/', '/mapa', '/servicios']
+const DARK_HERO_ROUTES = ['/', '/mapa', '/servicios', '/contacto']
 
 const links = [
   { to: '/', key: 'navbar.home', tabIndex: -1 },

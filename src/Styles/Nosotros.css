@@ -70,30 +70,7 @@ li::marker{
     font-weight: 500;
 }
 
-.datos{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    text-align: center
-}
 
-.dato{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: var(--color-fondo-claro);
-    padding: 2rem;
-    border-radius: 20px;
-}
-
-.dato h3{
-    color: var(--color-texto-oscuro);
-}
-.dato p{
-    color: var(--color-texto-oscuro);
-    font-size: 1.2rem;
-    font-weight: 400;
-}
 
 /*-------------------------------------------------Equipo----------------------------------------*/
 .equipo{
@@ -176,13 +153,7 @@ li::marker{
         font-size: 1rem;
     }
 
-    .dato h3 {
-        font-size: 1.8rem;
-    }
 
-    .dato p {
-        font-size: 1rem;
-    }
 
     /*-------------------------------------------------Equipo----------------------------------------*/
 
@@ -234,21 +205,7 @@ li::marker{
         font-size: 0.9rem;
     }
 
-    .datos {
-        grid-template-columns: repeat(2, 1fr);
-    }
 
-    .dato {
-        padding: 1.2rem;
-    }
-
-    .dato h3 {
-        font-size: 1.5rem;
-    }
-
-    .dato p {
-        font-size: 0.9rem;
-    }
 
     /*-------------------------------------------------Equipo----------------------------------------*/
 

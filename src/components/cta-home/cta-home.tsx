@@ -1,29 +1,21 @@
 import './cta-home.css'
-import Swal from 'sweetalert2'
-import { useTranslation } from 'react-i18next'
-import DatosCTA from './cta-home.json'
 
-export default function CTAHome() {
-    const { t } = useTranslation()
+interface Props {
+    titulo: string
+    subtitulo: string
+    botonTexto: string
+    onClick: () => void
+}
 
-    const handleCotizar = () => {
-        window.open(DatosCTA.whatsappUrl, "_blank")
-        Swal.fire({
-            title: t('hero.messageSent'),
-            icon: "success",
-            draggable: true,
-            confirmButtonColor: "#2D6A2E"
-        })
-    }
-
+export default function CTAHome({ titulo, subtitulo, botonTexto, onClick }: Props) {
     return (
         <div className='CTA-home'>
             <div className='CTA-home-texto'>
-                <h2>{DatosCTA.titulo}</h2>
-                <p>{DatosCTA.subtitulo}</p>
+                <h2>{titulo}</h2>
+                <p>{subtitulo}</p>
             </div>
-            <button className='btn-cotizar' onClick={handleCotizar}>
-                {DatosCTA.botonTexto}
+            <button className='btn-cotizar' onClick={onClick}>
+                {botonTexto}
             </button>
         </div>
     )

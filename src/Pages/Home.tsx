@@ -9,7 +9,9 @@ import proyectos from '../components/Tarjetas2-Variante/Tarjeta2Variante.json'
 import TarjetaProyecto2 from '../components/Tarjetas2-Variante/Tarjeta2Variante'
 import { casa2 } from '../assets/imagenes'
 import { useNavigate } from 'react-router-dom'
-import CTAHome from '../components/cta-home/cta-home'
+import CTAHome from '../components/cta-home/cta-home.tsx'
+import DatosCTA from '../components/cta-home/cta-home.json'
+import Swal from 'sweetalert2'
 
 const imagenesMap: Record<string, string> = {
     casa2,
@@ -19,6 +21,16 @@ const imagenesMap: Record<string, string> = {
 export default function Home() {
     const { t } = useTranslation()
     const navigate = useNavigate()
+
+    const handleCotizar = () => {
+        window.open(DatosCTA.whatsappUrl, "_blank")
+        Swal.fire({
+            title: t('hero.messageSent'),
+            icon: "success",
+            draggable: true,
+            confirmButtonColor: "#2D6A2E"
+        })
+    }
 
     return (
         <motion.div
@@ -71,8 +83,16 @@ export default function Home() {
                     ))}
                 </div>
 
-                <CTAHome />
-                
+                {[DatosCTA].map((dato, index) => (
+                    <CTAHome 
+                        key={index}
+                        titulo={dato.titulo}
+                        subtitulo={dato.subtitulo}
+                        botonTexto={dato.botonTexto}
+                        onClick={handleCotizar}
+                    />
+                ))}
+    
             </section>
 
         </motion.div>

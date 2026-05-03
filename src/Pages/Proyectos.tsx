@@ -5,9 +5,23 @@ import HeroProyectos from '../components/hero-proyectos/hero-proyectos'
 import TarjetaProyecto from '../components/Tarjetas2/Tarjeta2Info'
 import Proyectos2Data from '../components/Tarjetas2/otros-proyectos.json'
 import CTA2 from '../components/cta2/cta2'
+import DatosCTA2 from '../components/cta2/cta2.json'
+import Swal from 'sweetalert2'
+import { useTranslation } from 'react-i18next'
 
 export default function Proyectos() {
+    const { t } = useTranslation()
     const [filtro, setFiltro] = useState('Todos')
+
+    const handleCotizar = () => {
+        window.open(DatosCTA2.whatsappUrl, "_blank")
+        Swal.fire({
+            title: t('hero.messageSent'),
+            icon: "success",
+            draggable: true,
+            confirmButtonColor: "#2D6A2E"
+        })
+    }
 
     const categorias = ['Todos', ...new Set(Proyectos2Data.map(p => p.Etiqueta))]
 
@@ -66,7 +80,15 @@ export default function Proyectos() {
                         ))}
                     </AnimatePresence>
                 </div>
-                <CTA2 />
+                {[DatosCTA2].map((dato, index) => (
+                    <CTA2 
+                        key={index}
+                        titulo={dato.titulo}
+                        subtitulo={dato.subtitulo}
+                        botonTexto={dato.botonTexto}
+                        onClick={handleCotizar}
+                    />
+                ))}
             </section>
         </motion.div>
     )

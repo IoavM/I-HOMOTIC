@@ -10,7 +10,7 @@
     border-radius: 20px;
     margin: 6rem auto;
     width: 100%;
-    max-width: 90%;
+    max-width: 92%;
 }
 
 .CTA2-content-left {
@@ -87,6 +87,7 @@
     .CTA-home2 {
         gap: 4rem;
         padding: 3rem 4rem;
+        margin: 2rem;
     }
 
     .CTA2-icon-box {
@@ -162,11 +163,11 @@
     }
 
     .CTA-home-texto2 h2 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
     .CTA-home-texto2 p {
-        font-size: 0.85rem;
+        font-size: 1rem;
         line-height: 1.4rem;
     }
 

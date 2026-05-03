@@ -788,7 +788,6 @@ export default function Mapa() {
         </div>
       </aside>
 
-      {/* Day / Night toggle */}
       <button className='mapa-mode-toggle' tabIndex={11} onClick={() => setIsNight(n => !n)}>
         {isNight ? t('mapa.modeDay') : t('mapa.modeNight')}
       </button>

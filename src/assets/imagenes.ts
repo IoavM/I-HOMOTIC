@@ -5,4 +5,6 @@ export { default as casa } from './casa.png'
 export { default as CasaModerna } from './casa-moderna.png'
 export { default as casa2 } from './casa2.png'
 export { default as casa3 } from './convertido.webp'
+export { default as casa100 } from './casa100.webp'
+
 

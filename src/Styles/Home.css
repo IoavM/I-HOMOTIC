@@ -6,7 +6,7 @@
 
 /* ---------------------------------------------------I-HOMOTIC---------------------------------------------- */
 
-.i-homotic{
+.i-homotic {
     background-color: var(--color-texto-oscuro);
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -34,7 +34,7 @@
     z-index: 1;
 }
 
-.contenido-ihomotic{
+.contenido-ihomotic {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -42,26 +42,26 @@
     gap: 50px;
 }
 
-.contenido-ihomotic h2{
+.contenido-ihomotic h2 {
     color: var(--color-blanco);
     font-size: 6.5rem;
     letter-spacing: 3px;
 }
 
-.contenido-ihomotic h3{
+.contenido-ihomotic h3 {
     color: var(--color-acento-primario);
     font-weight: 600;
     font-family: 'Montserrat', sans-serif;
 }
 
-.contenido-ihomotic span  {
+.contenido-ihomotic span {
     color: var(--color-acento-primario);
     font-size: 6rem;
     font-weight: 700;
     letter-spacing: 3px;
 }
 
-.contenido-ihomotic p{
+.contenido-ihomotic p {
     color: var(--color-blanco);
     max-width: 85%;
     line-height: 1.5;
@@ -71,9 +71,9 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-
 /* ---------------------------------------------------VENTAJAS---------------------------------------------- */
-.ventajas{
+
+.ventajas {
     background-color: var(--color-blanco);
     display: flex;
     flex-direction: column;
@@ -84,20 +84,22 @@
     overflow: hidden;
     gap: 50px;
 }
-.ventajas-content{
+
+.ventajas-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 50px;
 }
-.ventajas-content h3{
+
+.ventajas-content h3 {
     color: var(--color-texto-oscuro);
     font-size: 4rem;
     letter-spacing: 3px;
 }
 
-.ventajas-content span{
+.ventajas-content span {
     color: var(--color-acento-primario);
     font-size: 4rem;
     font-weight: 700;
@@ -105,7 +107,8 @@
 }
 
 /* ---------------------------------------------------PROYECTO-HOME---------------------------------------------- */
-.proyecto-home{
+
+.proyecto-home {
     background-color: var(--color-texto-oscuro);
     display: flex;
     flex-direction: column;
@@ -135,17 +138,16 @@
     z-index: 1;
 }
 
-.proyecto-parte1{
+.proyecto-parte1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 70px 0 90px ;
+    padding: 70px 0 90px;
     gap: 42.8rem;
-
 }
 
-.proyecto-parte2{
+.proyecto-parte2 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
@@ -154,25 +156,25 @@
     margin-top: 2rem;
 }
 
-.proyecto-parte1-texto{
+.proyecto-parte1-texto {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap:4px;
+    gap: 4px;
     position: relative;
     overflow: hidden;
 }
 
-.proyecto-parte1-texto h2{
+.proyecto-parte1-texto h2 {
     color: var(--color-blanco);
     letter-spacing: 3px;
 }
 
-.proyecto-parte1-texto h2 span{
+.proyecto-parte1-texto h2 span {
     color: var(--color-acento-primario);
 }
 
-.proyecto-parte1-texto p{
+.proyecto-parte1-texto p {
     color: var(--color-blanco);
     max-width: 100%;
     font-size: 1.65rem;
@@ -182,7 +184,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.btn-ver-proyectos{
+.btn-ver-proyectos {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -190,7 +192,7 @@
     overflow: hidden;
 }
 
-.btn-ver-proyectos button{
+.btn-ver-proyectos button {
     background-color: transparent;
     color: var(--color-acento-primario);
     border: 2px solid var(--color-acento-primario);
@@ -203,14 +205,318 @@
     transition: all 0.5s ease;
 }
 
-.btn-ver-proyectos button:hover{
+.btn-ver-proyectos button:hover {
     background-color: var(--color-acento-primario);
     color: var(--color-blanco);
     cursor: pointer;
 }
 
-.proyecto-parte2{
-    width: 100%;
-    max-width: 1200px;
+/* ---------------------------------------------------CTA-HOME---------------------------------------------- */
+
+.CTA-home {
+    background-color: var(--color-acento-secundario);
+    display: flex;
+    justify-content: space-between;
+    gap: 42rem;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    margin-top: 6rem;
 }
 
+.CTA-home-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.CTA-home-texto h2 {
+    color: var(--color-blanco);
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.CTA-home-texto p {
+    color: var(--color-blanco);
+    font-size: 1.6rem;
+    line-height: 1.5rem;
+    text-align: left;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-cotizar {
+    background-color: var(--color-acento-primario);
+    color: var(--color-texto-oscuro);
+    border: none;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.5s ease;
+    text-align: center;
+    box-shadow: 0 0px 15px rgb(207, 201, 201);
+}
+
+.btn-cotizar:hover {
+    background-color: var(--color-blanco);
+    color: var(--color-texto-oscuro);
+    cursor: pointer;
+}
+
+/* ---------------------------------------------------RESPONSIVE---------------------------------------------- */
+
+@media (max-width: 1900px) {
+
+    /* I-HOMOTIC */
+    .contenido-ihomotic {
+        margin: 70px 6rem;
+        gap: 35px;
+    }
+
+    .contenido-ihomotic h2 {
+        font-size: 4rem;
+    }
+
+    .contenido-ihomotic h3 {
+        font-size: 1.2rem;
+    }
+
+    .contenido-ihomotic span {
+        font-size: 3.8rem;
+    }
+
+    .contenido-ihomotic p {
+        font-size: 1.2rem;
+    }
+
+    /* VENTAJAS */
+    .ventajas-content h3 {
+        font-size: 3.2rem;
+    }
+
+    .ventajas-content span {
+        font-size: 3.2rem;
+    }
+
+    /* PROYECTO HOME */
+    .proyecto-home {
+        padding: 40px 6rem;
+    }
+
+    .proyecto-parte1 {
+        gap: 23.8rem;
+    }
+
+    .proyecto-parte1-texto h2 {
+        font-size: 2rem;
+    }
+
+    .proyecto-parte1-texto p {
+        font-size: 1.1rem;
+    }
+
+    .btn-ver-proyectos button {
+        font-size: 1rem;
+    }
+
+    /* CTA HOME */
+    .CTA-home {
+        gap: 10rem;
+        padding: 4rem 5rem;
+    }
+
+    .CTA-home-texto h2 {
+        font-size: 1.5rem;
+    }
+
+    .CTA-home-texto p {
+        font-size: 1rem;
+    }
+
+    .btn-cotizar {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 800px) {
+
+    /* I-HOMOTIC */
+    .i-homotic {
+        grid-template-columns: 1fr;
+        padding: 4rem 1.5rem;
+        text-align: center;
+    }
+
+    .contenido-ihomotic {
+        margin: 0;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .contenido-ihomotic h2,
+    .contenido-ihomotic span {
+        font-size: 3rem;
+    }
+
+    .contenido-ihomotic h3 {
+        font-size: 1rem;
+    }
+
+    .contenido-ihomotic p {
+        max-width: 100%;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    /* VENTAJAS */
+    .ventajas {
+        padding: 50px 1.5rem;
+        gap: 30px;
+    }
+
+    .ventajas-content h3 {
+        font-size: 2.5rem;
+    }
+
+    .ventajas-content span {
+        font-size: 2.5rem;
+    }
+
+    /* PROYECTO HOME */
+    .proyecto-home {
+        padding: 15px 2rem 40px 2rem;
+    }
+
+    .proyecto-parte1 {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 2rem 0;
+    }
+
+    .proyecto-parte1-texto {
+        align-items: center;
+    }
+
+    .proyecto-parte1-texto h2 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .proyecto-parte1-texto p {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .btn-ver-proyectos button {
+        font-size: 1rem;
+    }
+
+    /* CTA HOME */
+    .CTA-home {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 3rem 2rem;
+        margin-top: 3rem;
+    }
+
+    .CTA-home-texto {
+        align-items: center;
+    }
+
+    .CTA-home-texto h2 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .CTA-home-texto p {
+        font-size: 0.95rem;
+        text-align: center;
+    }
+
+    .btn-cotizar {
+        font-size: 1rem;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* I-HOMOTIC */
+    .i-homotic {
+        padding: 2rem 1.25rem;
+    }
+
+    .contenido-ihomotic {
+        gap: 1.5rem;
+    }
+
+    .contenido-ihomotic h2,
+    .contenido-ihomotic span {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .contenido-ihomotic p {
+        font-size: 0.95rem;
+        max-width: 90%;
+    }
+
+    /* VENTAJAS */
+    .ventajas-content h3 {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .ventajas-content span {
+        font-size: 1.8rem;
+    }
+
+    /* PROYECTO HOME */
+    .proyecto-parte1-texto h2 {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+
+    .proyecto-parte1-texto p {
+        font-size: 0.9rem;
+    }
+
+    .btn-ver-proyectos button {
+        font-size: 0.85rem;
+        padding: 0.8rem;
+    }
+
+    .proyecto-parte2 {
+        grid-template-columns: 1fr;
+    }
+
+    /* CTA HOME */
+    .CTA-home {
+        padding: 2rem 1.25rem;
+        border-radius: 14px;
+        margin-top: 2rem;
+    }
+
+    .CTA-home-texto h2 {
+        font-size: 1.2rem;
+    }
+
+    .CTA-home-texto p {
+        font-size: 0.85rem;
+    }
+
+    .btn-cotizar {
+        font-size: 0.9rem;
+        padding: 1rem;
+    }
+}
