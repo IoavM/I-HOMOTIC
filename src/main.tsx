@@ -12,6 +12,7 @@ import Contacto from './Pages/Contacto.tsx'
 import Servicios from './Pages/Servicios.tsx'
 import { lazy, Suspense } from 'react'
 import ScrollToTop from './components/ScrollToTop.tsx'
+import ScrollToTopButton from './components/ScrollToTopButton/ScrollToTopButton.tsx'
 import PaginaProyectos from './components/pagina-proyectos/pagina-proyectos.tsx'
 
 const Mapa = lazy(() => import('./Pages/Mapa.tsx'))
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Navbar />
       <ScrollToTop />
+      <ScrollToTopButton />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/servicios" element={<Servicios />} />
