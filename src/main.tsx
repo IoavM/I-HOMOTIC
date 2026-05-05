@@ -1,7 +1,7 @@
 import './i18n'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import './Styles/Global.css'
 import Navbar from './components/Navbar/Navbar.tsx'
 import Footer from './components/Footer/Footer.tsx'
@@ -10,16 +10,32 @@ import Nosotros from './Pages/Nosotros.tsx'
 import Proyectos from './Pages/Proyectos.tsx'
 import Contacto from './Pages/Contacto.tsx'
 import Servicios from './Pages/Servicios.tsx'
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import ScrollToTop from './components/ScrollToTop.tsx'
 import ScrollToTopButton from './components/ScrollToTopButton/ScrollToTopButton.tsx'
 import PaginaProyectos from './components/pagina-proyectos/pagina-proyectos.tsx'
+import Hotjar from '@hotjar/browser'
+
+// ✅ Inicializa Hotjar una sola vez
+Hotjar.init(798296, 6)
 
 const Mapa = lazy(() => import('./Pages/Mapa.tsx'))
+
+// ✅ Componente separado para escuchar cambios de ruta
+function HotjarRouteTracker() {
+  const location = useLocation()
+
+  useEffect(() => {
+    Hotjar.stateChange(location.pathname)
+  }, [location.pathname])
+
+  return null
+}
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
+      <HotjarRouteTracker /> {/* ✅ Dentro de BrowserRouter para usar useLocation */}
       <Navbar />
       <ScrollToTop />
       <ScrollToTopButton />
