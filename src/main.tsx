@@ -15,13 +15,13 @@ import ScrollToTop from './components/ScrollToTop.tsx'
 import ScrollToTopButton from './components/ScrollToTopButton/ScrollToTopButton.tsx'
 import PaginaProyectos from './components/pagina-proyectos/pagina-proyectos.tsx'
 import Hotjar from '@hotjar/browser'
+import Clarity from '@microsoft/clarity'
 
-// ✅ Inicializa Hotjar una sola vez
 Hotjar.init(798296, 6)
+Clarity.init('wm5lgd3493')
 
 const Mapa = lazy(() => import('./Pages/Mapa.tsx'))
 
-// ✅ Componente separado para escuchar cambios de ruta
 function HotjarRouteTracker() {
   const location = useLocation()
 
@@ -35,7 +35,7 @@ function HotjarRouteTracker() {
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <HotjarRouteTracker /> {/* ✅ Dentro de BrowserRouter para usar useLocation */}
+      <HotjarRouteTracker />
       <Navbar />
       <ScrollToTop />
       <ScrollToTopButton />
