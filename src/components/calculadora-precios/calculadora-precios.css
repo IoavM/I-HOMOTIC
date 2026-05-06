@@ -1399,10 +1399,16 @@
 
     /* Wizard responsive (tablet) */
     .wizard-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         padding: 1.5rem;
         min-height: auto;
         gap: 1.5rem;
+    }
+
+    .wizard-main {
+        padding: 0;
+        min-width: 0;
+        max-width: 100%;
     }
 
     .wizard-sidebar {
@@ -1410,6 +1416,8 @@
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         padding-right: 0;
         padding-bottom: 1.5rem;
+        min-width: 0;
+        max-width: 100%;
     }
 
     .wizard-nav {
@@ -1436,14 +1444,59 @@
         border-top: 1px solid rgba(255, 255, 255, 0.06);
         padding-left: 0;
         padding-top: 1.5rem;
+        min-width: 0;
+        max-width: 100%;
     }
 
     .wizard-options {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .wizard-options--numbers {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .wizard-option {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-areas: 
+            "icon title"
+            "icon desc";
+        text-align: left;
+        align-items: center;
+        column-gap: 1.2rem;
+        row-gap: 0.2rem;
+        padding: 1.2rem 1.5rem;
+    }
+
+    .wizard-option-icon {
+        grid-area: icon;
+        font-size: 2.5rem;
+        margin-bottom: 0;
+    }
+
+    .wizard-option strong {
+        grid-area: title;
+        align-self: end;
+        font-size: 1.1rem;
+    }
+
+    .wizard-option p {
+        grid-area: desc;
+        align-self: start;
+        font-size: 0.85rem;
+    }
+
+    .wizard-option--number {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 1.2rem 1rem;
     }
 
     .wizard-question {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
+        padding: 0 0.5rem;
     }
 
     .wizard-result-price {
@@ -1453,7 +1506,7 @@
 
 @media (max-width: 480px) {
     .calculadora {
-        padding: 2rem 0.8rem 1.5rem;
+        padding: 6rem 0.8rem 1.5rem;
         gap: 1.2rem;
     }
 
@@ -1556,7 +1609,7 @@
     }
 
     .wizard-options {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 0.8rem;
     }
 
@@ -1565,12 +1618,13 @@
     }
 
     .wizard-option {
-        padding: 1.2rem 1rem;
+        padding: 1rem 1.2rem;
         border-radius: 14px;
+        column-gap: 1rem;
     }
 
     .wizard-option-icon {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .wizard-option strong {
@@ -1579,6 +1633,10 @@
 
     .wizard-option p {
         font-size: 0.75rem;
+    }
+
+    .wizard-option--number {
+        padding: 1.2rem 1rem;
     }
 
     .wizard-question {
