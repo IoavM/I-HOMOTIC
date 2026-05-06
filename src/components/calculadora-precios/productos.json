@@ -63,7 +63,11 @@
       "icon": "🏠",
       "nombreKey": "calculator.pkg_basico",
       "descKey": "calculator.pkg_basicoDesc",
-      "itemsKeys": ["calculator.prod_luces", "calculator.prod_asistente", "calculator.prod_sensores"],
+      "itemsKeys": [
+        "calculator.prod_luces",
+        "calculator.prod_asistente",
+        "calculator.prod_sensores"
+      ],
       "precio": 690000,
       "precioOriginal": 820000
     },
@@ -72,7 +76,13 @@
       "icon": "🏡",
       "nombreKey": "calculator.pkg_premium",
       "descKey": "calculator.pkg_premiumDesc",
-      "itemsKeys": ["calculator.prod_luces", "calculator.prod_termostato", "calculator.prod_camaras", "calculator.prod_cerradura", "calculator.prod_asistente"],
+      "itemsKeys": [
+        "calculator.prod_luces",
+        "calculator.prod_termostato",
+        "calculator.prod_camaras",
+        "calculator.prod_cerradura",
+        "calculator.prod_asistente"
+      ],
       "precio": 1990000,
       "precioOriginal": 2380000
     },
@@ -81,7 +91,16 @@
       "icon": "🏰",
       "nombreKey": "calculator.pkg_total",
       "descKey": "calculator.pkg_totalDesc",
-      "itemsKeys": ["calculator.prod_luces", "calculator.prod_termostato", "calculator.prod_camaras", "calculator.prod_cerradura", "calculator.prod_asistente", "calculator.prod_sensores", "calculator.prod_persianas", "calculator.prod_audio"],
+      "itemsKeys": [
+        "calculator.prod_luces",
+        "calculator.prod_termostato",
+        "calculator.prod_camaras",
+        "calculator.prod_cerradura",
+        "calculator.prod_asistente",
+        "calculator.prod_sensores",
+        "calculator.prod_persianas",
+        "calculator.prod_audio"
+      ],
       "precio": 2890000,
       "precioOriginal": 3640000
     }

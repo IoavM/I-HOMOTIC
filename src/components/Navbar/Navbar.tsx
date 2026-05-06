@@ -30,15 +30,15 @@ const VERDE = 'var(--color-texto-oscuro)'
 const VERDE_CLARO = 'var(--color-acento-primario)'
 const NARANJA = 'var(--color-acento-secundario)'
 
-const DARK_HERO_ROUTES = ['/', '/mapa', '/servicios', '/contacto']
+const DARK_HERO_ROUTES = ['/', '/mapa', '/servicios', '/contacto', '/calculadora', ]
 
 const links = [
   { to: '/', key: 'navbar.home', tabIndex: -1 },
   { to: '/proyectos', key: 'navbar.projects', tabIndex: 2 },
   { to: '/servicios', key: 'navbar.servicios', tabIndex: 3 },
-  { to: '/mapa', key: 'navbar.mapa', tabIndex: 4 },
-  { to: '/nosotros', key: 'navbar.nosotros', tabIndex: 5 },
-  { to: '/contacto', key: 'navbar.contacto', tabIndex: 6 },
+  { to: '/calculadora', key: 'navbar.calculadora', tabIndex: 4 },
+  { to: '/mapa', key: 'navbar.mapa', tabIndex: 5 },
+  { to: '/contacto', key: 'navbar.contacto', tabIndex: 7 },
 ]
 
 // ─── Search Bar ───────────────────────────────────────────────────────────────
@@ -122,7 +122,8 @@ export default function Navbar() {
   // ─── Tema automático por ruta ─────────────────────────────────────────────
   // hasDarkHero: true  → hero oscuro → navbar top usa texto blanco
   // hasDarkHero: false → hero claro  → navbar top usa texto oscuro
-  const hasDarkHero = DARK_HERO_ROUTES.includes(location.pathname)
+  const isProjectDetail = location.pathname.startsWith('/proyectos/') && location.pathname !== '/proyectos'
+  const hasDarkHero = DARK_HERO_ROUTES.includes(location.pathname) || isProjectDetail
 
   // Al hacer scroll, siempre fondo oscuro con texto blanco
   // En el top: si hero oscuro → texto blanco | si hero claro → texto oscuro
@@ -171,6 +172,7 @@ export default function Navbar() {
     { label: t('navbar.nosotros'), sublabel: t('navbar.sub_nosotros'), to: '/nosotros', category: 'page', keywords: ['nosotros', 'about', 'equipo', 'empresa', 'team', 'historia', 'quiénes somos'] },
     { label: t('navbar.projects'), sublabel: t('navbar.sub_projects'), to: '/proyectos', category: 'page', keywords: ['proyectos', 'projects', 'obras', 'casos', 'portfolio'] },
     { label: t('navbar.mapa'), sublabel: t('navbar.sub_mapa'), to: '/mapa', category: 'page', keywords: ['mapa', 'map', '3d', 'visualizador', 'hogar', 'tour', 'habitaciones', 'casa'] },
+    { label: t('navbar.calculadora'), sublabel: t('navbar.sub_calculadora'), to: '/calculadora', category: 'page', keywords: ['calculadora', 'precios', 'ahorro', 'presupuesto', 'cotizar'] },
     { label: t('navbar.contacto'), sublabel: t('navbar.sub_contacto'), to: '/contacto', category: 'page', keywords: ['contacto', 'contact', 'whatsapp', 'email', 'formulario', 'mensaje'] },
     { label: 'Hero — ' + t('hero.title'), sublabel: t('navbar.home'), to: '/', sectionId: 'hero', category: 'section', keywords: ['hero', 'banner', 'tecnología inteligente', 'smart technology', 'hogares sostenibles'] },
     { label: t('services.title'), sublabel: t('navbar.home'), to: '/', sectionId: 'home-servicios', category: 'section', keywords: ['servicios inicio', 'tarjetas servicios', 'our services', 'nuestros servicios'] },

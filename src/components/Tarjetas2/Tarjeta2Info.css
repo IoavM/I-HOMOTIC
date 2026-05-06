@@ -34,16 +34,27 @@
 }
 
 .proyecto-tarjeta-etiqueta {
-    background-color: var(--color-acento-secundario);
-    color: white;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
+    color: var(--color-acento-secundario);
+    background-color: transparent;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
     width: fit-content;
-    padding: 0.5rem 1.4rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
 
+.proyecto-tarjeta-etiqueta::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 3px;
+    background-color: var(--color-acento-secundario);
+    border-radius: 2px;
 }
 
 
