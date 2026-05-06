@@ -451,12 +451,16 @@
 
 @media (max-width: 480px) {
 
-    /* I-HOMOTIC */
+    /* ---------------------------------------------------I-HOMOTIC---------------------------------------------- */
+
     .i-homotic {
         padding: 2rem 1.25rem;
     }
 
     .contenido-ihomotic {
+        margin: 0 auto;
+        width: 100%;
+        align-items: center;
         gap: 1.5rem;
     }
 
@@ -468,10 +472,12 @@
 
     .contenido-ihomotic p {
         font-size: 0.95rem;
-        max-width: 90%;
+        max-width: 100%;
+        text-align: center;
     }
 
-    /* VENTAJAS */
+    /* ---------------------------------------------------VENTAJAS---------------------------------------------- */
+
     .ventajas-content h3 {
         font-size: 1.8rem;
         letter-spacing: 1px;
@@ -481,7 +487,12 @@
         font-size: 1.8rem;
     }
 
-    /* PROYECTO HOME */
+    /* ---------------------------------------------------PROYECTO-HOME---------------------------------------------- */
+
+    .proyecto-home {
+        padding: 15px 1.25rem 40px 1.25rem;
+    }
+
     .proyecto-parte1-texto h2 {
         font-size: 1.5rem;
         letter-spacing: 1px;
@@ -500,7 +511,8 @@
         grid-template-columns: 1fr;
     }
 
-    /* CTA HOME */
+    /* ---------------------------------------------------CTA-HOME---------------------------------------------- */
+
     .CTA-home {
         padding: 2rem 1.25rem;
         border-radius: 14px;
