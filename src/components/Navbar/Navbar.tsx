@@ -281,21 +281,32 @@ export default function Navbar() {
   const drawer = (
     <Box sx={{ width: 280, height: '100%', bgcolor: BLANCO }} role="presentation">
       <Box sx={{ px: 2.5, py: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Typography
+        <Box
           component={RouterLink}
           to="/"
           onClick={closeDrawer}
           sx={{
+            display: 'flex',
+            alignItems: 'center',
             textDecoration: 'none',
-            color: VERDE_CLARO,
-            fontWeight: 800,
-            fontSize: '1.4rem',
-            letterSpacing: 0.5,
-            fontFamily: 'Montserrat, sans-serif',
           }}
         >
-          I-HOMOTIC
-        </Typography>
+          <Box
+            sx={{
+              width: '130px',
+              height: '26px',
+              backgroundColor: VERDE_CLARO,
+              maskImage: 'url(/Logopagina.svg)',
+              maskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              maskPosition: 'left center',
+              WebkitMaskImage: 'url(/Logopagina.svg)',
+              WebkitMaskSize: 'contain',
+              WebkitMaskRepeat: 'no-repeat',
+              WebkitMaskPosition: 'left center',
+            }}
+          />
+        </Box>
         <IconButton onClick={closeDrawer} size="small" sx={{ color: VERDE }}>
           <CloseIcon />
         </IconButton>
@@ -376,22 +387,33 @@ export default function Navbar() {
         <Toolbar disableGutters sx={{ minHeight: { xs: 64, md: 72 } }}>
           {isMobile ? (
             <>
-              <Typography
+              <Box
                 component={RouterLink}
                 to="/"
                 sx={{
                   flexGrow: 1,
+                  display: 'flex',
+                  alignItems: 'center',
                   textDecoration: 'none',
-                  color: textColor,
-                  fontWeight: 800,
-                  fontSize: '1.45rem',
-                  letterSpacing: 0.5,
-                  fontFamily: 'Montserrat, sans-serif',
-                  transition: 'color 0.4s ease',
                 }}
               >
-                ihomotic
-              </Typography>
+                <Box
+                  sx={{
+                    width: '140px',
+                    height: '28px',
+                    backgroundColor: textColor,
+                    maskImage: 'url(/Logopagina.svg)',
+                    maskSize: 'contain',
+                    maskRepeat: 'no-repeat',
+                    maskPosition: 'left center',
+                    WebkitMaskImage: 'url(/Logopagina.svg)',
+                    WebkitMaskSize: 'contain',
+                    WebkitMaskRepeat: 'no-repeat',
+                    WebkitMaskPosition: 'left center',
+                    transition: 'background-color 0.4s ease',
+                  }}
+                />
+              </Box>
               <IconButton
                 aria-label="abrir menú"
                 onClick={handleDrawerToggle}
@@ -422,21 +444,32 @@ export default function Navbar() {
 
               {/* ── Logo ──────────────────────────────────────────────────── */}
               <Box sx={{ display: 'flex', flex: 1, justifyContent: 'flex-start' }}>
-                <Typography
+                <Box
                   component={RouterLink}
                   to="/"
                   sx={{
+                    display: 'flex',
+                    alignItems: 'center',
                     textDecoration: 'none',
-                    color: textColor,
-                    fontWeight: 800,
-                    fontSize: '1.7rem',
-                    letterSpacing: 0.5,
-                    fontFamily: 'Montserrat, sans-serif',
-                    transition: 'color 0.4s ease',
                   }}
                 >
-                  ihomotic
-                </Typography>
+                  <Box
+                    sx={{
+                      width: '150px',
+                      height: '30px',
+                      backgroundColor: textColor,
+                      maskImage: 'url(/Logopagina.svg)',
+                      maskSize: 'contain',
+                      maskRepeat: 'no-repeat',
+                      maskPosition: 'left center',
+                      WebkitMaskImage: 'url(/Logopagina.svg)',
+                      WebkitMaskSize: 'contain',
+                      WebkitMaskRepeat: 'no-repeat',
+                      WebkitMaskPosition: 'left center',
+                      transition: 'background-color 0.4s ease',
+                    }}
+                  />
+                </Box>
               </Box>
 
               {/* ── Links ─────────────────────────────────────────────────── */}
