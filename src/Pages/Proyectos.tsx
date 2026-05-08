@@ -39,7 +39,7 @@ export default function Proyectos() {
                 <HeroProyectos />
             </section>
 
-            <section className='proyecto'>
+            <section id='proyecto' className='proyecto'>
                 <div className='filtros-proyectos'>
                     {categorias.map(cat => (
                         <button 

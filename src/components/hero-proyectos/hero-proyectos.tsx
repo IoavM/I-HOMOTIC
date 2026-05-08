@@ -9,13 +9,19 @@ import WeekendOutlinedIcon from '@mui/icons-material/WeekendOutlined';
 export default function HeroProyectos() {
     const navigate = useNavigate();
 
+    const handleScrollToProyectos = () => {
+        const el = document.getElementById('proyecto');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        else navigate('/proyectos'); 
+    };
+
     return (
         <div className='hero-proyectos'>
             <div className='hero-proyectos-content'>
                 <h3>NUESTROS PROYECTOS</h3>
                 <h2>Proyectos que <span>inspiran</span></h2>
                 <p>Descubre cómo transformamos espacios en hogares inteligentes, conectando tecnología y confort</p>
-                <button className='btn-proyectos' onClick={() => navigate('/proyectos')}>Ver todos los proyectos </button>
+                <button className='btn-proyectos' onClick={handleScrollToProyectos}>Ver todos los proyectos </button>
                 <GridDatos3 />
             </div>
 
