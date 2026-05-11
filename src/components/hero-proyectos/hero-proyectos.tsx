@@ -26,7 +26,7 @@ export default function HeroProyectos() {
             </div>
 
             <div className='hero-proyectos-image'>
-                <img src={casa3} alt="Casa Inteligente" />
+                <img src={casa3} alt="Casa Inteligente" fetchPriority="high" loading="eager" />
                 
                 <div className='hero-image-card'>
                     <div className='hero-image-card-item'>

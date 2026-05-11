@@ -9,8 +9,10 @@ const { t } = useTranslation()
 const navigate = useNavigate()
 
 return(
-    <section className='hero' id='hero' style={{ backgroundImage: `url(${CasaModerna})` }}>
-        <div className='hero-content'>
+    <>
+        <link rel="preload" as="image" href={CasaModerna} fetchPriority="high" />
+        <section className='hero' id='hero' style={{ backgroundImage: `url(${CasaModerna})` }}>
+            <div className='hero-content'>
                 <h1>Transforma</h1>
                 <h1>tu hogar en un</h1>
                 <h2>{t('hero.subtitle')}</h2>
@@ -38,5 +40,6 @@ return(
                 </div>
         </div>
     </section>
+    </>
 )
 }

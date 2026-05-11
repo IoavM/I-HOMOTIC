@@ -88,6 +88,7 @@ export default function PaginaProyectos() {
             transition={{ duration: 0.5 }}
         >
             {/* ── Hero con imagen de fondo ── */}
+            <link rel="preload" as="image" href={casa2} fetchPriority="high" />
             <div className='proy-det-hero' style={{ backgroundImage: `url(${casa2})` }}>
                 <div className='proy-det-hero-overlay'>
                     <span className='proy-det-etiqueta'>{proyecto.Etiqueta}</span>
