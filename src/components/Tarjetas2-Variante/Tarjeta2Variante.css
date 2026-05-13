@@ -66,7 +66,7 @@
 .proyecto-tarjeta2 h3 {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #0d1b2a;
+    color: var(--color-tarjeta-bg-1);
     margin: 0;
 }
 
@@ -74,7 +74,7 @@
     font-size: 1.1rem;
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
-    color: #1b263b;
+    color: var(--color-tarjeta-bg-2);
     line-height: 1.3;
     margin-bottom: 1.5rem;
     max-width: 60%;

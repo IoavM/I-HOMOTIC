@@ -1,12 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Montserrat:wght@300;600&display=swap');
 
 :root {
-  /*--color-fondo-claro:         #E5E5E5; */
-  --color-fondo-claro:         #F0F0F5;  
-  --color-acento-primario:   #9BC462;  
-  --color-texto-oscuro:        #081C35;  
-  --color-acento-secundario: #7B5AA2;  
-  --color-blanco:            #FFFFFF;
+  --color-fondo-claro: #F0F0F5;
+  --color-acento-primario: #9BC462;
+  --color-texto-oscuro: #081C35;
+  --color-acento-secundario: #7B5AA2;
+  --color-blanco: #FFFFFF;
+  --color-whatsapp: #25D366;
+  --color-whatsapp-oscuro: #128C7E;
+  --color-error: #E53935;
+  --color-error-hover: #CC4444;
+  --color-error-active: #AA3333;
+  --color-fondo-mapa: #151A2A;
+  --color-texto-mapa: #F9FBF8;
+  --color-acento-mapa-hover: #8AB255;
+  --color-tarjeta-bg-1: #0D1B2A;
+  --color-tarjeta-bg-2: #1B263B;
+  --color-tarjeta-borde: #2C2F57;
+  --color-footer-bg: #E2E2E4;
+  --color-footer-text: #41424D;
 }
 
 body {

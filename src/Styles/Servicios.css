@@ -1,4 +1,4 @@
-/* ───────────────── Hero Servicios ───────────────── */
+/* ---------------------------------------------------HERO SERVICIOS---------------------------------------------- */
 
 #hero-servicios {
     height: 80vh;
@@ -8,7 +8,7 @@
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* ───────────────── Propuesta de Valor ───────────────── */
+/* ---------------------------------------------------PROPUESTA DE VALOR---------------------------------------------- */
 
 .propuesta-valor-seccion {
     background-color: var(--color-texto-oscuro);
@@ -62,7 +62,7 @@
     gap: 2.5rem;
 }
 
-/* ───────────────── Ventajas Servicios ───────────────── */
+/* ---------------------------------------------------VENTAJAS SERVICIOS---------------------------------------------- */
 
 .servicios-ventajas {
     background-color: var(--color-blanco);
@@ -91,7 +91,7 @@
     letter-spacing: 3px;
 }
 
-/* ───────────────── Stats ───────────────── */
+/* ---------------------------------------------------STATS---------------------------------------------- */
 
 .servicios-stats {
     background-color: var(--color-texto-oscuro);
@@ -155,7 +155,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-/* ───────────────── CTA Servicios ───────────────── */
+/* ---------------------------------------------------CTA SERVICIOS---------------------------------------------- */
 
 .cta-servicios {
     background-color: var(--color-blanco);
@@ -238,7 +238,7 @@
     transform: scale(0.97);
 }
 
-/* ───────────────── Responsive ───────────────── */
+/* ---------------------------------------------------RESPONSIVE---------------------------------------------- */
 
 @media (max-width: 1900px) {
     .contenido-propuesta h2 {

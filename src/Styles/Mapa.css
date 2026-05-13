@@ -6,7 +6,7 @@
   position: relative;
   height: calc(100vh - 72px);
   overflow: hidden;
-  background-color: #151a2a;
+  background-color: var(--color-fondo-mapa);
 }
 
 .mapa-canvas-container {
@@ -20,7 +20,7 @@
   height: 100% !important;
 }
 
-/* ─── Panel lateral ──────────────────────────────────────────────────────────── */
+/* ---------------------------------------------------PANEL LATERAL---------------------------------------------- */
 
 .mapa-info-panel {
   position: absolute;
@@ -33,7 +33,7 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 20px;
-  color: #f9fbf8;
+  color: var(--color-texto-mapa);
   transition: transform 0.3s ease, opacity 0.3s ease;
   z-index: 10;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
@@ -63,7 +63,7 @@
 .mapa-info-panel__header h3 {
   font-size: 1rem;
   font-weight: 700;
-  color: #f9fbf8;
+  color: var(--color-texto-mapa);
   flex: 1;
   line-height: 1.2;
   font-family: 'Sora', sans-serif;
@@ -83,7 +83,7 @@
 
 .mapa-info-close:hover,
 .mapa-info-close:focus-visible {
-  color: #f9fbf8;
+  color: var(--color-texto-mapa);
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -180,11 +180,11 @@
 
 .mapa-btn-cta-whatsapp:hover,
 .mapa-btn-cta-whatsapp:focus-visible {
-  background-color: #8ab255;
+  background-color: var(--color-acento-mapa-hover);
   transform: translateY(-1px);
 }
 
-/* ─── Hotspots ───────────────────────────────────────────────────────────────── */
+/* ---------------------------------------------------HOTSPOTS---------------------------------------------- */
 
 .mapa-hotspot {
   position: absolute;
@@ -229,7 +229,7 @@
   }
 }
 
-/* ─── Toggle Día / Noche ─────────────────────────────────────────────────────── */
+/* ---------------------------------------------------TOGGLE DIA / NOCHE---------------------------------------------- */
 
 .mapa-mode-toggle {
   position: absolute;
@@ -241,7 +241,7 @@
   background: rgba(0, 0, 0, 0.40);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  color: #f9fbf8;
+  color: var(--color-texto-mapa);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   padding: 8px 16px;
@@ -260,7 +260,7 @@
   border-color: rgba(155, 196, 98, 0.4);
 }
 
-/* ─── Hint controles ─────────────────────────────────────────────────────────── */
+/* ---------------------------------------------------HINT CONTROLES---------------------------------------------- */
 
 .mapa-controls-hint {
   position: absolute;
@@ -282,12 +282,12 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* ─── Overlay rotación mobile ────────────────────────────────────────────────── */
+/* ---------------------------------------------------OVERLAY ROTACION MOBILE---------------------------------------------- */
 
 .mapa-rotate-overlay {
   position: fixed;
   inset: 0;
-  background-color: #151a2a;
+  background-color: var(--color-fondo-mapa);
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -333,7 +333,7 @@
   font-family: 'Sora', sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
-  color: #f9fbf8;
+  color: var(--color-texto-mapa);
   margin: 0 0 8px;
 }
 
@@ -371,10 +371,10 @@
 
 .mapa-btn-continuar:hover,
 .mapa-btn-continuar:focus-visible {
-  background-color: #8ab255;
+  background-color: var(--color-acento-mapa-hover);
 }
 
-/* ─── Responsive ─────────────────────────────────────────────────────────────── */
+/* ---------------------------------------------------RESPONSIVE---------------------------------------------- */
 
 @media (max-width: 768px) {
   .mapa-info-panel {

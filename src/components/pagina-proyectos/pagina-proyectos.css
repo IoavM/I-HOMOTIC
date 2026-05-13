@@ -1,11 +1,11 @@
-/* ───────────────── Page ───────────────── */
+/* ---------------------------------------------------PAGE---------------------------------------------- */
 .proy-det-page {
     width: 100%;
     min-height: 100vh;
     background-color: var(--color-blanco);
 }
 
-/* ───────────────── Hero ───────────────── */
+/* ---------------------------------------------------HERO---------------------------------------------- */
 .proy-det-hero {
     width: 100%;
     height: 70vh;
@@ -51,7 +51,7 @@
     max-width: 600px;
 }
 
-/* ───────────────── Body ───────────────── */
+/* ---------------------------------------------------BODY---------------------------------------------- */
 .proy-det-body {
     max-width: 1100px;
     margin: 0 auto;
@@ -77,7 +77,7 @@
     opacity: 0.7;
 }
 
-/* ───────────────── Ficha Técnica ───────────────── */
+/* ---------------------------------------------------FICHA TECNICA---------------------------------------------- */
 .proy-det-ficha {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -110,7 +110,7 @@
     color: var(--color-texto-oscuro);
 }
 
-/* ───────────────── Secciones ───────────────── */
+/* ---------------------------------------------------SECCIONES---------------------------------------------- */
 .proy-det-seccion {
     margin-bottom: 4rem;
 }
@@ -136,7 +136,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-/* ───────────────── Sistemas Grid ───────────────── */
+/* ---------------------------------------------------SISTEMAS GRID---------------------------------------------- */
 .sistemas-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -175,7 +175,7 @@
     color: var(--color-texto-oscuro);
 }
 
-/* ───────────────── Resultados ───────────────── */
+/* ---------------------------------------------------RESULTADOS---------------------------------------------- */
 .proy-det-resultados {
     background: var(--color-fondo-claro);
     border-radius: 16px;
@@ -216,7 +216,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-/* ───────────────── Carrusel Antes/Después ───────────────── */
+/* ---------------------------------------------------CARRUSEL ANTES/DESPUES---------------------------------------------- */
 .carrusel-ad {
     display: flex;
     flex-direction: column;
@@ -349,7 +349,7 @@
     text-align: center;
 }
 
-/* ───────────────── Testimonio ───────────────── */
+/* ---------------------------------------------------TESTIMONIO---------------------------------------------- */
 .proy-det-testimonio {
     background: var(--color-texto-oscuro);
     border-radius: 20px;
@@ -385,7 +385,7 @@
     font-style: normal;
 }
 
-/* ───────────────── CTA ───────────────── */
+/* ---------------------------------------------------CTA---------------------------------------------- */
 .proy-det-cta {
     text-align: center;
     padding: 2rem 0;
@@ -449,7 +449,7 @@
     transform: translateY(-2px);
 }
 
-/* ───────────────── Responsive ───────────────── */
+/* ---------------------------------------------------RESPONSIVE---------------------------------------------- */
 
 @media (max-width: 1900px) {
     .proy-det-hero-overlay {
