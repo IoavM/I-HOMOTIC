@@ -42,7 +42,6 @@ const links = [
   { to: '/contacto', key: 'navbar.contacto', tooltipKey: 'navbar.sub_contacto', tabIndex: 7 },
 ]
 
-// ─── Search Bar ───────────────────────────────────────────────────────────────
 const SearchWrapper = styled('div')<{ navtheme: 'dark' | 'light' }>(({ navtheme }) => ({
   position: 'relative',
   borderRadius: 999,
@@ -110,7 +109,6 @@ const StyledInputBase = styled(InputBase)<{ navtheme: 'dark' | 'light' }>(({ the
   },
 }))
 
-// ─── Hook: scroll ─────────────────────────────────────────────────────────────
 function useScrolled(threshold = 60) {
   const [scrolled, setScrolled] = React.useState(false)
   React.useEffect(() => {
@@ -128,14 +126,9 @@ export default function Navbar() {
   const { t, i18n } = useTranslation()
   const scrolled = useScrolled()
 
-  // ─── Tema automático por ruta ─────────────────────────────────────────────
-  // hasDarkHero: true  → hero oscuro → navbar top usa texto blanco
-  // hasDarkHero: false → hero claro  → navbar top usa texto oscuro
   const isProjectDetail = location.pathname.startsWith('/proyectos/') && location.pathname !== '/proyectos'
   const hasDarkHero = DARK_HERO_ROUTES.includes(location.pathname) || isProjectDetail
 
-  // Al hacer scroll, siempre fondo oscuro con texto blanco
-  // En el top: si hero oscuro → texto blanco | si hero claro → texto oscuro
   const navTheme: 'dark' | 'light' = scrolled ? 'dark' : (hasDarkHero ? 'dark' : 'light')
   const textColor = navTheme === 'dark' ? '#ffffff' : '#081C35'
   const activeUnderlineColor = navTheme === 'dark' ? NARANJA : VERDE_CLARO
@@ -159,7 +152,6 @@ export default function Navbar() {
     { code: 'en', label: 'English' },
   ]
 
-  // ─── Búsqueda ─────────────────────────────────────────────────────────────
   const navigate = useNavigate()
   const searchRef = React.useRef<HTMLDivElement>(null)
   const [query, setQuery] = React.useState('')
@@ -284,7 +276,6 @@ export default function Navbar() {
     }
   }
 
-  // ─── Drawer mobile ────────────────────────────────────────────────────────
   const drawer = (
     <Box sx={{ width: 280, height: '100%', bgcolor: BLANCO }} role="presentation">
       <Box sx={{ px: 2.5, py: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -381,8 +372,6 @@ export default function Navbar() {
       position="fixed"
       elevation={0}
       sx={{
-        // Al hacer scroll → siempre fondo oscuro
-        // En el top → transparente (el color del texto se adapta por ruta)
         bgcolor: scrolled ? 'var(--color-texto-oscuro)' : 'transparent',
         borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : 'none',
         boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.25)' : 'none',
@@ -449,7 +438,6 @@ export default function Navbar() {
           ) : (
             <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: { md: 1, lg: 2 } }}>
 
-              {/* ── Logo ──────────────────────────────────────────────────── */}
               <Box sx={{ display: 'flex', flex: 1, justifyContent: 'flex-start' }}>
                 <Box
                   component={RouterLink}
@@ -479,7 +467,6 @@ export default function Navbar() {
                 </Box>
               </Box>
 
-              {/* ── Links ─────────────────────────────────────────────────── */}
               <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center', justifyContent: 'center' }}>
                 {links.map(({ to, key, tooltipKey, tabIndex }) => {
                   const active = location.pathname === to
@@ -520,7 +507,6 @@ export default function Navbar() {
                 })}
               </Box>
 
-              {/* ── Buscador + Idioma ─────────────────────────────────────── */}
               <Box sx={{ display: 'flex', flex: 1, gap: 1.5, alignItems: 'center', justifyContent: 'flex-end' }}>
 
                 <Box sx={{ position: 'relative' }} ref={searchRef}>
@@ -614,7 +600,6 @@ export default function Navbar() {
         </Toolbar>
       </Container>
 
-      {/* ── Menú de idioma ────────────────────────────────────────────────── */}
       <Menu
         anchorEl={langAnchor}
         open={langOpen}
