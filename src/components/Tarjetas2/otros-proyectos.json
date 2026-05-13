@@ -2,9 +2,9 @@
   {
     "id": "1",
     "imagen": "casa2",
-    "tituloKey": "Casa La Molina",
-    "Etiqueta": "Residencial",
-    "descripcionKey": "Iluminación, Climatización y Seguridad integral",
+    "tituloKey": "projects.project1Title",
+    "Etiqueta": "projects.tagResidencial",
+    "descripcionKey": "projects.project1Description",
     "altKey": "projects.project1Alt",
     "detalles": {
       "cliente": "Familia García",
@@ -61,9 +61,9 @@
   {
     "id": "2",
     "imagen": "casa2",
-    "tituloKey": "Departamento Miraflores",
-    "Etiqueta": "Departamento",
-    "descripcionKey": "Automatización completa y entretenimiento de alto nivel",
+    "tituloKey": "projects.project2Title",
+    "Etiqueta": "projects.tagDepartamento",
+    "descripcionKey": "projects.project2Description",
     "altKey": "projects.project2Alt",
     "detalles": {
       "cliente": "Sr. Mendoza",
@@ -118,9 +118,9 @@
   {
     "id": "3",
     "imagen": "casa2",
-    "tituloKey": "Casa Finca Asia",
-    "Etiqueta": "Residencial",
-    "descripcionKey": "Control total a distancia y automatización de exteriores",
+    "tituloKey": "projects.project3Title",
+    "Etiqueta": "projects.tagResidencial",
+    "descripcionKey": "projects.project3Description",
     "altKey": "projects.project3Alt",
     "detalles": {
       "cliente": "Familia Rodríguez",
@@ -175,9 +175,9 @@
   {
     "id": "4",
     "imagen": "casa2",
-    "tituloKey": "Tienda de Ropa Rio Verde",
-    "Etiqueta": "Comercial",
-    "descripcionKey": "Iluminación dinámica, seguridad y marketing sensorial",
+    "tituloKey": "projects.project4Title",
+    "Etiqueta": "projects.tagComercial",
+    "descripcionKey": "projects.project4Description",
     "altKey": "projects.project4Alt",
     "detalles": {
       "cliente": "Rio Verde Boutique",

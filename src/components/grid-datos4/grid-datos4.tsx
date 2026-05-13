@@ -4,9 +4,11 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined'
 
+import { useTranslation } from 'react-i18next'
+
 interface Props {
-    titulo: string
-    valor: string
+    tituloKey: string
+    valorKey: string
     icono: string
 }
 
@@ -21,15 +23,17 @@ const getIcon = (iconName: string) => {
     }
 }
 
-export default function GridDatos4({ titulo, valor, icono }: Props) {
+export default function GridDatos4({ tituloKey, valorKey, icono }: Props) {
+    const { t } = useTranslation()
+    
     return (
         <div className="item-grid-datos4">
             <div className='icono-dato4'>
                 {getIcon(icono)}
             </div>
             <div className='contenido-dato4'>
-                <h3>{titulo}</h3>
-                <p>{valor}</p>
+                <h3>{t(tituloKey)}</h3>
+                <p>{t(valorKey)}</p>
             </div>
         </div>
     )

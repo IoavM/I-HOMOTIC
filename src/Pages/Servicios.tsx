@@ -30,7 +30,7 @@ export default function Servicios() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
-            {/* ── Hero ── */}
+
             <section className='hero2' id='hero-servicios' style={{ backgroundImage: `url(${CasaModerna})` }}>
                 <div className='hero-content2'>
                     <h1>{t('servicios.title')}</h1>
@@ -38,7 +38,6 @@ export default function Servicios() {
                 </div>
             </section>
 
-            {/* ── Propuesta de Valor ── */}
             <section className='propuesta-valor-seccion' id='propuesta-valor'>
                 <div className='contenido-propuesta'>
                     <h3>{t('servicios.propuestaLabel')}</h3>
@@ -56,7 +55,6 @@ export default function Servicios() {
                 </div>
             </section>
 
-            {/* ── Ventajas ── */}
             <section className='servicios-ventajas' id='servicios-ventajas'>
                 <div className='servicios-ventajas-content'>
                     <h3>{t('servicios.ventajasTitle')} <span>{t('servicios.ventajasTitleSpan')}</span></h3>
@@ -64,7 +62,6 @@ export default function Servicios() {
                 <Ventajas />
             </section>
 
-            {/* ── Stats ── */}
             <section className='servicios-stats' id='servicios-stats'>
                 <div className='servicios-stats-inner'>
                     <div className='servicios-stats-texto'>
@@ -76,7 +73,6 @@ export default function Servicios() {
                 </div>
             </section>
 
-            {/* ── CTA ── */}
             <section className='cta-servicios'>
                 <div className='cta-servicios-inner'>
                     <h2>{t('servicios.ctaTitle')}</h2>

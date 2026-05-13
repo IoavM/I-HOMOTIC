@@ -4,31 +4,6 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { useTranslation } from 'react-i18next'
 import '../Styles/Mapa.css'
 
-// ─── Datos ────────────────────────────────────────────────────────────────────
-/*
-  LAYOUT (vista superior):
-
-      BACK  (North, z < 0) — Patio/Jardín
-  ┌──────────────────────────────────────────┐ z = −6
-  │            PATIO & JARDÍN                │
-  │   (deck · césped · arbustos · luces)     │ z −6 → −3
-  ╞══════════════ GLASS WALL ════════════════╡ z = −3
-  │                    ┆                     │
-  │    COCINA          ┆     SALA DE ESTAR   │
-  │  (isla, mesón,     ┆   (sofá L, TV,     │ z −3 → 0.5
-  │   estufa, nevera)  ┆    lámpara, rug)    │
-  │              open concept                │
-  ├────────┬───────────┼─────────────────────┤ z = 0.5
-  │        │           │                     │
-  │  HAB.  │   BAÑO    │     ENTRADA         │
-  │ PRINC. │ (ducha,   │  (puerta, consola,  │ z 0.5 → 4
-  │ (cama, │  lavabo,  │   cámara, luz)      │
-  │ closet)│  espejo)  │                     │
-  └────────┴───────────┴─────────────────────┘ z = 4
-                                  ↑ Puerta principal
-      FRONT  (South, z > 0) — Calle
-*/
-
 const WA_NUMBER = '573014032120'
 
 const HABITACIONES = [
@@ -102,8 +77,6 @@ const HABITACIONES = [
 
 type Hab = (typeof HABITACIONES)[number] & { _light?: THREE.PointLight }
 
-// ─── Day / Night presets (pre-allocated for lerp) ─────────────────────────────
-
 const NIGHT = {
   bg:       new THREE.Color(0x151a2a),
   ambient:  new THREE.Color(0x303850),
@@ -137,8 +110,6 @@ const DAY = {
   roomBase: 0.3,
   patioBase: 0.08,
 }
-
-// ─── Procedural Textures ──────────────────────────────────────────────────────
 
 function createWoodTexture(): THREE.CanvasTexture {
   const s = 512
@@ -181,8 +152,6 @@ function createGrassTexture(): THREE.CanvasTexture {
   const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.colorSpace = THREE.SRGBColorSpace; return t
 }
 
-// ─── Geometry Helpers ─────────────────────────────────────────────────────────
-
 function addBox(sc: THREE.Scene, x: number, y: number, z: number, w: number, h: number, d: number, mat: THREE.Material) {
   const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); m.castShadow = true; m.receiveShadow = true; sc.add(m); return m
 }
@@ -196,8 +165,6 @@ function addPlane(sc: THREE.Scene, x: number, y: number, z: number, w: number, d
   const m = new THREE.Mesh(new THREE.PlaneGeometry(w, d), mat); m.rotation.x = -Math.PI / 2; m.position.set(x, y, z); m.receiveShadow = true; sc.add(m); return m
 }
 
-// ─── Componente ───────────────────────────────────────────────────────────────
-
 export default function Mapa() {
   const { t } = useTranslation()
   const containerRef = useRef<HTMLDivElement>(null)
@@ -207,14 +174,12 @@ export default function Mapa() {
   const [isNight, setIsNight] = useState(true)
   const isNightRef = useRef(true)
 
-  // sync state → ref (read in animation loop)
   useEffect(() => { isNightRef.current = isNight }, [isNight])
 
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
 
-    // ── Renderer ──────────────────────────────────────────────────────────────
     const renderer = new THREE.WebGLRenderer({ antialias: true })
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     renderer.shadowMap.enabled = true
@@ -224,34 +189,28 @@ export default function Mapa() {
     renderer.setSize(container.clientWidth, container.clientHeight)
     container.appendChild(renderer.domElement)
 
-    // ── Scene ─────────────────────────────────────────────────────────────────
     const scene = new THREE.Scene()
     scene.background = new THREE.Color(0x151a2a)
     scene.fog = new THREE.FogExp2(0x151a2a, 0.014)
 
-    // ── Environment map ───────────────────────────────────────────────────────
     const pmrem = new THREE.PMREMGenerator(renderer)
     const envSc = new THREE.Scene(); envSc.add(new THREE.HemisphereLight(0x6688aa, 0x334422, 2))
     const envMap = pmrem.fromScene(envSc).texture; scene.environment = envMap; pmrem.dispose()
 
-    // ── Camera ────────────────────────────────────────────────────────────────
     const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 120)
     camera.position.set(10, 12, 16); camera.lookAt(0, 0, 0)
 
-    // ── Controls ──────────────────────────────────────────────────────────────
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true; controls.dampingFactor = 0.06
     controls.minDistance = 6; controls.maxDistance = 28
     controls.maxPolarAngle = Math.PI / 2.1; controls.target.set(0, 1, 0)
     controls.enabled = false
 
-    // ── Textures ──────────────────────────────────────────────────────────────
     const woodTex = createWoodTexture(); woodTex.repeat.set(3, 3)
     const tileTex = createTileTexture(); tileTex.repeat.set(3, 3)
     const bathTileTex = createTileTexture('#d8dde8', '#b8bcc8'); bathTileTex.repeat.set(4, 4)
     const grassTex = createGrassTexture(); grassTex.repeat.set(8, 8)
 
-    // ── Materials ─────────────────────────────────────────────────────────────
     const mWallExt = new THREE.MeshStandardMaterial({ color: 0xf0ece4, roughness: 0.85 })
     const mWallInt = new THREE.MeshStandardMaterial({ color: 0xf5f2ed, roughness: 0.9, transparent: true, opacity: 0.55, side: THREE.DoubleSide, depthWrite: false })
     const mFloorWood = new THREE.MeshStandardMaterial({ map: woodTex, roughness: 0.55 })
@@ -281,24 +240,17 @@ export default function Mapa() {
 
     const WH = 2.8, WT = 0.12
 
-    // ── Ground ────────────────────────────────────────────────────────────────
     addPlane(scene, 0, -0.02, -1, 30, 30, mGrass)
-    addPlane(scene, 0, -0.01, 0.5, 11, 8, mConcrete) // foundation
+    addPlane(scene, 0, -0.01, 0.5, 11, 8, mConcrete)
 
-    // ── Room Floors ───────────────────────────────────────────────────────────
-    addPlane(scene, 2.25, 0.01, -1.25, 5.5, 3.5, mFloorWood)     // sala
-    addPlane(scene, -2.75, 0.01, -1.25, 4.5, 3.5, mFloorTile)    // cocina
-    addPlane(scene, -2.75, 0.01, 2.25, 4.5, 3.5, mFloorWood)     // habitación
-    addPlane(scene, 0.75, 0.01, 2.25, 2.5, 3.5, mFloorBath)      // baño
-    addPlane(scene, 3.5, 0.01, 2.25, 3, 3.5, mFloorTile)         // entrada
+    addPlane(scene, 2.25, 0.01, -1.25, 5.5, 3.5, mFloorWood)
+    addPlane(scene, -2.75, 0.01, -1.25, 4.5, 3.5, mFloorTile)
+    addPlane(scene, -2.75, 0.01, 2.25, 4.5, 3.5, mFloorWood)
+    addPlane(scene, 0.75, 0.01, 2.25, 2.5, 3.5, mFloorBath)
+    addPlane(scene, 3.5, 0.01, 2.25, 3, 3.5, mFloorTile)
     const mDeck = mWoodDark.clone(); mDeck.color = new THREE.Color(0x6a5540)
-    addPlane(scene, 0, 0.03, -3.7, 10, 1.4, mDeck)               // deck
+    addPlane(scene, 0, 0.03, -3.7, 10, 1.4, mDeck)
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // EXTERIOR WALLS
-    // ══════════════════════════════════════════════════════════════════════════
-
-    // North (z = −3) — GLASS curtain wall, faces patio
     for (const gx of [-3.75, -1.25, 1.25, 3.75])
       addBox(scene, gx, WH / 2, -3, 2.5, WH, 0.06, mGlass)
     for (const mx of [-5, -2.5, 0, 2.5, 5])
@@ -306,18 +258,14 @@ export default function Mapa() {
     addBox(scene, 0, WH, -3, 10 + WT, 0.04, 0.08, mMetalFrame)
     addBox(scene, 0, 0, -3, 10 + WT, 0.04, 0.08, mMetalFrame)
 
-    // South (z = 4) — solid, with entrance door opening at x ≈ 3.5
-    addBox(scene, -1.05, WH / 2, 4, 7.9, WH, WT, mWallExt)      // left
-    addBox(scene, 4.55, WH / 2, 4, 0.9, WH, WT, mWallExt)       // right
-    addBox(scene, 3.5, 2.5, 4, 1.2, 0.6, WT, mWallExt)          // above door
+    addBox(scene, -1.05, WH / 2, 4, 7.9, WH, WT, mWallExt)
+    addBox(scene, 4.55, WH / 2, 4, 0.9, WH, WT, mWallExt)
+    addBox(scene, 3.5, 2.5, 4, 1.2, 0.6, WT, mWallExt)
 
-    // West (x = −5)
     addBox(scene, -5, WH / 2, 0.5, WT, WH, 7 + WT, mWallExt)
 
-    // East (x = 5)
     addBox(scene, 5, WH / 2, 0.5, WT, WH, 7 + WT, mWallExt)
 
-    // ── Windows on solid exterior walls ───────────────────────────────────────
     const addWindow = (x: number, y: number, z: number, onNS: boolean) => {
       if (onNS) {
         addBox(scene, x, y, z, 1.6, 1.3, 0.02, mGlass)
@@ -334,116 +282,76 @@ export default function Mapa() {
         addBox(scene, fx, y, z + 0.83, 0.05, 1.4, 0.05, mMetalFrame)
       }
     }
-    addWindow(-5.07, 1.5, -1.5, false)  // west — cocina
-    addWindow(-5.07, 1.5, 2.5, false)   // west — habitación
-    addWindow(5.07, 1.5, -1.25, false)  // east — sala
-    addWindow(-2.75, 1.5, 4.07, true)   // south — habitación
+    addWindow(-5.07, 1.5, -1.5, false)
+    addWindow(-5.07, 1.5, 2.5, false)
+    addWindow(5.07, 1.5, -1.25, false)
+    addWindow(-2.75, 1.5, 4.07, true)
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // INTERIOR WALLS
-    // ══════════════════════════════════════════════════════════════════════════
+    addBox(scene, -4, WH / 2, 0.5, 2, WH, WT, mWallInt)
+    addBox(scene, 0.5, WH / 2, 0.5, 4, WH, WT, mWallInt)
+    addBox(scene, 4.75, WH / 2, 0.5, 0.5, WH, WT, mWallInt)
+    addBox(scene, -2.25, 2.65, 0.5, 1.5, 0.3, WT, mWallInt)
+    addBox(scene, 3.5, 2.65, 0.5, 2, 0.3, WT, mWallInt)
 
-    // z = 0.5 — divider social / private
-    addBox(scene, -4, WH / 2, 0.5, 2, WH, WT, mWallInt)         // behind kitchen (x −5 → −3)
-    addBox(scene, 0.5, WH / 2, 0.5, 4, WH, WT, mWallInt)        // central (x −1.5 → 2.5)
-    addBox(scene, 4.75, WH / 2, 0.5, 0.5, WH, WT, mWallInt)     // corner (x 4.5 → 5)
-    // lintels over openings
-    addBox(scene, -2.25, 2.65, 0.5, 1.5, 0.3, WT, mWallInt)     // above bedroom door (x −3 → −1.5)
-    addBox(scene, 3.5, 2.65, 0.5, 2, 0.3, WT, mWallInt)         // above sala→entrada arch (x 2.5 → 4.5)
+    addBox(scene, -0.5, WH / 2, 1.0, WT, WH, 1, mWallInt)
+    addBox(scene, -0.5, WH / 2, 3.4, WT, WH, 1.2, mWallInt)
+    addBox(scene, -0.5, 2.65, 2.15, WT, 0.3, 1.3, mWallInt)
 
-    // x = −0.5 — habitación ↔ baño
-    addBox(scene, -0.5, WH / 2, 1.0, WT, WH, 1, mWallInt)       // z 0.5 → 1.5
-    addBox(scene, -0.5, WH / 2, 3.4, WT, WH, 1.2, mWallInt)     // z 2.8 → 4
-    addBox(scene, -0.5, 2.65, 2.15, WT, 0.3, 1.3, mWallInt)     // lintel
+    addBox(scene, 2, WH / 2, 1.0, WT, WH, 1, mWallInt)
+    addBox(scene, 2, WH / 2, 3.4, WT, WH, 1.2, mWallInt)
+    addBox(scene, 2, 2.65, 2.15, WT, 0.3, 1.3, mWallInt)
 
-    // x = 2 — baño ↔ entrada
-    addBox(scene, 2, WH / 2, 1.0, WT, WH, 1, mWallInt)          // z 0.5 → 1.5
-    addBox(scene, 2, WH / 2, 3.4, WT, WH, 1.2, mWallInt)        // z 2.8 → 4
-    addBox(scene, 2, 2.65, 2.15, WT, 0.3, 1.3, mWallInt)        // lintel
-
-    // ══════════════════════════════════════════════════════════════════════════
-    // SALA DE ESTAR  (x −0.5 → 5, z −3 → 0.5)
-    // ══════════════════════════════════════════════════════════════════════════
-
-    // L-Sofa (facing TV at z ≈ 0.35)
-    addBox(scene, 2.5, 0.25, -1.3, 3.0, 0.45, 0.9, mFabricDark)     // main seat
-    addBox(scene, 3.85, 0.25, -2.05, 0.7, 0.45, 0.6, mFabricDark)   // right arm seat
-    addBox(scene, 2.5, 0.55, -1.7, 3.0, 0.4, 0.2, mFabricDark)      // main backrest
-    addBox(scene, 4.15, 0.55, -2.05, 0.15, 0.4, 0.6, mFabricDark)   // side backrest
-    // cushions
+    addBox(scene, 2.5, 0.25, -1.3, 3.0, 0.45, 0.9, mFabricDark)
+    addBox(scene, 3.85, 0.25, -2.05, 0.7, 0.45, 0.6, mFabricDark)
+    addBox(scene, 2.5, 0.55, -1.7, 3.0, 0.4, 0.2, mFabricDark)
+    addBox(scene, 4.15, 0.55, -2.05, 0.15, 0.4, 0.6, mFabricDark)
     addBox(scene, 1.4, 0.52, -1.3, 0.42, 0.32, 0.42, mPillow)
     addBox(scene, 3.4, 0.52, -1.3, 0.42, 0.32, 0.42,
       new THREE.MeshStandardMaterial({ color: 0xE8721A, roughness: 0.92 }))
-    // Coffee table
     addBox(scene, 2.5, 0.35, -0.4, 1.2, 0.04, 0.6,
       new THREE.MeshPhysicalMaterial({ color: 0xeeeeff, transparent: true, opacity: 0.35, roughness: 0, metalness: 0.1, depthWrite: false }))
     for (const [cx, cz] of [[2.0, -0.15], [3.0, -0.15], [2.0, -0.65], [3.0, -0.65]])
       addCyl(scene, cx, 0.17, cz, 0.025, 0.025, 0.32, 8, mMetalDark)
-    // TV + shelf (on divider wall z ≈ 0.35)
     addBox(scene, 2.25, 1.45, 0.35, 1.8, 1.0, 0.05, mScreen)
     addBox(scene, 2.25, 1.45, 0.38, 1.85, 1.05, 0.02, mMetalDark)
     addBox(scene, 2.25, 0.35, 0.28, 1.8, 0.06, 0.35, mWoodDark)
     addCyl(scene, 1.45, 0.17, 0.28, 0.03, 0.03, 0.34, 8, mMetalDark)
     addCyl(scene, 3.05, 0.17, 0.28, 0.03, 0.03, 0.34, 8, mMetalDark)
-    // Floor lamp
     addCyl(scene, 4.3, 0.6, -2.5, 0.018, 0.018, 1.2, 8, mMetalDark)
     addCyl(scene, 4.3, 0, -2.5, 0.12, 0.12, 0.02, 12, mMetalDark)
     addSphere(scene, 4.3, 1.25, -2.5, 0.1, mLightBulb)
-    // Rug
     addBox(scene, 2.5, 0.015, -0.9, 2.2, 0.02, 1.5, mRug)
-    // Ceiling light
     addCyl(scene, 2.25, 2.75, -1.25, 0.22, 0.22, 0.04, 16, mLightBulb)
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // COCINA  (x −5 → −0.5, z −3 → 0.5)
-    // ══════════════════════════════════════════════════════════════════════════
-
-    // West wall counter
     addBox(scene, -4.7, 0.45, -1.25, 0.55, 0.9, 2.5, mCabinet)
     addBox(scene, -4.7, 0.91, -1.25, 0.6, 0.04, 2.6, mMarble)
-    // Divider wall counter
     addBox(scene, -3, 0.45, 0.18, 2.8, 0.9, 0.55, mCabinet)
     addBox(scene, -3, 0.91, 0.18, 2.9, 0.04, 0.6, mMarble)
-    // Island
     addBox(scene, -2.5, 0.45, -1.5, 1.8, 0.9, 0.7, mCabinet)
     addBox(scene, -2.5, 0.91, -1.5, 1.85, 0.04, 0.75, mMarble)
-    // Cooktop burners on west counter
     for (const bz of [-2.0, -1.6, -1.0, -0.6]) {
       const br = Math.abs(bz) > 1.5 ? 0.13 : 0.1
       addCyl(scene, -4.7, 0.95, bz, br, br, 0.02, 16, mMetalDark)
     }
-    // Range hood
     addBox(scene, -4.7, 2.0, -1.3, 0.6, 0.25, 1.0, mMetalFrame)
     addCyl(scene, -4.7, 2.3, -1.3, 0.12, 0.12, 0.3, 8, mMetalFrame)
-    // Fridge (south end of west counter)
     addBox(scene, -4.7, 1.0, 0.0, 0.7, 2.0, 0.65, mSteel)
-    // Sink (on divider counter)
     addBox(scene, -3, 0.88, 0.18, 0.45, 0.08, 0.3,
       new THREE.MeshStandardMaterial({ color: 0x888890, roughness: 0.15, metalness: 0.9 }))
-    // Ceiling light
     addCyl(scene, -2.75, 2.75, -1.25, 0.22, 0.22, 0.04, 16, mLightBulb)
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // HABITACIÓN PRINCIPAL  (x −5 → −0.5, z 0.5 → 4)
-    // ══════════════════════════════════════════════════════════════════════════
-
-    // Bed (headboard against south ext wall z ≈ 3.85)
-    addBox(scene, -2.75, 0.2, 2.65, 1.9, 0.35, 2.3, mWoodDark)      // base
-    addBox(scene, -2.75, 0.42, 2.65, 1.85, 0.18, 2.25, mBedsheet)   // mattress
-    addBox(scene, -2.75, 0.56, 2.65, 1.8, 0.1, 2.2, mBedsheet)      // sheet
-    addBox(scene, -2.75, 0.8, 3.85, 2.0, 1.0, 0.1, mHeadboard)      // headboard
-    // Pillows
+    addBox(scene, -2.75, 0.2, 2.65, 1.9, 0.35, 2.3, mWoodDark)
+    addBox(scene, -2.75, 0.42, 2.65, 1.85, 0.18, 2.25, mBedsheet)
+    addBox(scene, -2.75, 0.56, 2.65, 1.8, 0.1, 2.2, mBedsheet)
+    addBox(scene, -2.75, 0.8, 3.85, 2.0, 1.0, 0.1, mHeadboard)
     addBox(scene, -3.2, 0.65, 3.5, 0.5, 0.15, 0.4, mPillow)
     addBox(scene, -2.3, 0.65, 3.5, 0.5, 0.15, 0.4, mPillow)
-    // Nightstands
     addBox(scene, -4.3, 0.25, 3.5, 0.5, 0.5, 0.4, mWoodDark)
     addBox(scene, -1.2, 0.25, 3.5, 0.5, 0.5, 0.4, mWoodDark)
-    // Lamps
     addCyl(scene, -4.3, 0.6, 3.5, 0.04, 0.04, 0.2, 8, mMetalDark)
     addSphere(scene, -4.3, 0.75, 3.5, 0.08, mLightBulb)
     addCyl(scene, -1.2, 0.6, 3.5, 0.04, 0.04, 0.2, 8, mMetalDark)
     addSphere(scene, -1.2, 0.75, 3.5, 0.08, mLightBulb)
-    // Closet (west wall)
     addBox(scene, -4.7, 1.0, 1.8, 0.5, 2.0, 1.8, mWoodMed)
     addBox(scene, -4.44, 1.0, 1.35, 0.03, 1.9, 0.8,
       new THREE.MeshStandardMaterial({ color: 0x907050, roughness: 0.4, metalness: 0.05 }))
@@ -451,69 +359,43 @@ export default function Mapa() {
       new THREE.MeshStandardMaterial({ color: 0x907050, roughness: 0.4, metalness: 0.05 }))
     addCyl(scene, -4.42, 1.0, 1.77, 0.015, 0.015, 0.15, 8, mMetalDark)
     addCyl(scene, -4.42, 1.0, 1.87, 0.015, 0.015, 0.15, 8, mMetalDark)
-    // Rug
     addBox(scene, -2.75, 0.015, 1.8, 2.0, 0.02, 1.0,
       new THREE.MeshStandardMaterial({ color: 0x5a5050, roughness: 0.98 }))
-    // Ceiling light
     addCyl(scene, -2.75, 2.75, 2.25, 0.18, 0.18, 0.04, 16, mLightBulb)
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // BAÑO  (x −0.5 → 2, z 0.5 → 4)
-    // ══════════════════════════════════════════════════════════════════════════
-
-    // Shower enclosure (SE corner near x=1.8, z=3.5)
-    addBox(scene, 0.8, 1.2, 3.3, 0.04, 2.2, 1.2, mGlass)        // west glass
-    addBox(scene, 1.4, 1.2, 2.75, 1.16, 2.2, 0.04, mGlass)      // north glass
-    addCyl(scene, 1.5, 2.2, 3.5, 0.08, 0.08, 0.04, 16, mMetalFrame) // shower head
-    addCyl(scene, 1.5, 2.0, 3.5, 0.018, 0.018, 0.4, 8, mMetalFrame) // pipe
+    addBox(scene, 0.8, 1.2, 3.3, 0.04, 2.2, 1.2, mGlass)
+    addBox(scene, 1.4, 1.2, 2.75, 1.16, 2.2, 0.04, mGlass)
+    addCyl(scene, 1.5, 2.2, 3.5, 0.08, 0.08, 0.04, 16, mMetalFrame)
+    addCyl(scene, 1.5, 2.0, 3.5, 0.018, 0.018, 0.4, 8, mMetalFrame)
     addPlane(scene, 1.4, 0.02, 3.4, 1.2, 1.0,
       new THREE.MeshStandardMaterial({ color: 0xbbc0ca, roughness: 0.3, metalness: 0.05 }))
-    // Vanity (against north divider z ≈ 0.5)
     addBox(scene, 0.5, 0.5, 0.85, 1.2, 0.15, 0.5, mMarble)
     addBox(scene, 0.5, 0.3, 0.85, 1.15, 0.3, 0.45, mCabinet)
-    addCyl(scene, 0.5, 0.55, 0.85, 0.18, 0.18, 0.08, 16, mCeramic)  // basin
-    addCyl(scene, 0.5, 0.65, 0.85, 0.015, 0.015, 0.22, 8, mMetalFrame) // faucet
-    // Mirror
+    addCyl(scene, 0.5, 0.55, 0.85, 0.18, 0.18, 0.08, 16, mCeramic)
+    addCyl(scene, 0.5, 0.65, 0.85, 0.015, 0.015, 0.22, 8, mMetalFrame)
     addBox(scene, 0.5, 1.5, 0.56, 0.9, 0.7, 0.03, mMirror)
     addBox(scene, 0.5, 1.5, 0.54, 0.95, 0.75, 0.015, mMetalDark)
-    // Toilet
     addBox(scene, 1.7, 0.2, 2.0, 0.4, 0.4, 0.55, mCeramic)
     addBox(scene, 1.7, 0.42, 2.15, 0.38, 0.08, 0.45, mCeramic)
     addBox(scene, 1.7, 0.5, 1.75, 0.4, 0.5, 0.1, mCeramic)
-    // Towel rail
     addBox(scene, 1.9, 1.0, 2.6, 0.04, 0.04, 0.3, mMetalFrame)
     addBox(scene, 1.9, 1.2, 2.6, 0.04, 0.04, 0.3, mMetalFrame)
     addBox(scene, 1.9, 1.1, 2.45, 0.04, 0.24, 0.04, mMetalFrame)
     addBox(scene, 1.9, 1.1, 2.75, 0.04, 0.24, 0.04, mMetalFrame)
-    // Ceiling light
     addCyl(scene, 0.75, 2.75, 2.25, 0.15, 0.15, 0.04, 16, mLightBulb)
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // ENTRADA  (x 2 → 5, z 0.5 → 4)
-    // ══════════════════════════════════════════════════════════════════════════
-
-    // Main door
     addBox(scene, 3.5, 1.05, 3.95, 1.0, 2.1, 0.08, mDoor)
     addSphere(scene, 3.9, 1.0, 3.91, 0.04, mDoorHandle)
-    // Console table
     addBox(scene, 4.5, 0.4, 1.5, 0.8, 0.06, 0.35, mWoodDark)
     for (const [lx, lz] of [[4.15, 1.35], [4.85, 1.35], [4.15, 1.65], [4.85, 1.65]])
       addCyl(scene, lx, 0.2, lz, 0.025, 0.025, 0.38, 8, mMetalDark)
-    // Security camera
     addBox(scene, 4.7, 2.4, 3.6, 0.12, 0.1, 0.15, mMetalDark)
     addCyl(scene, 4.7, 2.3, 3.5, 0.05, 0.07, 0.1, 8, mMetalDark)
-    // Pendant light
     addCyl(scene, 3.5, 2.2, 2.25, 0.18, 0.18, 0.12, 16, mMetalFrame)
     addSphere(scene, 3.5, 2.1, 2.25, 0.06, mLightBulb)
-    // Doormat
     addBox(scene, 3.5, 0.015, 3.5, 0.8, 0.02, 0.45,
       new THREE.MeshStandardMaterial({ color: 0x5a5040, roughness: 0.98 }))
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // PATIO  (x −5 → 5, z −6 → −3)
-    // ══════════════════════════════════════════════════════════════════════════
-
-    // Bushes
     const bushColors = [0x2d6a2e, 0x3a7a3a, 0x2a6028, 0x357035]
     const bushData: [number, number, number, number][] = [
       [-4, 0.4, -5, 0.5], [-2.5, 0.3, -5.5, 0.35],
@@ -522,7 +404,6 @@ export default function Mapa() {
     bushData.forEach(([bx, by, bz, br], i) =>
       addSphere(scene, bx, by, bz, br,
         new THREE.MeshStandardMaterial({ color: bushColors[i % bushColors.length], roughness: 0.9 })))
-    // Garden bollard lights
     const gardenGlow = new THREE.MeshStandardMaterial({ color: 0xfff0d0, emissive: 0xffcc60, emissiveIntensity: 1.5, roughness: 0.3 })
     for (const gx of [-1.5, 1.5]) {
       addCyl(scene, gx, 0.3, -4.5, 0.025, 0.025, 0.6, 8, mMetalDark)
@@ -530,22 +411,16 @@ export default function Mapa() {
     }
     addCyl(scene, 0, 0.3, -5.3, 0.025, 0.025, 0.6, 8, mMetalDark)
     addSphere(scene, 0, 0.65, -5.3, 0.05, gardenGlow)
-    // Stone path
     const stoneMat = new THREE.MeshStandardMaterial({ color: 0xa09890, roughness: 0.8 })
     addBox(scene, 0, 0.02, -4.5, 1.0, 0.04, 0.45, stoneMat)
     addBox(scene, 0.15, 0.02, -5.0, 0.9, 0.04, 0.4, stoneMat)
     addBox(scene, -0.1, 0.02, -5.5, 0.85, 0.04, 0.4, stoneMat)
-    // Planters near glass wall
     addBox(scene, -4.5, 0.2, -3.3, 0.5, 0.4, 0.5, mConcrete)
     addSphere(scene, -4.5, 0.55, -3.3, 0.3,
       new THREE.MeshStandardMaterial({ color: 0x3a8a3a, roughness: 0.9 }))
     addBox(scene, 4.5, 0.2, -3.3, 0.5, 0.4, 0.5, mConcrete)
     addSphere(scene, 4.5, 0.55, -3.3, 0.3,
       new THREE.MeshStandardMaterial({ color: 0x2d7a2e, roughness: 0.9 }))
-
-    // ══════════════════════════════════════════════════════════════════════════
-    // HIT MESHES  (invisible, for raycasting)
-    // ══════════════════════════════════════════════════════════════════════════
 
     const habitacionMeshes: THREE.Mesh[] = []
     const habs: Hab[] = HABITACIONES.map(h => ({ ...h }))
@@ -557,10 +432,6 @@ export default function Mapa() {
       scene.add(hm)
       habitacionMeshes.push(hm)
     })
-
-    // ══════════════════════════════════════════════════════════════════════════
-    // LIGHTING
-    // ══════════════════════════════════════════════════════════════════════════
 
     const ambientLight = new THREE.AmbientLight(0x303850, 0.3)
     scene.add(ambientLight)
@@ -578,7 +449,6 @@ export default function Mapa() {
     dirLight.shadow.bias = -0.001
     scene.add(dirLight)
 
-    // per-room interior lights
     habs.forEach((hab) => {
       const isPatio = hab.id === 'patio'
       const pl = new THREE.PointLight(hab.colorEncendido, isPatio ? 0.5 : 1.6, isPatio ? 6 : 8)
@@ -588,7 +458,6 @@ export default function Mapa() {
       hab._light = pl
     })
 
-    // accent lights
     const spotLight = new THREE.SpotLight(0xffd699, 1.0, 6, Math.PI / 4, 0.5)
     spotLight.position.set(2.5, 2.7, -1.25); spotLight.target.position.set(2.5, 0, -1.25)
     scene.add(spotLight); scene.add(spotLight.target)
@@ -596,10 +465,6 @@ export default function Mapa() {
     const kitchenAccent = new THREE.PointLight(0xfff0d0, 0.6, 3)
     kitchenAccent.position.set(-4.5, 1.2, -1.25)
     scene.add(kitchenAccent)
-
-    // ══════════════════════════════════════════════════════════════════════════
-    // HOTSPOTS
-    // ══════════════════════════════════════════════════════════════════════════
 
     const hotspotEls: Record<string, HTMLDivElement> = {}
     habs.forEach((hab) => {
@@ -611,10 +476,6 @@ export default function Mapa() {
       container.appendChild(el)
       hotspotEls[hab.id] = el
     })
-
-    // ══════════════════════════════════════════════════════════════════════════
-    // RAYCASTING
-    // ══════════════════════════════════════════════════════════════════════════
 
     const raycaster = new THREE.Raycaster()
     const onCanvasClick = (e: MouseEvent) => {
@@ -632,22 +493,17 @@ export default function Mapa() {
     }
     renderer.domElement.addEventListener('click', onCanvasClick)
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // ANIMATION LOOP
-    // ══════════════════════════════════════════════════════════════════════════
-
     let introAngle = Math.PI * 0.25
     let introFrame = 0
     let introActive = true
     const INTRO_DURATION = 240
-    const LERP = 0.03     // smooth day↔night transition speed
+    const LERP = 0.03
     let animId: number
 
     const animate = () => {
       animId = requestAnimationFrame(animate)
       const time = performance.now() * 0.001
 
-      // ── Intro orbit ─────────────────────────────────────────────────────────
       if (introActive) {
         introFrame++
         introAngle += 0.006
@@ -662,7 +518,6 @@ export default function Mapa() {
         }
       }
 
-      // ── Day ↔ Night smooth transition ───────────────────────────────────────
       const mode = isNightRef.current ? NIGHT : DAY
       const bg = scene.background as THREE.Color
       bg.lerp(mode.bg, LERP)
@@ -681,7 +536,6 @@ export default function Mapa() {
       spotLight.intensity += (mode.spotInt - spotLight.intensity) * LERP
       kitchenAccent.intensity += (mode.accInt - kitchenAccent.intensity) * LERP
 
-      // ── Room lights (flicker + mode) ────────────────────────────────────────
       habs.forEach((hab) => {
         if (!hab._light) return
         const base = hab.id === 'patio' ? mode.patioBase : mode.roomBase
@@ -689,7 +543,6 @@ export default function Mapa() {
         hab._light.intensity += (target - hab._light.intensity) * LERP
       })
 
-      // ── Position hotspots ───────────────────────────────────────────────────
       habs.forEach((hab) => {
         const el = hotspotEls[hab.id]; if (!el) return
         const hotspotY = hab.id === 'patio' ? 1.5 : hab.dimensiones.h + 0.5
@@ -707,7 +560,6 @@ export default function Mapa() {
     }
     animate()
 
-    // ── Resize ────────────────────────────────────────────────────────────────
     const onResize = () => {
       camera.aspect = container.clientWidth / container.clientHeight
       camera.updateProjectionMatrix()
@@ -715,7 +567,6 @@ export default function Mapa() {
     }
     window.addEventListener('resize', onResize)
 
-    // ── Orientation ───────────────────────────────────────────────────────────
     const checkOrientation = () => {
       const dismissed = sessionStorage.getItem('rotate-dismissed')
       setShowRotate(window.innerWidth < 768 && window.innerHeight > window.innerWidth && !dismissed)
@@ -724,7 +575,6 @@ export default function Mapa() {
     window.addEventListener('resize', checkOrientation)
     window.addEventListener('orientationchange', () => setTimeout(checkOrientation, 350))
 
-    // ── Cleanup ───────────────────────────────────────────────────────────────
     return () => {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', onResize)

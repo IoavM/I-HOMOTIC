@@ -13,10 +13,10 @@ return(
         <link rel="preload" as="image" href={CasaModerna} fetchPriority="high" />
         <section className='hero' id='hero' style={{ backgroundImage: `url(${CasaModerna})` }}>
             <div className='hero-content'>
-                <h1>Transforma</h1>
-                <h1>tu hogar en un</h1>
+                <h1>{t('hero.titleLine1')}</h1>
+                <h1>{t('hero.titleLine2')}</h1>
                 <h2>{t('hero.subtitle')}</h2>
-                <p>Automatización, seguridad, confort y eficiencia en un solo lugar.</p>
+                <p>{t('hero.description')}</p>
                 <div className='hero-buttons'>
                     <button className='hero-button' tabIndex={10} onClick={() => navigate('/mapa')}>{t('hero.Explore')} </button>
                     <button

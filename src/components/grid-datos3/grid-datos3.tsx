@@ -3,6 +3,7 @@ import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined'
 import InstallMobileOutlinedIcon from '@mui/icons-material/InstallMobileOutlined'
 import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined'
 import Datos3 from './grid-datos3.json'
+import { useTranslation } from 'react-i18next'
 
 const getIcon = (iconName: string) => {
     switch(iconName) {
@@ -14,6 +15,8 @@ const getIcon = (iconName: string) => {
 }
 
 export default function GridDatos3() {
+    const { t } = useTranslation()
+
     return (
         <div className="grid-datos3">
             {Datos3.map((dato, index) => (
@@ -23,7 +26,7 @@ export default function GridDatos3() {
                     </div>
                     <div className='item-datos3'>
                         <h2>{dato.numero}</h2>
-                        <p>{dato.texto}</p>
+                        <p>{t(dato.texto)}</p>
                     </div>
                 </div>
             ))}

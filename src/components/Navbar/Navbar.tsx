@@ -17,6 +17,7 @@ import Paper from '@mui/material/Paper'
 import Radio from '@mui/material/Radio'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
+import Tooltip from '@mui/material/Tooltip'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { styled, alpha } from '@mui/material/styles'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -33,12 +34,12 @@ const NARANJA = 'var(--color-acento-secundario)'
 const DARK_HERO_ROUTES = ['/', '/mapa', '/servicios', '/contacto', '/calculadora', ]
 
 const links = [
-  { to: '/', key: 'navbar.home', tabIndex: -1 },
-  { to: '/proyectos', key: 'navbar.projects', tabIndex: 2 },
-  { to: '/servicios', key: 'navbar.servicios', tabIndex: 3 },
-  { to: '/calculadora', key: 'navbar.calculadora', tabIndex: 4 },
-  { to: '/mapa', key: 'navbar.mapa', tabIndex: 5 },
-  { to: '/contacto', key: 'navbar.contacto', tabIndex: 7 },
+  { to: '/', key: 'navbar.home', tooltipKey: 'navbar.sub_home', tabIndex: -1 },
+  { to: '/proyectos', key: 'navbar.projects', tooltipKey: 'navbar.sub_projects', tabIndex: 2 },
+  { to: '/servicios', key: 'navbar.servicios', tooltipKey: 'navbar.sub_servicios', tabIndex: 3 },
+  { to: '/calculadora', key: 'navbar.calculadora', tooltipKey: 'navbar.sub_calculadora', tabIndex: 4 },
+  { to: '/mapa', key: 'navbar.mapa', tooltipKey: 'navbar.sub_mapa', tabIndex: 5 },
+  { to: '/contacto', key: 'navbar.contacto', tooltipKey: 'navbar.sub_contacto', tabIndex: 7 },
 ]
 
 // ─── Search Bar ───────────────────────────────────────────────────────────────
@@ -474,40 +475,41 @@ export default function Navbar() {
 
               {/* ── Links ─────────────────────────────────────────────────── */}
               <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center', justifyContent: 'center' }}>
-                {links.map(({ to, key, tabIndex }) => {
+                {links.map(({ to, key, tooltipKey, tabIndex }) => {
                   const active = location.pathname === to
                   const isContacto = to === '/contacto'
                   return (
-                    <Button
-                      key={to}
-                      component={RouterLink}
-                      to={to}
-                      tabIndex={tabIndex}
-                      sx={{
-                        textTransform: 'none',
-                        fontWeight: 700,
-                        fontSize: { md: '0.9rem', lg: '1rem', xl: '1.16rem' },
-                        borderRadius: isContacto ? '8px' : (active ? '0' : '999px'),
-                        fontFamily: 'Montserrat, sans-serif',
-                        color: isContacto ? '#081C35' : textColor,
-                        bgcolor: isContacto ? VERDE_CLARO : 'transparent',
-                        borderBottom: (!isContacto && active) ? `2px solid ${activeUnderlineColor}` : 'none',
-                        paddingBottom: (!isContacto && active) ? '4px' : '6px',
-                        px: 1.4,
-                        whiteSpace: 'nowrap',
-                        transition: 'color 0.4s ease, background-color 0.4s ease',
-                        '&:hover': {
-                          bgcolor: isContacto
-                            ? '#8ab351'
-                            : navTheme === 'dark'
-                              ? 'rgba(255,255,255,0.1)'
-                              : 'rgba(8,28,53,0.07)',
+                    <Tooltip key={to} title={t(tooltipKey)} arrow placement="bottom" enterDelay={400}>
+                      <Button
+                        component={RouterLink}
+                        to={to}
+                        tabIndex={tabIndex}
+                        sx={{
+                          textTransform: 'none',
+                          fontWeight: 700,
+                          fontSize: { md: '0.9rem', lg: '1rem', xl: '1.16rem' },
+                          borderRadius: isContacto ? '8px' : (active ? '0' : '999px'),
+                          fontFamily: 'Montserrat, sans-serif',
                           color: isContacto ? '#081C35' : textColor,
-                        },
-                      }}
-                    >
-                      {t(key)}
-                    </Button>
+                          bgcolor: isContacto ? VERDE_CLARO : 'transparent',
+                          borderBottom: (!isContacto && active) ? `2px solid ${activeUnderlineColor}` : 'none',
+                          paddingBottom: (!isContacto && active) ? '4px' : '6px',
+                          px: 1.4,
+                          whiteSpace: 'nowrap',
+                          transition: 'color 0.4s ease, background-color 0.4s ease',
+                          '&:hover': {
+                            bgcolor: isContacto
+                              ? '#8ab351'
+                              : navTheme === 'dark'
+                                ? 'rgba(255,255,255,0.1)'
+                                : 'rgba(8,28,53,0.07)',
+                            color: isContacto ? '#081C35' : textColor,
+                          },
+                        }}
+                      >
+                        {t(key)}
+                      </Button>
+                    </Tooltip>
                   )
                 })}
               </Box>

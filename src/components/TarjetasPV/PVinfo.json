@@ -1,17 +1,17 @@
 [
   {
     "emoji":"🇨🇴",
-    "titulo": "100% colombiano",
-    "descripcion": "Fabricación nacional. Sin importaciones, sin demoras, con soporte local garantizado."
+    "titulo": "servicios.pvColTitle",
+    "descripcion": "servicios.pvColDesc"
   },
   {
     "emoji":"💸",
-    "titulo": "Sin mensualidades",
-    "descripcion": "Pagas una vez y el sistema es tuyo para siempre. Sin suscripciones ni dependencias externas."
+    "titulo": "servicios.pvNoFeeTitle",
+    "descripcion": "servicios.pvNoFeeDesc"
   },
   {
     "emoji":"🎙️",
-    "titulo": "Compatible con Alexa, Google y Siri",
-    "descripcion": "Integración total con los asistentes de voz más populares del mercado."
+    "titulo": "servicios.pvVoiceTitle",
+    "descripcion": "servicios.pvVoiceDesc"
   }
 ]

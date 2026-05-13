@@ -28,25 +28,23 @@ const MULTIPLICADOR_AUTO: Record<NivelAutomatizacion, number> = {
     completo: 2.5,
 }
 
-const VIVIENDA_OPTIONS: { id: TipoVivienda; icon: string; label: string; desc: string }[] = [
-    { id: 'casa', icon: '🏠', label: 'Casa', desc: 'Vivienda independiente de uno o más pisos.' },
-    { id: 'departamento', icon: '🏢', label: 'Departamento', desc: 'Vivienda en edificio o conjunto residencial.' },
-    { id: 'oficina', icon: '🏬', label: 'Oficina', desc: 'Espacio de trabajo o negocio.' },
+const VIVIENDA_OPTIONS: { id: TipoVivienda; icon: string; labelKey: string; descKey: string }[] = [
+    { id: 'casa', icon: '🏠', labelKey: 'calculator.homeCasa', descKey: 'calculator.homeCasaDesc' },
+    { id: 'departamento', icon: '🏢', labelKey: 'calculator.homeDepa', descKey: 'calculator.homeDepaDesc' },
+    { id: 'oficina', icon: '🏬', labelKey: 'calculator.homeOffice', descKey: 'calculator.homeOfficeDesc' },
 ]
 
-const NIVEL_OPTIONS: { id: NivelAutomatizacion; icon: string; label: string; desc: string }[] = [
-    { id: 'basico', icon: '💡', label: 'Esencial', desc: 'Iluminación y asistentes de voz básicos.' },
-    { id: 'intermedio', icon: '🛡️', label: 'Confort', desc: 'Climatización, seguridad y control de persianas.' },
-    { id: 'completo', icon: '✨', label: 'Premium', desc: 'Audio multi-zona, cine en casa y control total.' },
+const NIVEL_OPTIONS: { id: NivelAutomatizacion; icon: string; labelKey: string; descKey: string }[] = [
+    { id: 'basico', icon: '💡', labelKey: 'calculator.lvlBasic', descKey: 'calculator.lvlBasicDesc' },
+    { id: 'intermedio', icon: '🛡️', labelKey: 'calculator.lvlInter', descKey: 'calculator.lvlInterDesc' },
+    { id: 'completo', icon: '✨', labelKey: 'calculator.lvlPremium', descKey: 'calculator.lvlPremiumDesc' },
 ]
 
-// Producto en el carrito: id + cantidad
 interface ProductoAgregado {
     id: string
     cantidad: number
 }
 
-// Estado del flujo de selección
 type FlujoEstado =
     | { paso: 'cerrado' }
     | { paso: 'elegir_producto' }
@@ -58,7 +56,6 @@ export default function CalculadoraPrecios() {
     const [carrito, setCarrito] = useState<ProductoAgregado[]>([])
     const [flujo, setFlujo] = useState<FlujoEstado>({ paso: 'cerrado' })
 
-    // ── Wizard (Asistencia) state ──
     const [pasoActual, setPasoActual] = useState<PasoGuiado>(1)
     const [respuestas, setRespuestas] = useState<RespuestasGuiado>({
         tipoVivienda: null,
@@ -66,12 +63,9 @@ export default function CalculadoraPrecios() {
         automatizacion: null,
     })
 
-    // Ahorro state
     const [habitaciones, setHabitaciones] = useState(3)
     const [consumo, setConsumo] = useState(280)
     const [horas, setHoras] = useState(6)
-
-    // ── Flujo de selección ──
 
     const abrirSeleccionProducto = () => {
         setFlujo({ paso: 'elegir_producto' })
@@ -113,7 +107,6 @@ export default function CalculadoraPrecios() {
         }
     }
 
-    // ── Wizard helpers ──
     const handleWizardNext = () => {
         if (pasoActual < 4) setPasoActual((p) => (p + 1) as PasoGuiado)
     }
@@ -140,16 +133,14 @@ export default function CalculadoraPrecios() {
         pasoActual === 4
 
     const WIZARD_STEPS = [
-        { n: 1 as PasoGuiado, label: 'Tipo de vivienda' },
-        { n: 2 as PasoGuiado, label: 'Ambientes' },
-        { n: 3 as PasoGuiado, label: 'Nivel de automatización' },
-        { n: 4 as PasoGuiado, label: 'Resultado' },
+        { n: 1 as PasoGuiado, label: t('calculator.stepType') },
+        { n: 2 as PasoGuiado, label: t('calculator.stepRooms') },
+        { n: 3 as PasoGuiado, label: t('calculator.stepLevel') },
+        { n: 4 as PasoGuiado, label: t('calculator.stepResult') },
     ]
 
-    // Productos que ya están en el carrito (para mostrar badge)
     const productosEnCarrito = new Set(carrito.map((p) => p.id))
 
-    // Todos los productos disponibles para elegir (incluyendo los ya agregados para editar cantidad)
     const todosLosProductos = data.productos
 
     const productosAgregados = data.productos.filter((p) => productosEnCarrito.has(p.id))
@@ -159,7 +150,6 @@ export default function CalculadoraPrecios() {
         return sum + p.precio * (item?.cantidad ?? 1)
     }, 0)
 
-    // Ahorro logic
     const costoSinDomotica = consumo * 1200
     const porcentajeAhorro = horas * 0.05
     const ahorroMensual = costoSinDomotica * porcentajeAhorro
@@ -168,8 +158,6 @@ export default function CalculadoraPrecios() {
 
     const formatPrecio = (valor: number) =>
         new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(valor)
-
-
 
     return (
         <section className='calculadora' id='calculadora-precios'>
@@ -186,7 +174,7 @@ export default function CalculadoraPrecios() {
                         className={`toggle-btn ${modo === 'asistencia' ? 'toggle-activo' : ''}`}
                         onClick={() => cambiarModo('asistencia')}
                     >
-                        Asistencia
+                        {t('calculator.modeAssistance')}
                     </button>
                     <button
                         tabIndex={11}
@@ -204,18 +192,16 @@ export default function CalculadoraPrecios() {
                     </button>
                 </div>
 
-                {/* ═══ MODO ASISTENCIA (Wizard) ═══ */}
                 {modo === 'asistencia' && (
                     <div className='wizard-container'>
-                        {/* ── Sidebar Izquierda ── */}
                         <aside className='wizard-sidebar'>
                             <div className='wizard-sidebar-top'>
                                 <h2 className='wizard-sidebar-title'>
-                                    Calcula tu proyecto<br />
-                                    en <span>4 simples pasos</span>
+                                    {t('calculator.wizardTitle1')}<br />
+                                    {t('calculator.wizardTitle2')}<span>{t('calculator.wizardTitleSpan')}</span>
                                 </h2>
                                 <p className='wizard-sidebar-desc'>
-                                    Obtén una estimación personalizada del costo de tu hogar inteligente en minutos.
+                                    {t('calculator.wizardDesc')}
                                 </p>
                             </div>
 
@@ -234,16 +220,15 @@ export default function CalculadoraPrecios() {
 
                             <div className='wizard-sidebar-note'>
                                 <span className='wizard-sidebar-note-icon'>🌱</span>
-                                <p>Ahorra energía, mejora tu seguridad y vive con más comodidad cada día.</p>
+                                <p>{t('calculator.wizardNote')}</p>
                             </div>
                         </aside>
 
-                        {/* ── Área Central ── */}
                         <main className='wizard-main'>
                             {pasoActual === 1 && (
                                 <div className='wizard-step-content'>
-                                    <h3 className='wizard-question'>¿Qué tipo <em>de</em> vivienda tienes?</h3>
-                                    <p className='wizard-question-sub'>Selecciona el tipo de vivienda que mejor se adapte a ti.</p>
+                                    <h3 className='wizard-question'>{t('calculator.step1TitleStart')}<em>{t('calculator.step1TitleEm')}</em>{t('calculator.step1TitleEnd')}</h3>
+                                    <p className='wizard-question-sub'>{t('calculator.step1Sub')}</p>
                                     <div className='wizard-options'>
                                         {VIVIENDA_OPTIONS.map((op) => (
                                             <button
@@ -253,8 +238,8 @@ export default function CalculadoraPrecios() {
                                             >
                                                 {respuestas.tipoVivienda === op.id && <span className='wizard-option-check'>✓</span>}
                                                 <span className='wizard-option-icon'>{op.icon}</span>
-                                                <strong>{op.label}</strong>
-                                                <p>{op.desc}</p>
+                                                <strong>{t(op.labelKey)}</strong>
+                                                <p>{t(op.descKey)}</p>
                                             </button>
                                         ))}
                                     </div>
@@ -263,8 +248,8 @@ export default function CalculadoraPrecios() {
 
                             {pasoActual === 2 && (
                                 <div className='wizard-step-content'>
-                                    <h3 className='wizard-question'>¿Cuántos ambientes deseas automatizar?</h3>
-                                    <p className='wizard-question-sub'>Indica el número de espacios (habitaciones, sala, cocina, etc.)</p>
+                                    <h3 className='wizard-question'>{t('calculator.step2Title')}</h3>
+                                    <p className='wizard-question-sub'>{t('calculator.step2Sub')}</p>
                                     <div className='wizard-options wizard-options--numbers'>
                                         {[1, 2, 3, 4, 5, 6].map((n) => (
                                             <button
@@ -274,7 +259,7 @@ export default function CalculadoraPrecios() {
                                             >
                                                 {respuestas.habitaciones === n && <span className='wizard-option-check'>✓</span>}
                                                 <strong className='wizard-option-big-number'>{n}</strong>
-                                                <p>{n === 1 ? 'Ambiente' : 'Ambientes'}</p>
+                                                <p>{n === 1 ? t('calculator.roomSingular') : t('calculator.roomPlural')}</p>
                                             </button>
                                         ))}
                                     </div>
@@ -283,8 +268,8 @@ export default function CalculadoraPrecios() {
 
                             {pasoActual === 3 && (
                                 <div className='wizard-step-content'>
-                                    <h3 className='wizard-question'>¿Qué nivel de automatización buscas?</h3>
-                                    <p className='wizard-question-sub'>Elige el alcance tecnológico para tu proyecto.</p>
+                                    <h3 className='wizard-question'>{t('calculator.step3Title')}</h3>
+                                    <p className='wizard-question-sub'>{t('calculator.step3Sub')}</p>
                                     <div className='wizard-options'>
                                         {NIVEL_OPTIONS.map((op) => (
                                             <button
@@ -294,8 +279,8 @@ export default function CalculadoraPrecios() {
                                             >
                                                 {respuestas.automatizacion === op.id && <span className='wizard-option-check'>✓</span>}
                                                 <span className='wizard-option-icon'>{op.icon}</span>
-                                                <strong>{op.label}</strong>
-                                                <p>{op.desc}</p>
+                                                <strong>{t(op.labelKey)}</strong>
+                                                <p>{t(op.descKey)}</p>
                                             </button>
                                         ))}
                                     </div>
@@ -304,10 +289,10 @@ export default function CalculadoraPrecios() {
 
                             {pasoActual === 4 && (
                                 <div className='wizard-step-content wizard-result'>
-                                    <h3 className='wizard-question'>¡Todo listo para transformar tu hogar!</h3>
-                                    <p className='wizard-question-sub'>Basado en tus respuestas, hemos preparado una estimación inicial.</p>
+                                    <h3 className='wizard-question'>{t('calculator.step4Title')}</h3>
+                                    <p className='wizard-question-sub'>{t('calculator.step4Sub')}</p>
                                     <div className='wizard-result-card'>
-                                        <span className='wizard-result-label'>Total estimado</span>
+                                        <span className='wizard-result-label'>{t('calculator.estimatedTotal')}</span>
                                         <span className='wizard-result-price'>{formatPrecio(estimacionWizard)}</span>
                                     </div>
                                     <div className='wizard-result-actions'>
@@ -317,10 +302,10 @@ export default function CalculadoraPrecios() {
                                             target='_blank'
                                             rel='noopener noreferrer'
                                         >
-                                            Solicitar presupuesto detallado
+                                            {t('calculator.requestDetails')}
                                         </a>
                                         <button className='wizard-btn-reiniciar' onClick={reiniciarWizard}>
-                                            ↻ Volver a empezar
+                                            {t('calculator.startOver')}
                                         </button>
                                     </div>
                                 </div>
@@ -333,57 +318,54 @@ export default function CalculadoraPrecios() {
                                         disabled={!puedeAvanzar}
                                         onClick={handleWizardNext}
                                     >
-                                        Siguiente paso →
+                                        {t('calculator.nextStep')}
                                     </button>
                                 </div>
                             )}
                         </main>
 
-                        {/* ── Sidebar Derecha (Resumen) ── */}
                         <aside className='wizard-summary'>
                             <div className='wizard-summary-card'>
-                                <h4>Resumen de tu proyecto</h4>
+                                <h4>{t('calculator.wizardSummaryTitle')}</h4>
                                 <div className='wizard-summary-status'>
                                     <p className='wizard-summary-hint'>
-                                        {estimacionWizard === 0 ? 'Aún no has seleccionado opciones' : 'Tu selección actual'}
+                                        {estimacionWizard === 0 ? t('calculator.summaryNoSelection') : t('calculator.summaryCurrentSelection')}
                                     </p>
                                     <div className='wizard-summary-row'>
-                                        <span>🏠 Tipo de vivienda</span>
-                                        <span>{respuestas.tipoVivienda ?? '—'}</span>
+                                        <span>🏠 {t('calculator.summaryType')}</span>
+                                        <span>{respuestas.tipoVivienda ? t(VIVIENDA_OPTIONS.find(o => o.id === respuestas.tipoVivienda)?.labelKey ?? '') : '—'}</span>
                                     </div>
                                     <div className='wizard-summary-row'>
-                                        <span>🚪 Ambientes</span>
+                                        <span>🚪 {t('calculator.summaryRooms')}</span>
                                         <span>{respuestas.habitaciones ?? '—'}</span>
                                     </div>
                                     <div className='wizard-summary-row'>
-                                        <span>⚡ Nivel de automatización</span>
-                                        <span>{respuestas.automatizacion ?? '—'}</span>
+                                        <span>⚡ {t('calculator.summaryLevel')}</span>
+                                        <span>{respuestas.automatizacion ? t(NIVEL_OPTIONS.find(o => o.id === respuestas.automatizacion)?.labelKey ?? '') : '—'}</span>
                                     </div>
                                 </div>
 
                                 <div className='wizard-summary-estimation'>
-                                    <span className='wizard-summary-est-label'>Estimación</span>
+                                    <span className='wizard-summary-est-label'>{t('calculator.summaryEstimation')}</span>
                                     <span className='wizard-summary-est-value'>{formatPrecio(estimacionWizard)}</span>
                                     {estimacionWizard === 0 && (
-                                        <p className='wizard-summary-est-hint'>Aún no hay estimación disponible</p>
+                                        <p className='wizard-summary-est-hint'>{t('calculator.summaryNoEstimation')}</p>
                                     )}
                                 </div>
                             </div>
 
                             <div className='wizard-security-note'>
-                                <span>✅</span> Tu información está segura con nosotros
+                                <span>✅</span> {t('calculator.summarySecureInfo')}
                             </div>
                         </aside>
                     </div>
                 )}
 
-                {/* ═══ MODOS: Productos / Paquetes / Ahorro ═══ */}
                 {modo !== 'asistencia' && (
                 <div className='calculadora-body'>
                     <div className='calculadora-selector'>
                         {modo === 'productos' ? (
                             <>
-                                {/* ── Paso 1: Botón de apertura (flujo cerrado) ── */}
                                 {flujo.paso === 'cerrado' && (
                                     <button
                                         tabIndex={11}
@@ -395,7 +377,6 @@ export default function CalculadoraPrecios() {
                                     </button>
                                 )}
 
-                                {/* ── Paso 1: Lista de productos para elegir ── */}
                                 {flujo.paso === 'elegir_producto' && (
                                     <div className='calc-flujo-panel'>
                                         <div className='calc-flujo-header'>
@@ -437,8 +418,6 @@ export default function CalculadoraPrecios() {
                                     </div>
                                 )}
 
-
-                                {/* Lista de productos agregados al carrito */}
                                 {carrito.length > 0 && (
                                     <div className='calc-agregados'>
                                         {productosAgregados.map((prod) => {
@@ -447,7 +426,6 @@ export default function CalculadoraPrecios() {
                                                 <div key={prod.id} className='calc-agregado-item'>
                                                     <span className='calc-agregado-icon'>{prod.icon}</span>
                                                     <span className='calc-agregado-nombre'>{t(prod.nombreKey)}</span>
-                                                    {/* Controles de cantidad */}
                                                     <div className='calc-agregado-cantidad-controls'>
                                                         <button
                                                             className='calc-agregado-cantidad-btn'
@@ -549,7 +527,6 @@ export default function CalculadoraPrecios() {
                         )}
                     </div>
 
-                    {/* ── Tarjeta Resumen ── */}
                     <div className='calculadora-resumen'>
                         {modo === 'ahorro' ? (
                             <div className='resumen-ahorro-card'>
@@ -639,7 +616,6 @@ export default function CalculadoraPrecios() {
                 )}
             </div>
 
-            {/* ── Widget TRM ── */}
             {!trmError && (
                 <div className='trm-widget'>
                     <div className='trm-widget-inner'>

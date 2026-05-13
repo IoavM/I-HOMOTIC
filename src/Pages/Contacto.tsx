@@ -38,14 +38,14 @@ export default function Contacto() {
                 </div>
                 <div className='div-contacto-info'>
                     <p className='info-contacto'>
-                        Nuestro equipo de expertos está listo para asesorarte y ofrecerte la mejor solución en automatización, seguridad, iluminación y más.
+                        {t('contacto.description')}
                     </p>
                     <div className="grid-datos4">
                         {datosContactos.map((dato, index) => (
                             <GridDatos4
                                 key={index}
-                                titulo={dato.titulo}
-                                valor={dato.valor}
+                                tituloKey={dato.tituloKey}
+                                valorKey={dato.valorKey}
                                 icono={dato.icono}
                             />
                         ))}
@@ -60,24 +60,27 @@ export default function Contacto() {
                                 allowFullScreen
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
-                                title="Mapa de ubicación Ihomotic"
+                                title={t('contacto.mapTitle')}
                             />
                         </div>
                     </div>
                 </div>
             </section>
-            <div className='div-cta2'>
-                {[DatosCTA2].map((dato, index) => (
-                    <CTA2
-                        key={index}
-                        titulo={dato.titulo}
-                        subtitulo={dato.subtitulo}
-                        botonTexto={dato.botonTexto}
-                        onClick={handleCotizar}
-                        colorTexto='var(--color-blanco)'
-                    />
-                ))}
-            </div>
+            
+            <section>
+                <div className='div-cta2'>
+                    {[DatosCTA2].map((dato, index) => (
+                        <CTA2
+                            key={index}
+                            titulo={t(dato.tituloKey)}
+                            subtitulo={t(dato.subtituloKey)}
+                            botonTexto={t(dato.botonTextoKey)}
+                            onClick={handleCotizar}
+                            colorTexto='var(--color-blanco)'
+                        />
+                    ))}
+                </div>
+            </section>
         </motion.div>
     )
 }

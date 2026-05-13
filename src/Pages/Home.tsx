@@ -60,15 +60,14 @@ export default function Home() {
                 <Ventajas />
             </section>
 
-
             <section className='proyecto-home'>
                 <div className='proyecto-parte1'>
                     <div className='proyecto-parte1-texto'>
-                        <h2>Proyectos que <span>inspiran</span></h2>
-                        <p>Conoce algunos de nuestros proyectos más recientes</p>
+                        <h2>{t('home.projectsHeading')}<span>{t('home.projectsHeadingSpan')}</span></h2>
+                        <p>{t('home.projectsSubheading')}</p>
                     </div>
                     <div className='btn-ver-proyectos'>
-                        <button className='btn-ver-proyectos-button' onClick={() => navigate('/proyectos')}>Ver todos los proyectos</button>
+                        <button className='btn-ver-proyectos-button' onClick={() => navigate('/proyectos')}>{t('home.projectsButton')}</button>
                     </div>
                 </div>
                 <div className='proyectos-home-grid'>
@@ -82,17 +81,12 @@ export default function Home() {
                         />
                     ))}
                 </div>
-
-                {[DatosCTA].map((dato, index) => (
-                    <CTAHome 
-                        key={index}
-                        titulo={dato.titulo}
-                        subtitulo={dato.subtitulo}
-                        botonTexto={dato.botonTexto}
-                        onClick={handleCotizar}
-                    />
-                ))}
-    
+                <CTAHome 
+                    titulo={t('home.ctaTitle')}
+                    subtitulo={t('home.ctaSubtitle')}
+                    botonTexto={t('home.ctaButton')}
+                    onClick={handleCotizar}
+                />
             </section>
 
         </motion.div>

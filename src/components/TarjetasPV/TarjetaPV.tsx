@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import './TarjetaPV.css'
 
 interface TarjetaPVProps {
@@ -7,12 +8,14 @@ interface TarjetaPVProps {
 }
 
 export default function TarjetaPV({ emoji, titulo, descripcion }: TarjetaPVProps) {
+    const { t } = useTranslation()
+
     return (
             <div className='tarjeta-pv'>
                 <div className='tarjeta-pv-content'>
                     <span className='tarjeta-pv-emoji'>{emoji}</span>
-                    <h2>{titulo}</h2>
-                    <p>{descripcion}</p>
+                    <h2>{t(titulo)}</h2>
+                    <p>{t(descripcion)}</p>
                 </div>
             </div>
     )

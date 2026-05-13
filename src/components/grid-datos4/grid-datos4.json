@@ -1,22 +1,22 @@
 [
   {
-    "titulo": "Teléfono",
-    "valor": "+51 999 123 456",
+    "tituloKey": "contacto.phoneTitle",
+    "valorKey": "contacto.phoneValue",
     "icono": "telefono"
   },
   {
-    "titulo": "Correo electrónico",
-    "valor": "hola@ihomotic.com",
+    "tituloKey": "contacto.emailTitle",
+    "valorKey": "contacto.emailValue",
     "icono": "email"
   },
   {
-    "titulo": "WhatsApp",
-    "valor": "+51 999 123 456",
+    "tituloKey": "contacto.whatsappTitle",
+    "valorKey": "contacto.whatsappValue",
     "icono": "whatsapp"
   },
   {
-    "titulo": "Nuestra oficina",
-    "valor": "Av. El Sol 123, Oficina 501, Santiago de Surco, Lima, Perú",
+    "tituloKey": "contacto.locationTitle",
+    "valorKey": "contacto.locationValue",
     "icono": "ubicacion"
   }
 ]

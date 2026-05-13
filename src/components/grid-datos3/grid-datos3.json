@@ -2,16 +2,16 @@
   {
     "icono": "home",
     "numero": "+65",
-    "texto": "Proyectos realizados"
+    "texto": "projects.grid3Item1"
   },
   {
     "icono": "person",
     "numero": "7+",
-    "texto": "Años de experiencia"
+    "texto": "projects.grid3Item2"
   },
   {
     "icono": "briefcase",
     "numero": "+180",
-    "texto": "Hogares transformados"
+    "texto": "projects.grid3Item3"
   }
 ]

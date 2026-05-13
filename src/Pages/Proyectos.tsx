@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next'
 
 export default function Proyectos() {
     const { t } = useTranslation()
-    const [filtro, setFiltro] = useState('Todos')
+    const [filtro, setFiltro] = useState('projects.filterAll')
 
     const handleCotizar = () => {
         window.open(DatosCTA2.whatsappUrl, "_blank")
@@ -23,9 +23,9 @@ export default function Proyectos() {
         })
     }
 
-    const categorias = ['Todos', ...new Set(Proyectos2Data.map(p => p.Etiqueta))]
+    const categorias = ['projects.filterAll', ...new Set(Proyectos2Data.map(p => p.Etiqueta))]
 
-    const proyectosFiltrados = filtro === 'Todos' 
+    const proyectosFiltrados = filtro === 'projects.filterAll' 
         ? Proyectos2Data 
         : Proyectos2Data.filter(p => p.Etiqueta === filtro)
 
@@ -47,11 +47,10 @@ export default function Proyectos() {
                             className={`btn-filtro ${filtro === cat ? 'active' : ''}`}
                             onClick={() => setFiltro(cat)}
                         >
-                            {cat}
+                            {t(cat)}
                         </button>
                     ))}
                 </div>
-
                 <div className='otros-proyectos'>
                     <AnimatePresence mode='popLayout'>
                         {proyectosFiltrados.map((proyecto2) => (
@@ -80,15 +79,12 @@ export default function Proyectos() {
                         ))}
                     </AnimatePresence>
                 </div>
-                {[DatosCTA2].map((dato, index) => (
-                    <CTA2 
-                        key={index}
-                        titulo={dato.titulo}
-                        subtitulo={dato.subtitulo}
-                        botonTexto={dato.botonTexto}
-                        onClick={handleCotizar}
-                    />
-                ))}
+                <CTA2 
+                    titulo={t('projects.ctaTitle')}
+                    subtitulo={t('projects.ctaSubtitle')}
+                    botonTexto={t('projects.ctaButton')}
+                    onClick={handleCotizar}
+                />
             </section>
         </motion.div>
     )
