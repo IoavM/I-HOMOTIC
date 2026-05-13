@@ -27,7 +27,7 @@
   top: 100px;
   right: 20px;
   width: 280px;
-  background-color: rgba(18, 22, 36, 0.88);
+  background-color: rgba(8, 28, 53, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -96,7 +96,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #E8721A;
+  color: var(--color-acento-primario);
   margin-bottom: 8px;
   font-family: 'Sora', sans-serif;
 }
@@ -121,7 +121,7 @@
 
 .mapa-info-dispositivos li::before {
   content: '✓';
-  color: #E8721A;
+  color: var(--color-acento-primario);
   font-weight: 700;
   font-size: 0.75rem;
   flex-shrink: 0;
@@ -144,8 +144,8 @@
 }
 
 .mapa-info-badge {
-  background-color: rgba(232, 114, 26, 0.25);
-  color: #f4a44a;
+  background-color: rgba(155, 196, 98, 0.25);
+  color: var(--color-acento-primario);
   font-weight: 700;
   font-size: 0.75rem;
   padding: 2px 10px;
@@ -166,8 +166,8 @@
 
 .mapa-btn-cta-whatsapp {
   display: block;
-  background-color: #E8721A;
-  color: #f9fbf8;
+  background-color: var(--color-acento-primario);
+  color: var(--color-texto-oscuro);
   text-decoration: none;
   text-align: center;
   padding: 11px 20px;
@@ -180,7 +180,7 @@
 
 .mapa-btn-cta-whatsapp:hover,
 .mapa-btn-cta-whatsapp:focus-visible {
-  background-color: #F07F2A;
+  background-color: #8ab255;
   transform: translateY(-1px);
 }
 
@@ -195,15 +195,15 @@
 }
 
 .mapa-hotspot__bubble {
-  background-color: rgba(232, 114, 26, 0.92);
-  color: #f9fbf8;
+  background-color: rgba(155, 196, 98, 0.92);
+  color: var(--color-texto-oscuro);
   font-family: 'Sora', sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   padding: 5px 12px;
   border-radius: 999px;
   white-space: nowrap;
-  box-shadow: 0 2px 16px rgba(232, 114, 26, 0.5);
+  box-shadow: 0 2px 16px rgba(155, 196, 98, 0.5);
   animation: mapa-hotspot-float 2.2s ease-in-out infinite;
   user-select: none;
   transition: transform 0.15s, box-shadow 0.15s;
@@ -214,7 +214,7 @@
 .mapa-hotspot:hover .mapa-hotspot__bubble,
 .mapa-hotspot:focus-visible .mapa-hotspot__bubble {
   transform: scale(1.08);
-  box-shadow: 0 4px 22px rgba(232, 114, 26, 0.65);
+  box-shadow: 0 4px 22px rgba(155, 196, 98, 0.65);
 }
 
 @keyframes mapa-hotspot-float {
@@ -256,8 +256,8 @@
 
 .mapa-mode-toggle:hover,
 .mapa-mode-toggle:focus-visible {
-  background: rgba(232, 114, 26, 0.5);
-  border-color: rgba(232, 114, 26, 0.4);
+  background: rgba(155, 196, 98, 0.5);
+  border-color: rgba(155, 196, 98, 0.4);
 }
 
 /* ─── Hint controles ─────────────────────────────────────────────────────────── */
@@ -267,7 +267,7 @@
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(18, 22, 36, 0.88);
+  background-color: rgba(8, 28, 53, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: rgba(255, 255, 255, 0.55);
@@ -309,7 +309,7 @@
 
 .mapa-rotate-arrow {
   font-size: 3rem;
-  color: #E8721A;
+  color: var(--color-acento-primario);
   margin-bottom: 20px;
   display: block;
   animation: mapa-rotate-pulse 1.5s ease-in-out infinite;
@@ -356,8 +356,8 @@
 }
 
 .mapa-btn-continuar {
-  background-color: #E8721A;
-  color: #f9fbf8;
+  background-color: var(--color-acento-primario);
+  color: var(--color-texto-oscuro);
   border: none;
   border-radius: 12px;
   padding: 12px 32px;
@@ -371,7 +371,7 @@
 
 .mapa-btn-continuar:hover,
 .mapa-btn-continuar:focus-visible {
-  background-color: #d66518;
+  background-color: #8ab255;
 }
 
 /* ─── Responsive ─────────────────────────────────────────────────────────────── */
