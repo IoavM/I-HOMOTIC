@@ -28,10 +28,18 @@
 }
 
 .footer-logo {
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--color-footer-purple);
-    letter-spacing: -1px;
+    display: block;
+    width: 180px;
+    height: 36px;
+    background-color: var(--color-footer-purple);
+    mask-image: url(/Logopagina.svg);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: left center;
+    -webkit-mask-image: url(/Logopagina.svg);
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: left center;
 }
 
 .footer-col-1 p {
@@ -135,7 +143,8 @@
         max-width: 280px;
     }
     .footer-logo {
-        font-size: 2.5rem;
+        width: 150px;
+        height: 30px;
     }
     .footer-col-1 p, .footer-columna ul li a, .footer-contacto span, .footer-inferior {
         font-size: 1.05rem;

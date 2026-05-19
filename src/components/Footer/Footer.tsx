@@ -12,7 +12,7 @@ export default function Footer() {
       <div className='footer-content'>
 
         <div className='footer-col-1'>
-          <h2 className='footer-logo'>ihomotic</h2>
+          <Link to='/' className='footer-logo' aria-label="Ihomotic Home"></Link>
           <p dangerouslySetInnerHTML={{ __html: t('footer.slogan') }}></p>
           <div className='footer-redes'>
             <a href='#' className='footer-red'><SiInstagram size={30} /></a>
