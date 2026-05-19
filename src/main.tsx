@@ -8,7 +8,7 @@ import Footer from './components/Footer/Footer.tsx'
 import Home from './Pages/Home.tsx'
 import Proyectos from './Pages/Proyectos.tsx'
 import Contacto from './Pages/Contacto.tsx'
-import Servicios from './Pages/Servicios.tsx'
+import Nosotros from './Pages/Nosotros.tsx'
 import PaginaCalculadora from './Pages/Calculadora.tsx'
 import { lazy, Suspense, useEffect } from 'react'
 import ScrollToTop from './components/ScrollToTop.tsx'
@@ -41,7 +41,7 @@ createRoot(document.getElementById('root')!).render(
       <ScrollToTopButton />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/servicios" element={<Servicios />} />
+        <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/proyectos" element={<Proyectos />} />
         <Route path="/proyectos/:id" element={<PaginaProyectos />} />
         <Route 

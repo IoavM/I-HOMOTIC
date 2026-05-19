@@ -1,4 +1,4 @@
-import '../Styles/Servicios.css'
+import '../Styles/Nosotros.css'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import pvs from '../components/TarjetasPV/PVinfo.json'
@@ -10,7 +10,7 @@ import GridDatos2 from '../components/grid-datos2/grid-datos2'
 import { CasaModerna } from '../assets/imagenes'
 import { useNavigate } from 'react-router-dom'
 
-export default function Servicios() {
+export default function Nosotros() {
     const { t } = useTranslation()
     const navigate = useNavigate()
 
@@ -33,15 +33,18 @@ export default function Servicios() {
 
             <section className='hero2' id='hero-servicios' style={{ backgroundImage: `url(${CasaModerna})` }}>
                 <div className='hero-content2'>
-                    <h1>{t('servicios.title')}</h1>
-                    <p>{t('servicios.subtitle')}</p>
+                    <h1>{t('nosotros.aboutTitle')}</h1>
+                    <p>{t('nosotros.aboutSubtitle')}</p>
                 </div>
             </section>
 
             <section className='propuesta-valor-seccion' id='propuesta-valor'>
                 <div className='contenido-propuesta'>
-                    <h3>{t('servicios.propuestaLabel')}</h3>
-                    <h2>{t('servicios.propuestaTitle')}</h2>
+                    <h3>{t('nosotros.introLabel')}</h3>
+                    <h2>{t('nosotros.introTitle')}</h2>
+                    <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '1.2rem', fontFamily: 'Montserrat, sans-serif', maxWidth: '850px', lineHeight: 1.6, marginTop: '-2rem', marginBottom: '2rem' }}>
+                        {t('nosotros.introDescription')}
+                    </p>
                     <div className='tarjetas-pv-container'>
                         {pvs.map((pv) => (
                             <TarjetaPV
@@ -75,8 +78,8 @@ export default function Servicios() {
 
             <section className='cta-servicios'>
                 <div className='cta-servicios-inner'>
-                    <h2>{t('servicios.ctaTitle')}</h2>
-                    <p>{t('servicios.ctaSubtitle')}</p>
+                    <h2>{t('nosotros.ctaTitle')}</h2>
+                    <p>{t('nosotros.ctaSubtitle')}</p>
                     <div className='cta-servicios-buttons'>
                         <button className='cta-btn-primary' onClick={handleCotizar}>
                             {t('servicios.ctaBtnPrimary')}

@@ -31,12 +31,12 @@ const VERDE = 'var(--color-texto-oscuro)'
 const VERDE_CLARO = 'var(--color-acento-primario)'
 const NARANJA = 'var(--color-acento-secundario)'
 
-const DARK_HERO_ROUTES = ['/', '/mapa', '/servicios', '/contacto', '/calculadora', ]
+const DARK_HERO_ROUTES = ['/', '/mapa', '/nosotros', '/contacto', '/calculadora', ]
 
 const links = [
   { to: '/', key: 'navbar.home', tooltipKey: 'navbar.sub_home', tabIndex: -1 },
   { to: '/proyectos', key: 'navbar.projects', tooltipKey: 'navbar.sub_projects', tabIndex: 2 },
-  { to: '/servicios', key: 'navbar.servicios', tooltipKey: 'navbar.sub_servicios', tabIndex: 3 },
+  { to: '/nosotros', key: 'navbar.nosotros', tooltipKey: 'navbar.sub_nosotros', tabIndex: 3 },
   { to: '/calculadora', key: 'navbar.calculadora', tooltipKey: 'navbar.sub_calculadora', tabIndex: 4 },
   { to: '/mapa', key: 'navbar.mapa', tooltipKey: 'navbar.sub_mapa', tabIndex: 5 },
   { to: '/contacto', key: 'navbar.contacto', tooltipKey: 'navbar.sub_contacto', tabIndex: 7 },
@@ -169,7 +169,7 @@ export default function Navbar() {
 
   const searchIndex: SearchItem[] = React.useMemo(() => [
     { label: t('navbar.home'), sublabel: t('navbar.sub_home'), to: '/', category: 'page', keywords: ['inicio', 'home', 'principal', 'bienvenida', 'landing'] },
-    { label: t('navbar.servicios'), sublabel: t('navbar.sub_servicios'), to: '/servicios', category: 'page', keywords: ['servicios', 'services', 'domótica', 'oferta', 'soluciones'] },
+    { label: t('navbar.nosotros'), sublabel: t('navbar.sub_nosotros'), to: '/nosotros', category: 'page', keywords: ['nosotros', 'about us', 'quiénes somos', 'equipo', 'empresa', 'valores'] },
     { label: t('navbar.projects'), sublabel: t('navbar.sub_projects'), to: '/proyectos', category: 'page', keywords: ['proyectos', 'projects', 'obras', 'casos', 'portfolio'] },
     { label: t('navbar.mapa'), sublabel: t('navbar.sub_mapa'), to: '/mapa', category: 'page', keywords: ['mapa', 'map', '3d', 'visualizador', 'hogar', 'tour', 'habitaciones', 'casa'] },
     { label: t('navbar.calculadora'), sublabel: t('navbar.sub_calculadora'), to: '/calculadora', category: 'page', keywords: ['calculadora', 'precios', 'ahorro', 'presupuesto', 'cotizar'] },
@@ -178,11 +178,11 @@ export default function Navbar() {
     { label: t('home.ventajasHeading') + t('home.ventajasHeadingSpan'), sublabel: t('navbar.home'), to: '/', sectionId: 'home-ventajas', category: 'section', keywords: ['ventajas', 'advantages', 'por qué', 'beneficios', 'ahorro', 'control', 'seguridad', 'confort'] },
     { label: t('home.projectsHeading') + t('home.projectsHeadingSpan'), sublabel: t('navbar.home'), to: '/', sectionId: 'proyecto-home', category: 'section', keywords: ['proyectos inicio', 'sección proyectos', 'inspiran', 'recientes'] },
     { label: t('home.ctaTitle'), sublabel: t('navbar.home'), to: '/', sectionId: 'proyecto-home', category: 'element', keywords: ['cotizar', 'empezar', 'cta', 'presupuesto', 'solución'] },
-    { label: t('servicios.title'), sublabel: t('navbar.servicios'), to: '/servicios', sectionId: 'hero-servicios', category: 'section', keywords: ['hero servicios', 'banner', 'soluciones inteligentes'] },
-    { label: t('servicios.propuestaTitle'), sublabel: t('navbar.servicios'), to: '/servicios', sectionId: 'propuesta-valor', category: 'section', keywords: ['propuesta', 'valor', 'qué hacemos', 'colombiano', 'fabricación', 'alexa', 'google', 'siri', 'mensualidades'] },
-    { label: t('servicios.ventajasTitle') + ' ' + t('servicios.ventajasTitleSpan'), sublabel: t('navbar.servicios'), to: '/servicios', sectionId: 'servicios-ventajas', category: 'section', keywords: ['por qué', 'elegirnos', 'ventajas servicios', 'beneficios'] },
-    { label: t('servicios.statsTitle') + ' ' + t('servicios.statsTitleSpan'), sublabel: t('navbar.servicios'), to: '/servicios', sectionId: 'servicios-stats', category: 'section', keywords: ['resultados', 'impacto', 'estadísticas', 'datos', 'cifras', 'proyectos realizados'] },
-    { label: t('servicios.ctaTitle'), sublabel: t('navbar.servicios'), to: '/servicios', sectionId: 'cta-servicios', category: 'section', keywords: ['automatizar', 'asesoría', 'consulta', 'agendar', 'cta', 'calcular'] },
+    { label: t('nosotros.aboutTitle'), sublabel: t('navbar.nosotros'), to: '/nosotros', sectionId: 'hero-servicios', category: 'section', keywords: ['hero nosotros', 'banner', 'sobre nosotros', 'quiénes somos', 'historia'] },
+    { label: t('nosotros.introTitle'), sublabel: t('navbar.nosotros'), to: '/nosotros', sectionId: 'propuesta-valor', category: 'section', keywords: ['propuesta', 'valor', 'qué hacemos', 'colombiano', 'fabricación', 'alexa', 'google', 'siri', 'mensualidades', 'quiénes somos'] },
+    { label: t('servicios.ventajasTitle') + ' ' + t('servicios.ventajasTitleSpan'), sublabel: t('navbar.nosotros'), to: '/nosotros', sectionId: 'servicios-ventajas', category: 'section', keywords: ['por qué', 'elegirnos', 'ventajas nosotros', 'beneficios'] },
+    { label: t('servicios.statsTitle') + ' ' + t('servicios.statsTitleSpan'), sublabel: t('navbar.nosotros'), to: '/nosotros', sectionId: 'servicios-stats', category: 'section', keywords: ['resultados', 'impacto', 'estadísticas', 'datos', 'cifras', 'proyectos realizados'] },
+    { label: t('nosotros.ctaTitle'), sublabel: t('navbar.nosotros'), to: '/nosotros', sectionId: 'cta-servicios', category: 'section', keywords: ['automatizar', 'asesoría', 'consulta', 'agendar', 'cta', 'calcular', 'contacto'] },
     { label: t('projects.pageTitle'), sublabel: t('navbar.projects'), to: '/proyectos', sectionId: 'proyecto', category: 'section', keywords: ['galería', 'portfolio', 'todos', 'filtro', 'categoría'] },
     { label: t('projects.project1Title'), sublabel: t('navbar.projects'), to: '/proyectos', sectionId: 'proyecto', category: 'element', keywords: ['la molina', 'iluminación', 'climatización', 'seguridad integral'] },
     { label: t('projects.project2Title'), sublabel: t('navbar.projects'), to: '/proyectos', sectionId: 'proyecto', category: 'element', keywords: ['miraflores', 'departamento', 'automatización', 'entretenimiento'] },
