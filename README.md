@@ -12,7 +12,7 @@ I-HOMOTIC es una plataforma web interactiva de domótica colombiana que permite 
 - [Ejecución](#ejecución)
 - [Scripts disponibles](#scripts-disponibles)
 - [Estructura del proyecto](#estructura-del-proyecto)
-- [Variables de entorno](#variables-de-entorno)
+- [Configuración de APIs y Variables de Entorno](#configuración-de-apis-y-variables-de-entorno)
 - [Despliegue](#despliegue)
 - [Contribución](#contribución)
 - [Roadmap](#roadmap)
@@ -130,7 +130,7 @@ La aplicación estará disponible de forma predeterminada en: [http://localhost:
 
 ---
 
-## Variables de entorno
+## Configuración de APIs y Variables de Entorno
 
 El portal puede configurarse con variables de entorno para externalizar claves en producción. Crea un archivo `.env` en la raíz de `I-homotic`:
 
@@ -138,7 +138,9 @@ El portal puede configurarse con variables de entorno para externalizar claves e
 cp .env.example .env
 ```
 
-Define las siguientes variables según corresponda:
+### Configuración del archivo de entorno `.env`
+
+Abre el archivo `.env` recién creado y asigna los valores correspondientes a las siguientes variables para establecer la conexión con los servicios de analítica y APIs externas de la plataforma:
 
 ```env
 # Identificador del SDK de Microsoft Clarity para analíticas web
