@@ -27,7 +27,7 @@ I-HOMOTIC es una plataforma web interactiva de domótica colombiana que permite 
 - **Calculadora de presupuesto en 4 pasos:** Asistente secuencial para estimar el costo de instalación según el tipo de propiedad (Casa, Departamento u Oficina), cantidad de ambientes y nivel de domótica seleccionado (Esencial, Confort o Premium).
 - **Estimador de ahorro energético y ROI:** Lógica de cálculo que determina el ahorro mensual aproximado en dinero basándose en el consumo eléctrico actual (kWh/mes) y horas de luz diarias, estimando el tiempo de amortización.
 - **Internacionalización completa (ES/EN):** Soporte bilingüe total implementado con i18next y react-i18next con selector rápido en la barra de navegación.
-- **Analíticas cualitativas integradas:** Incorporación de SDKs de Hotjar y Microsoft Clarity para realizar seguimiento del comportamiento del usuario mediante mapas de calor y grabaciones de sesión.
+- **Analíticas cualitativas integradas:** Incorporación de SDK de Microsoft Clarity para realizar seguimiento del comportamiento del usuario mediante mapas de calor y grabaciones de sesión.
 - **Formulario y geo-selectores dinámicos:** Formulario de contacto con selector de ubicación jerárquico de Colombia (País, Departamento, Ciudad) e integración de contacto directo vía WhatsApp y correo electrónico.
 
 ---
@@ -141,8 +141,6 @@ cp .env.example .env
 Define las siguientes variables según corresponda:
 
 ```env
-VITE_HOTJAR_ID=798296
-VITE_HOTJAR_SNIPPET_VERSION=6
 VITE_CLARITY_ID=wm5lgd3493
 VITE_TRM_API_URL=https://www.datos.gov.co/resource/32sa-8pi3.json
 ```
@@ -180,7 +178,7 @@ VITE_TRM_API_URL=https://www.datos.gov.co/resource/32sa-8pi3.json
 ## Autores
 
 ### Programación Front-End
-- **Ioav Mizrachi Muñoz** - Programador Front-end Principal
+- **Ioav Mizrachi Muñoz** - Programador Front-end
 - **Juan Camilo Bolaños García** - Programador Front-end
 - **Laura Ortiz Caballero** - Programadora Front-end
 
