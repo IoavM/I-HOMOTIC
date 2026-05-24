@@ -141,8 +141,14 @@ cp .env.example .env
 Define las siguientes variables según corresponda:
 
 ```env
+# Identificador del SDK de Microsoft Clarity para analíticas web
 VITE_CLARITY_ID=wm5lgd3493
+
+# URL de la API de datos abiertos de Colombia para la TRM (Tasa Representativa del Mercado)
 VITE_TRM_API_URL=https://www.datos.gov.co/resource/32sa-8pi3.json
+
+# URL de la API para la consulta de países, estados/departamentos y ciudades (usada en useAddress.ts)
+VITE_COUNTRIES_API_URL=https://countriesnow.space/api/v0.1
 ```
 
 ---
