@@ -472,7 +472,22 @@ export default function Navbar() {
                   const active = location.pathname === to
                   const isContacto = to === '/contacto'
                   return (
-                    <Tooltip key={to} title={t(tooltipKey)} arrow placement="bottom" enterDelay={400}>
+                    <Tooltip
+                      key={to}
+                      title={t(tooltipKey)}
+                      arrow
+                      placement="bottom"
+                      enterDelay={400}
+                      slotProps={{
+                        tooltip: {
+                          sx: {
+                            fontSize: '0.85rem',
+                            fontFamily: 'Montserrat, sans-serif',
+                            padding: '6px 12px',
+                          }
+                        }
+                      }}
+                    >
                       <Button
                         component={RouterLink}
                         to={to}
