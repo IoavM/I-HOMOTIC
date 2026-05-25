@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 
 interface TRMResult {
-  trm:     number | null
-  fecha:   string | null
+  trm: number | null
+  fecha: string | null
   loading: boolean
-  error:   boolean
+  error: boolean
 }
 
-const CACHE_KEY      = 'ihomotic_trm'
+const CACHE_KEY = 'ihomotic_trm'
 const CACHE_DATE_KEY = 'ihomotic_trm_fecha'
 const API_URL = 'https://www.datos.gov.co/resource/32sa-8pi3.json?$limit=1&$order=vigenciadesde DESC'
 
@@ -31,7 +31,7 @@ export function useTRM(): TRMResult {
       .then((res) => res.json())
       .then((data) => {
         const valor = Number(data[0]?.valor)
-        const raw   = data[0]?.vigenciadesde as string | undefined
+        const raw = data[0]?.vigenciadesde as string | undefined
         if (!isNaN(valor) && valor > 0) {
           const fechaFormateada = raw
             ? new Date(raw).toLocaleDateString('es-CO', { day: '2-digit', month: 'long', year: 'numeric' })

@@ -7,43 +7,97 @@
     "descripcionKey": "projects.project1Description",
     "altKey": "projects.project1Alt",
     "detalles": {
-      "cliente": "Familia García",
-      "ubicacion": "La Molina, Lima",
-      "duracion": "4 semanas",
-      "fecha": "Marzo 2023",
-      "area_intervenida": "350 m²",
-      "el_reto": "El cliente buscaba modernizar una casa de más de 15 años de antigüedad sin realizar obras civiles invasivas. El principal desafío era integrar un sistema de seguridad robusto y un control de iluminación eficiente que se adaptara a la arquitectura clásica de la residencia, solucionando problemas previos de alto consumo energético.",
-      "la_solucion": "Implementamos un ecosistema completo basado en domótica inalámbrica de última generación. Instalamos módulos de control detrás de los interruptores existentes para mantener la estética, configuramos sensores de presencia en áreas de tránsito y automatizamos la climatización por zonas. Además, se integró un sistema de seguridad perimetral inteligente conectado directamente a la app del cliente.",
-      "resultados_clave": [
-        "Reducción del 30% en el consumo eléctrico mensual.",
-        "Monitoreo 24/7 con notificaciones en tiempo real.",
-        "Creación de 5 escenas personalizadas (Cine, Lectura, Fuera de Casa, etc.).",
-        "Control total por voz mediante integración con Alexa."
-      ],
-      "sistemas_integrados": [
-        "Iluminación inteligente LED regulable",
-        "Termostatos inteligentes por zona",
-        "Cerradura biométrica de acceso principal",
-        "Sistema de cámaras 4K y sensores perimetrales"
-      ],
+      "cliente": {
+        "es": "Familia García",
+        "en": "García Family"
+      },
+      "ubicacion": {
+        "es": "La Molina, Lima",
+        "en": "La Molina, Lima"
+      },
+      "duracion": {
+        "es": "4 semanas",
+        "en": "4 weeks"
+      },
+      "fecha": {
+        "es": "Marzo 2023",
+        "en": "March 2023"
+      },
+      "area_intervenida": {
+        "es": "350 m²",
+        "en": "350 m²"
+      },
+      "trabajo_realizado": {
+        "es": "Iluminación y Seguridad",
+        "en": "Lighting and Security"
+      },
+      "inversion": {
+        "es": "$16.500.000 COP",
+        "en": "$16,500,000 COP"
+      },
+      "el_reto": {
+        "es": "El cliente buscaba modernizar una casa de más de 15 años de antigüedad sin realizar obras civiles invasivas. El principal desafío era integrar un sistema de seguridad robusto y un control de iluminación eficiente que se adaptara a la arquitectura clásica de la residencia, solucionando problemas previos de alto consumo energético.",
+        "en": "The client sought to modernize a house over 15 years old without invasive civil works. The main challenge was to integrate a robust security system and efficient lighting control that adapted to the classic architecture of the residence, solving previous high energy consumption issues."
+      },
+      "la_solucion": {
+        "es": "Implementamos un ecosistema completo basado en domótica inalámbrica de última generación. Instalamos módulos de control detrás de los interruptores existentes para mantener la estética, configuramos sensores de presencia en áreas de tránsito y automatizamos la climatización por zonas. Además, se integró un sistema de seguridad perimetral inteligente conectado directamente a la app del cliente.",
+        "en": "We implemented a complete ecosystem based on state-of-the-art wireless home automation. We installed control modules behind existing switches to maintain aesthetics, configured presence sensors in high-traffic areas, and automated zoned climate control. In addition, an intelligent perimeter security system connected directly to the client's app was integrated."
+      },
+      "resultados_clave": {
+        "es": [
+          "Reducción del 30% en el consumo eléctrico mensual.",
+          "Monitoreo 24/7 con notificaciones en tiempo real.",
+          "Creación de 5 escenas personalizadas (Cine, Lectura, Fuera de Casa, etc.).",
+          "Control total por voz mediante integración con Alexa."
+        ],
+        "en": [
+          "30% reduction in monthly electricity consumption.",
+          "24/7 monitoring with real-time notifications.",
+          "Creation of 5 customized scenes (Cinema, Reading, Away from Home, etc.).",
+          "Full voice control through integration with Alexa."
+        ]
+      },
+      "sistemas_integrados": {
+        "es": [
+          "Iluminación inteligente LED regulable",
+          "Termostatos inteligentes por zona",
+          "Cerradura biométrica de acceso principal",
+          "Sistema de cámaras 4K y sensores perimetrales"
+        ],
+        "en": [
+          "Dimmable LED smart lighting",
+          "Smart zone thermostats",
+          "Biometric main access lock",
+          "4K camera system and perimeter sensors"
+        ]
+      },
       "carrusel_antes_despues": [
         {
           "id": "c1",
           "imagen_antes": "casa",
           "imagen_despues": "casaModerna",
-          "descripcion": "Transformación de la fachada: de un diseño tradicional a uno moderno con iluminación inteligente."
+          "descripcion": {
+            "es": "Transformación de la fachada: de un diseño tradicional a uno moderno con iluminación inteligente.",
+            "en": "Facade transformation: from a traditional design to a modern one with smart lighting."
+          }
         },
         {
           "id": "c2",
           "imagen_antes": "casa100",
           "imagen_despues": "casa2",
-          "descripcion": "Jardín trasero y piscina: Implementación de iluminación paisajista automatizada."
+          "descripcion": {
+            "es": "Jardín trasero y piscina: Implementación de iluminación paisajista automatizada.",
+            "en": "Backyard and pool: Implementation of automated landscape lighting."
+          }
         },
         {
           "id": "c3",
           "imagen_antes": "casa3",
           "imagen_despues": "casaModerna",
-          "descripcion": "Interiores: Optimización de espacios con control centralizado de persianas y climatización."
+          "descripcion": {
+            "es": "Interiores: Optimización de espacios con control centralizado de persianas y climatización.",
+            "en": "Interiors: Space optimization with centralized control of blinds and climate control."
+          }
         }
       ],
       "galeria": [
@@ -53,8 +107,14 @@
         "galeria_molina_4"
       ],
       "testimonio": {
-        "texto": "Increíble cómo cambió nuestra rutina. Ahora la casa trabaja para nosotros, la seguridad que sentimos al salir de viaje no tiene precio y todo sin romper una sola pared.",
-        "autor": "Roberto G., Propietario"
+        "texto": {
+          "es": "Increíble cómo cambió nuestra rutina. Ahora la casa trabaja para nosotros, la seguridad que sentimos al salir de viaje no tiene precio y todo sin romper una sola pared.",
+          "en": "Incredible how our routine changed. Now the house works for us, the security we feel when going on a trip is priceless, and all without breaking a single wall."
+        },
+        "autor": {
+          "es": "Roberto G., Propietario",
+          "en": "Roberto G., Owner"
+        }
       }
     }
   },
@@ -66,42 +126,95 @@
     "descripcionKey": "projects.project2Description",
     "altKey": "projects.project2Alt",
     "detalles": {
-      "cliente": "Sr. Mendoza",
-      "ubicacion": "Miraflores, Lima",
-      "duracion": "2.5 semanas",
-      "fecha": "Septiembre 2023",
-      "area_intervenida": "120 m²",
-      "el_reto": "Optimizar un departamento moderno de tamaño medio para maximizar el confort y crear la experiencia definitiva de entretenimiento en casa, integrando audio, video y cortinas en un solo mando.",
-      "la_solucion": "Se diseñó una red de audio multi-zona invisible, instalando parlantes en el techo de la sala, cocina y habitación principal. Integramos las cortinas motorizadas para que respondan al 'Modo Cine', bajando automáticamente cuando se enciende el proyector. Todo el ecosistema se controla desde una tablet empotrada en la pared o desde el smartphone.",
-      "resultados_clave": [
-        "Transición perfecta de la luz natural a artificial con cortinas motorizadas.",
-        "Experiencia de cine en casa con audio envolvente Dolby Atmos oculto.",
-        "Diseño minimalista conservado: cero cables a la vista."
-      ],
-      "sistemas_integrados": [
-        "Audio multi-zona de alta fidelidad",
-        "Cortinas motorizadas silenciosas",
-        "Control universal de TV y Proyector",
-        "Iluminación LED indirecta"
-      ],
+      "cliente": {
+        "es": "Sr. Mendoza",
+        "en": "Mr. Mendoza"
+      },
+      "ubicacion": {
+        "es": "Miraflores, Lima",
+        "en": "Miraflores, Lima"
+      },
+      "duracion": {
+        "es": "2.5 semanas",
+        "en": "2.5 weeks"
+      },
+      "fecha": {
+        "es": "Septiembre 2023",
+        "en": "September 2023"
+      },
+      "area_intervenida": {
+        "es": "120 m²",
+        "en": "120 m²"
+      },
+      "trabajo_realizado": {
+        "es": "Audio y Entretenimiento",
+        "en": "Audio and Entertainment"
+      },
+      "inversion": {
+        "es": "$8.900.000 COP",
+        "en": "$8,900,000 COP"
+      },
+      "el_reto": {
+        "es": "Optimizar un departamento moderno de tamaño medio para maximizar el confort y crear la experiencia definitiva de entretenimiento en casa, integrando audio, video y cortinas en un solo mando.",
+        "en": "Optimize a medium-sized modern apartment to maximize comfort and create the ultimate home entertainment experience, integrating audio, video, and curtains into a single control."
+      },
+      "la_solucion": {
+        "es": "Se diseñó una red de audio multi-zona invisible, instalando parlantes en el techo de la sala, cocina y habitación principal. Integramos las cortinas motorizadas para que respondan al 'Modo Cine', bajando automáticamente cuando se enciende el proyector. Todo el ecosistema se controla desde una tablet empotrada en la pared o desde el smartphone.",
+        "en": "An invisible multi-zone audio network was designed, installing speakers in the ceiling of the living room, kitchen, and master bedroom. We integrated the motorized curtains to respond to 'Cinema Mode', automatically lowering when the projector turns on. The entire ecosystem is controlled from a wall-mounted tablet or from a smartphone."
+      },
+      "resultados_clave": {
+        "es": [
+          "Transición perfecta de la luz natural a artificial con cortinas motorizadas.",
+          "Experiencia de cine en casa con audio envolvente Dolby Atmos oculto.",
+          "Diseño minimalista conservado: cero cables a la vista."
+        ],
+        "en": [
+          "Seamless transition from natural to artificial light with motorized curtains.",
+          "Home cinema experience with hidden Dolby Atmos surround sound.",
+          "Minimalist design preserved: zero cables in sight."
+        ]
+      },
+      "sistemas_integrados": {
+        "es": [
+          "Audio multi-zona de alta fidelidad",
+          "Cortinas motorizadas silenciosas",
+          "Control universal de TV y Proyector",
+          "Iluminación LED indirecta"
+        ],
+        "en": [
+          "High-fidelity multi-zone audio",
+          "Quiet motorized curtains",
+          "Universal TV and Projector control",
+          "Indirect LED lighting"
+        ]
+      },
       "carrusel_antes_despues": [
         {
           "id": "c1",
           "imagen_antes": "casa3",
           "imagen_despues": "casa2",
-          "descripcion": "Integración del sistema de entretenimiento ocultando todos los cables y equipos detrás de mobiliario inteligente."
+          "descripcion": {
+            "es": "Integración del sistema de entretenimiento ocultando todos los cables y equipos detrás de mobiliario inteligente.",
+            "en": "Entertainment system integration hiding all cables and equipment behind smart furniture."
+          }
         },
         {
           "id": "c2",
           "imagen_antes": "casa100",
           "imagen_despues": "casaModerna",
-          "descripcion": "Automatización de cortinas y control de luz natural en la sala de estar principal."
+          "descripcion": {
+            "es": "Automatización de cortinas y control de luz natural en la sala de estar principal.",
+            "en": "Curtain automation and natural light control in the main living room."
+          }
         },
         {
           "id": "c3",
           "imagen_antes": "casa",
           "imagen_despues": "casa2",
-          "descripcion": "Iluminación LED indirecta para crear diferentes ambientes de relajación."
+          "descripcion": {
+            "es": "Iluminación LED indirecta para crear diferentes ambientes de relajación.",
+            "en": "Indirect LED lighting to create different relaxing environments."
+          }
         }
       ],
       "galeria": [
@@ -110,8 +223,14 @@
         "galeria_mira_3"
       ],
       "testimonio": {
-        "texto": "Llegar del trabajo, decir 'Modo Relax' y que las luces bajen, se cierren las cortinas y empiece a sonar mi playlist favorita es la mejor experiencia del día.",
-        "autor": "Luis M."
+        "texto": {
+          "es": "Llegar del trabajo, decir 'Modo Relax' y que las luces bajen, se cierren las cortinas y empiece a sonar mi playlist favorita es la mejor experiencia del día.",
+          "en": "Coming home from work, saying 'Relax Mode' and having the lights dim, the curtains close, and my favorite playlist start playing is the best experience of the day."
+        },
+        "autor": {
+          "es": "Luis M.",
+          "en": "Luis M."
+        }
       }
     }
   },
@@ -123,42 +242,95 @@
     "descripcionKey": "projects.project3Description",
     "altKey": "projects.project3Alt",
     "detalles": {
-      "cliente": "Familia Rodríguez",
-      "ubicacion": "Playa Asia, Sur Chico",
-      "duracion": "5 semanas",
-      "fecha": "Diciembre 2023",
-      "area_intervenida": "500 m² (incluyendo exteriores)",
-      "el_reto": "Proporcionar control y seguridad absoluta sobre una propiedad de descanso que pasa varios meses vacía. Se requería automatizar el sistema de riego, la piscina y garantizar que la casa pareciera habitada a través de simulación de presencia.",
-      "la_solucion": "Desarrollamos una red WiFi Mesh de amplio alcance para cubrir todo el terreno. Implementamos rutinas de simulación de presencia que encienden luces y música de forma aleatoria durante la noche. Integramos los motores de la piscina y el sistema de riego para ser controlados remotamente, optimizando el uso del agua.",
-      "resultados_clave": [
-        "Gestión remota del 100% de la propiedad.",
-        "Ahorro del 40% en consumo de agua por riego inteligente basado en el clima.",
-        "Tranquilidad total gracias a la simulación de presencia y circuito cerrado."
-      ],
-      "sistemas_integrados": [
-        "Sistema de riego inteligente por clima",
-        "Automatización de bombas de piscina",
-        "Simulación de presencia",
-        "Red WiFi Mesh de grado empresarial"
-      ],
+      "cliente": {
+        "es": "Familia Rodríguez",
+        "en": "Rodríguez Family"
+      },
+      "ubicacion": {
+        "es": "Playa Asia, Sur Chico",
+        "en": "Asia Beach, Sur Chico"
+      },
+      "duracion": {
+        "es": "5 semanas",
+        "en": "5 weeks"
+      },
+      "fecha": {
+        "es": "Diciembre 2023",
+        "en": "December 2023"
+      },
+      "area_intervenida": {
+        "es": "500 m² (incluyendo exteriores)",
+        "en": "500 m² (including outdoors)"
+      },
+      "trabajo_realizado": {
+        "es": "Control Remoto y Riego",
+        "en": "Remote Control and Irrigation"
+      },
+      "inversion": {
+        "es": "$24.500.000 COP",
+        "en": "$24,500,000 COP"
+      },
+      "el_reto": {
+        "es": "Proporcionar control y seguridad absoluta sobre una propiedad de descanso que pasa varios meses vacía. Se requería automatizar el sistema de riego, la piscina y garantizar que la casa pareciera habitada a través de simulación de presencia.",
+        "en": "Provide absolute control and security over a vacation property that remains empty for several months. It was required to automate the irrigation system, the pool, and ensure the house appeared inhabited through presence simulation."
+      },
+      "la_solucion": {
+        "es": "Desarrollamos una red WiFi Mesh de amplio alcance para cubrir todo el terreno. Implementamos rutinas de simulación de presencia que encienden luces y música de forma aleatoria durante la noche. Integramos los motores de la piscina y el sistema de riego para ser controlados remotamente, optimizando el uso del agua.",
+        "en": "We developed a long-range WiFi Mesh network to cover the entire ground. We implemented presence simulation routines that turn on lights and music randomly during the night. We integrated the pool motors and the irrigation system to be controlled remotely, optimizing water use."
+      },
+      "resultados_clave": {
+        "es": [
+          "Gestión remota del 100% de la propiedad.",
+          "Ahorro del 40% en consumo de agua por riego inteligente basado en el clima.",
+          "Tranquilidad total gracias a la simulación de presencia y circuito cerrado."
+        ],
+        "en": [
+          "100% remote management of the property.",
+          "40% savings in water consumption through weather-based smart irrigation.",
+          "Total peace of mind thanks to presence simulation and CCTV."
+        ]
+      },
+      "sistemas_integrados": {
+        "es": [
+          "Sistema de riego inteligente por clima",
+          "Automatización de bombas de piscina",
+          "Simulación de presencia",
+          "Red WiFi Mesh de grado empresarial"
+        ],
+        "en": [
+          "Weather-based smart irrigation system",
+          "Automation of pool pumps",
+          "Presence simulation",
+          "Enterprise-grade WiFi Mesh network"
+        ]
+      },
       "carrusel_antes_despues": [
         {
           "id": "c1",
           "imagen_antes": "casa",
           "imagen_despues": "casaModerna",
-          "descripcion": "Piscina y terraza: Antes de la intervención vs. después de la integración de iluminación RGB y control de bombas."
+          "descripcion": {
+            "es": "Piscina y terraza: Antes de la intervención vs. después de la integración de iluminación RGB y control de bombas.",
+            "en": "Pool and terrace: Before the intervention vs. after the integration of RGB lighting and pump control."
+          }
         },
         {
           "id": "c2",
           "imagen_antes": "casa100",
           "imagen_despues": "casa3",
-          "descripcion": "Sistema de riego: Automatización para mantener los jardines verdes sin consumo excesivo de agua."
+          "descripcion": {
+            "es": "Sistema de riego: Automatización para mantener los jardines verdes sin consumo excesivo de agua.",
+            "en": "Irrigation system: Automation to keep gardens green without excessive water consumption."
+          }
         },
         {
           "id": "c3",
           "imagen_antes": "casa2",
           "imagen_despues": "casaModerna",
-          "descripcion": "Seguridad perimetral: Cámaras instaladas de forma discreta para un monitoreo 24/7 de los exteriores."
+          "descripcion": {
+            "es": "Seguridad perimetral: Cámaras instaladas de forma discreta para un monitoreo 24/7 de los exteriores.",
+            "en": "Perimeter security: Cameras installed discreetly for 24/7 outdoor monitoring."
+          }
         }
       ],
       "galeria": [
@@ -167,8 +339,14 @@
         "galeria_asia_3"
       ],
       "testimonio": {
-        "texto": "Ya no tenemos que viajar horas solo para ver si todo está en orden o para encender el filtro de la piscina. Desde la app gestionamos la casa de playa como si estuviéramos ahí.",
-        "autor": "Carmen R."
+        "texto": {
+          "es": "Ya no tenemos que viajar horas solo para ver si todo está en orden o para encender el filtro de la piscina. Desde la app gestionamos la casa de playa como si estuviéramos ahí.",
+          "en": "We no longer have to travel for hours just to see if everything is in order or to turn on the pool filter. From the app, we manage the beach house as if we were there."
+        },
+        "autor": {
+          "es": "Carmen R.",
+          "en": "Carmen R."
+        }
       }
     }
   },
@@ -180,42 +358,95 @@
     "descripcionKey": "projects.project4Description",
     "altKey": "projects.project4Alt",
     "detalles": {
-      "cliente": "Rio Verde Boutique",
-      "ubicacion": "Centro Comercial Jockey Plaza",
-      "duracion": "2 semanas (trabajo nocturno)",
-      "fecha": "Enero 2024",
-      "area_intervenida": "200 m²",
-      "el_reto": "Renovar la experiencia de compra en una tienda boutique, destacando las prendas mediante iluminación focalizada, integrando un sistema de audio para marketing sensorial y asegurando el inventario sin afectar la estética del local.",
-      "la_solucion": "Implementamos rieles de iluminación inteligente que permiten ajustar la calidez y el enfoque de la luz desde una tablet, ideal para cambios de temporada. El sistema de audio distribuido permite zonificar la música según el área de la tienda. Instalamos cámaras 360° discretas y sensores de apertura en vitrinas de alto valor.",
-      "resultados_clave": [
-        "Incremento en el tiempo de permanencia de los clientes gracias al ambiente acústico y visual.",
-        "Gestión centralizada de apertura y cierre (luces, alarmas, música) con un solo botón.",
-        "Prevención de pérdidas mejorada con monitoreo discreto."
-      ],
-      "sistemas_integrados": [
-        "Iluminación focalizada automatizada",
-        "Audio distribuido para retail",
-        "CCTV 360° y sensores de vitrina",
-        "Control de acceso para staff"
-      ],
+      "cliente": {
+        "es": "Rio Verde Boutique",
+        "en": "Rio Verde Boutique"
+      },
+      "ubicacion": {
+        "es": "Centro Comercial Jockey Plaza",
+        "en": "Jockey Plaza Mall"
+      },
+      "duracion": {
+        "es": "2 semanas (trabajo nocturno)",
+        "en": "2 weeks (night work)"
+      },
+      "fecha": {
+        "es": "Enero 2024",
+        "en": "January 2024"
+      },
+      "area_intervenida": {
+        "es": "200 m²",
+        "en": "200 m²"
+      },
+      "trabajo_realizado": {
+        "es": "Domótica Comercial",
+        "en": "Commercial Automation"
+      },
+      "inversion": {
+        "es": "$18.200.000 COP",
+        "en": "$18,200,000 COP"
+      },
+      "el_reto": {
+        "es": "Renovar la experiencia de compra en una tienda boutique, destacando las prendas mediante iluminación focalizada, integrando un sistema de audio para marketing sensorial y asegurando el inventario sin afectar la estética del local.",
+        "en": "Renew the shopping experience in a boutique store, highlighting garments through focused lighting, integrating an audio system for sensory marketing, and securing inventory without affecting the store's aesthetics."
+      },
+      "la_solucion": {
+        "es": "Implementamos rieles de iluminación inteligente que permiten ajustar la calidez y el enfoque de la luz desde una tablet, ideal para cambios de temporada. El sistema de audio distribuido permite zonificar la música según el área de la tienda. Instalamos cámaras 360° discretas y sensores de apertura en vitrinas de alto valor.",
+        "en": "We implemented smart track lighting that allows adjusting light warmth and focus from a tablet, ideal for seasonal changes. The distributed audio system allows zoning music according to the store area. We installed discreet 360° cameras and opening sensors on high-value showcases."
+      },
+      "resultados_clave": {
+        "es": [
+          "Incremento en el tiempo de permanencia de los clientes gracias al ambiente acústico y visual.",
+          "Gestión centralizada de apertura y cierre (luces, alarmas, música) con un solo botón.",
+          "Prevención de pérdidas mejorada con monitoreo discreto."
+        ],
+        "en": [
+          "Increased customer dwell time thanks to the acoustic and visual atmosphere.",
+          "Centralized management of opening and closing (lights, alarms, music) with a single button.",
+          "Improved loss prevention with discreet monitoring."
+        ]
+      },
+      "sistemas_integrados": {
+        "es": [
+          "Iluminación focalizada automatizada",
+          "Audio distribuido para retail",
+          "CCTV 360° y sensores de vitrina",
+          "Control de acceso para staff"
+        ],
+        "en": [
+          "Automated focused lighting",
+          "Distributed audio for retail",
+          "360° CCTV and showcase sensors",
+          "Staff access control"
+        ]
+      },
       "carrusel_antes_despues": [
         {
           "id": "c1",
           "imagen_antes": "casa100",
           "imagen_despues": "casa2",
-          "descripcion": "El cambio en la iluminación: de luz fluorescente blanca a iluminación cálida focalizada que resalta las texturas de la ropa."
+          "descripcion": {
+            "es": "El cambio en la iluminación: de luz fluorescente blanca a iluminación cálida focalizada que resalta las texturas de la ropa.",
+            "en": "The change in lighting: from white fluorescent light to focused warm lighting that highlights clothing textures."
+          }
         },
         {
           "id": "c2",
           "imagen_antes": "casa",
           "imagen_despues": "casa3",
-          "descripcion": "Control de audio distribuido: Parlantes integrados discretamente en el techo para una experiencia inmersiva."
+          "descripcion": {
+            "es": "Control de audio distribuido: Parlantes integrados discretamente en el techo para una experiencia inmersiva.",
+            "en": "Distributed audio control: Speakers discreetly integrated into the ceiling for an immersive experience."
+          }
         },
         {
           "id": "c3",
           "imagen_antes": "casa3",
           "imagen_despues": "casaModerna",
-          "descripcion": "Monitoreo de seguridad: Instalación de cámaras 360° en puntos ciegos sin romper el diseño de la tienda."
+          "descripcion": {
+            "es": "Monitoreo de seguridad: Instalación de cámaras 360° en puntos ciegos sin romper el diseño de la tienda.",
+            "en": "Security monitoring: Installation of 360° cameras in blind spots without breaking the store's design."
+          }
         }
       ],
       "galeria": [
@@ -224,8 +455,14 @@
         "galeria_rio_3"
       ],
       "testimonio": {
-        "texto": "La domótica no solo nos dio seguridad, sino que elevó nuestra marca. Los clientes notan inmediatamente el ambiente premium al entrar a la tienda.",
-        "autor": "Gerencia Rio Verde"
+        "texto": {
+          "es": "La domótica no solo nos dio seguridad, sino que elevó nuestra marca. Los clientes notan inmediatamente el ambiente premium al entrar a la tienda.",
+          "en": "Home automation not only gave us security but elevated our brand. Customers immediately notice the premium atmosphere upon entering the store."
+        },
+        "autor": {
+          "es": "Gerencia Rio Verde",
+          "en": "Rio Verde Management"
+        }
       }
     }
   }

@@ -14,28 +14,40 @@ const imageMap: Record<string, string> = {
     casa100: casa100
 }
 
+interface LocalizedString {
+    es: string
+    en: string
+}
+
+interface LocalizedArray {
+    es: string[]
+    en: string[]
+}
+
 interface CarruselItem {
     id: string
     imagen_antes: string
     imagen_despues: string
-    descripcion: string
+    descripcion: string | LocalizedString
 }
 
 interface ProyectoDetalles {
-    cliente: string
-    ubicacion: string
-    duracion: string
-    fecha: string
-    area_intervenida: string
-    el_reto: string
-    la_solucion: string
-    resultados_clave: string[]
-    sistemas_integrados: string[]
+    cliente: string | LocalizedString
+    ubicacion: string | LocalizedString
+    duracion: string | LocalizedString
+    fecha: string | LocalizedString
+    area_intervenida: string | LocalizedString
+    trabajo_realizado: string | LocalizedString
+    inversion: string | LocalizedString
+    el_reto: string | LocalizedString
+    la_solucion: string | LocalizedString
+    resultados_clave: string[] | LocalizedArray
+    sistemas_integrados: string[] | LocalizedArray
     carrusel_antes_despues: CarruselItem[]
     galeria: string[]
     testimonio: {
-        texto: string
-        autor: string
+        texto: string | LocalizedString
+        autor: string | LocalizedString
     }
 }
 
@@ -51,7 +63,7 @@ interface Proyecto {
 
 export default function PaginaProyectos() {
     const { id } = useParams<{ id: string }>()
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
     const navigate = useNavigate()
 
     const proyecto = (proyectosData as Proyecto[]).find(p => p.id === id)
@@ -80,6 +92,25 @@ export default function PaginaProyectos() {
         setMostrarDespues(false)
     }
 
+    // Auxiliares para resolver traducciones dinámicas en base al idioma seleccionado
+    const getTranslation = (field: string | LocalizedString | undefined): string => {
+        if (!field) return ''
+        if (typeof field === 'object' && field !== null) {
+            const lang = i18n.language.startsWith('en') ? 'en' : 'es'
+            return field[lang] || field['es'] || ''
+        }
+        return field
+    }
+
+    const getTranslationArray = (field: string[] | LocalizedArray | undefined): string[] => {
+        if (!field) return []
+        if (typeof field === 'object' && !Array.isArray(field)) {
+            const lang = i18n.language.startsWith('en') ? 'en' : 'es'
+            return field[lang] || field['es'] || []
+        }
+        return field
+    }
+
     return (
         <motion.div
             className='proy-det-page'
@@ -91,9 +122,9 @@ export default function PaginaProyectos() {
             <link rel="preload" as="image" href={casa2} fetchPriority="high" />
             <div className='proy-det-hero' style={{ backgroundImage: `url(${casa2})` }}>
                 <div className='proy-det-hero-overlay'>
-                    <span className='proy-det-etiqueta'>{proyecto.Etiqueta}</span>
-                    <h1>{proyecto.tituloKey}</h1>
-                    <p className='proy-det-hero-sub'>{proyecto.descripcionKey}</p>
+                    <span className='proy-det-etiqueta'>{t(proyecto.Etiqueta)}</span>
+                    <h1>{t(proyecto.tituloKey)}</h1>
+                    <p className='proy-det-hero-sub'>{t(proyecto.descripcionKey)}</p>
                 </div>
             </div>
 
@@ -103,43 +134,51 @@ export default function PaginaProyectos() {
                 {/* ── Ficha técnica ── */}
                 <section className='proy-det-ficha'>
                     <div className='ficha-item'>
-                        <span className='ficha-label'>Cliente</span>
-                        <span className='ficha-valor'>{det.cliente}</span>
+                        <span className='ficha-label'>{t('projects.detail.client')}</span>
+                        <span className='ficha-valor'>{getTranslation(det.cliente)}</span>
                     </div>
                     <div className='ficha-item'>
-                        <span className='ficha-label'>Ubicación</span>
-                        <span className='ficha-valor'>{det.ubicacion}</span>
+                        <span className='ficha-label'>{t('projects.detail.location')}</span>
+                        <span className='ficha-valor'>{getTranslation(det.ubicacion)}</span>
                     </div>
                     <div className='ficha-item'>
-                        <span className='ficha-label'>Duración</span>
-                        <span className='ficha-valor'>{det.duracion}</span>
+                        <span className='ficha-label'>{t('projects.detail.duration')}</span>
+                        <span className='ficha-valor'>{getTranslation(det.duracion)}</span>
                     </div>
                     <div className='ficha-item'>
-                        <span className='ficha-label'>Fecha</span>
-                        <span className='ficha-valor'>{det.fecha}</span>
+                        <span className='ficha-label'>{t('projects.detail.date')}</span>
+                        <span className='ficha-valor'>{getTranslation(det.fecha)}</span>
                     </div>
                     <div className='ficha-item'>
-                        <span className='ficha-label'>Área</span>
-                        <span className='ficha-valor'>{det.area_intervenida}</span>
+                        <span className='ficha-label'>{t('projects.detail.area')}</span>
+                        <span className='ficha-valor'>{getTranslation(det.area_intervenida)}</span>
+                    </div>
+                    <div className='ficha-item'>
+                        <span className='ficha-label'>{t('projects.detail.workDone')}</span>
+                        <span className='ficha-valor'>{getTranslation(det.trabajo_realizado)}</span>
+                    </div>
+                    <div className='ficha-item'>
+                        <span className='ficha-label'>{t('projects.detail.investment')}</span>
+                        <span className='ficha-valor'>{getTranslation(det.inversion)}</span>
                     </div>
                 </section>
 
                 {/* ── Descripción Continua ── */}
                 <section className='proy-det-seccion proy-det-continuo'>
-                    <h2>El Reto</h2>
-                    <p>{det.el_reto}</p>
+                    <h2>{t('projects.detail.challenge')}</h2>
+                    <p>{getTranslation(det.el_reto)}</p>
                     
-                    <h2 style={{ marginTop: '2.5rem' }}>La Solución</h2>
-                    <p>{det.la_solucion}</p>
+                    <h2 style={{ marginTop: '2.5rem' }}>{t('projects.detail.solution')}</h2>
+                    <p>{getTranslation(det.la_solucion)}</p>
                 </section>
 
                 {/* ── Sistemas Integrados ── */}
                 <section className='proy-det-seccion'>
                     <div className='proy-det-seccion-header'>
-                        <h2>Sistemas Integrados</h2>
+                        <h2>{t('projects.detail.integratedSystems')}</h2>
                     </div>
                     <div className='sistemas-grid'>
-                        {det.sistemas_integrados.map((sistema, i) => (
+                        {getTranslationArray(det.sistemas_integrados).map((sistema, i) => (
                             <div className='sistema-card' key={i}>
                                 <div className='sistema-icono'>⚡</div>
                                 <span>{sistema}</span>
@@ -151,10 +190,10 @@ export default function PaginaProyectos() {
                 {/* ── Resultados Clave ── */}
                 <section className='proy-det-seccion proy-det-resultados'>
                     <div className='proy-det-seccion-header'>
-                        <h2>Resultados Clave</h2>
+                        <h2>{t('projects.detail.keyResults')}</h2>
                     </div>
                     <div className='resultados-lista'>
-                        {det.resultados_clave.map((resultado, i) => (
+                        {getTranslationArray(det.resultados_clave).map((resultado, i) => (
                             <div className='resultado-item' key={i}>
                                 <span className='resultado-check'>✓</span>
                                 <p>{resultado}</p>
@@ -167,7 +206,7 @@ export default function PaginaProyectos() {
                 {carruselItems.length > 0 && (
                     <section className='proy-det-seccion'>
                         <div className='proy-det-seccion-header'>
-                            <h2>Antes y Después</h2>
+                            <h2>{t('projects.detail.beforeAfter')}</h2>
                         </div>
                         <div className='carrusel-ad'>
                             <div className='carrusel-ad-viewer'>
@@ -178,7 +217,7 @@ export default function PaginaProyectos() {
                                         className='carrusel-ad-img'
                                     />
                                     <span className={`carrusel-ad-badge ${mostrarDespues ? 'despues' : 'antes'}`}>
-                                        {mostrarDespues ? 'DESPUÉS' : 'ANTES'}
+                                        {mostrarDespues ? t('projects.detail.after').toUpperCase() : t('projects.detail.before').toUpperCase()}
                                     </span>
                                 </div>
                                 <div className='carrusel-ad-toggle'>
@@ -186,26 +225,26 @@ export default function PaginaProyectos() {
                                         className={`proy-toggle-btn ${!mostrarDespues ? 'active' : ''}`}
                                         onClick={() => setMostrarDespues(false)}
                                     >
-                                        Antes
+                                        {t('projects.detail.before')}
                                     </button>
                                     <button
                                         className={`proy-toggle-btn ${mostrarDespues ? 'active' : ''}`}
                                         onClick={() => setMostrarDespues(true)}
                                     >
-                                        Después
+                                        {t('projects.detail.after')}
                                     </button>
                                 </div>
                             </div>
                             <div className='carrusel-ad-info'>
-                                <p className='carrusel-ad-desc'>{carruselItems[carruselIndex].descripcion}</p>
+                                <p className='carrusel-ad-desc'>{getTranslation(carruselItems[carruselIndex].descripcion)}</p>
                                 {carruselItems.length > 1 && (
                                     <div className='carrusel-ad-nav-modern'>
                                         <button className='carrusel-nav-btn-text' onClick={handlePrevCarrusel}>
-                                            <span className='nav-arrow'>←</span> Ver área anterior
+                                            <span className='nav-arrow'>←</span> {t('projects.detail.prevArea')}
                                         </button>
                                         <span className='carrusel-counter'>{carruselIndex + 1} / {carruselItems.length}</span>
                                         <button className='carrusel-nav-btn-text' onClick={handleNextCarrusel}>
-                                            Siguiente área <span className='nav-arrow'>→</span>
+                                            {t('projects.detail.nextArea')} <span className='nav-arrow'>→</span>
                                         </button>
                                     </div>
                                 )}
@@ -217,20 +256,20 @@ export default function PaginaProyectos() {
                 {/* ── Testimonio ── */}
                 <section className='proy-det-testimonio'>
                     <div className='testimonio-comillas'>"</div>
-                    <blockquote>{det.testimonio.texto}</blockquote>
-                    <cite>— {det.testimonio.autor}</cite>
+                    <blockquote>{getTranslation(det.testimonio.texto)}</blockquote>
+                    <cite>— {getTranslation(det.testimonio.autor)}</cite>
                 </section>
 
                 {/* ── CTA ── */}
                 <section className='proy-det-cta'>
-                    <h3>¿Quieres un proyecto así?</h3>
-                    <p>Agenda una asesoría gratuita y cuéntanos sobre tu espacio</p>
+                    <h3>{t('projects.detail.ctaTitle')}</h3>
+                    <p>{t('projects.detail.ctaSubtitle')}</p>
                     <div className='proy-det-cta-btns'>
                         <button className='proy-cta-primary' onClick={() => navigate('/contacto')}>
                             {t('hero.contact')}
                         </button>
                         <button className='proy-cta-secondary' onClick={() => navigate('/calculadora')}>
-                            Calcular presupuesto
+                            {t('projects.detail.calculateBudget')}
                         </button>
                     </div>
                 </section>
