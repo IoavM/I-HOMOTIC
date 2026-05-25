@@ -148,7 +148,7 @@ const resources = {
         }
       },
       nosotros: {
-        aboutTitle: 'Sobre Nosotros',
+        aboutTitle: 'Sobre nosotros',
         aboutSubtitle: 'Liderando la transformación digital del hogar con soluciones sostenibles e innovadoras.',
         aboutDescription: 'En IHomotic nos dedicamos a crear espacios inteligentes que mejoran la calidad de vida. Con años de experiencia en el sector de la domótica, ofrecemos soluciones personalizadas que combinan tecnología de vanguardia con un compromiso firme por la sostenibilidad.',
         valuesTitle: 'Nuestros Valores',
@@ -578,7 +578,7 @@ const resources = {
         }
       },
       nosotros: {
-        aboutTitle: 'About Us',
+        aboutTitle: 'About us',
         aboutSubtitle: 'Leading the digital transformation of homes with sustainable and innovative solutions.',
         aboutDescription: 'At IHomotic we create intelligent spaces that improve quality of life. With years of experience in the home automation sector, we offer personalized solutions combining cutting-edge technology with a strong commitment to sustainability.',
         valuesTitle: 'Our Values',
